@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-700 font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-gray-900;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-weight: 400;
+  }
+
+  h2 {
+    font-weight: 500;
+  }
+
+  p {
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  strong {
+    font-weight: 500;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .slide-in-up {
+    animation: slideInUp 0.7s ease-out;
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+  }
+
+  @media (max-width: 768px) {
+    .card-3d:active {
+      transform: translateY(-6px) rotateX(3deg) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  .card-3d-lift {
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  @media (max-width: 768px) {
+    .card-3d-lift:active {
+      transform: translateZ(20px) scale(1.03);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .float-3d {
+    animation: float3d 3s ease-in-out infinite;
+  }
+
+  @keyframes float3d {
+    0%, 100% {
+      transform: translateY(0px) translateZ(0px);
+    }
+    50% {
+      transform: translateY(-10px) translateZ(10px);
+    }
+  }
+
+  .perspective-card {
+    perspective: 1000px;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-depth {
+      box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        0 16px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .mobile-depth-hover:active {
+      box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.12),
+        0 8px 20px rgba(0, 0, 0, 0.12),
+        0 20px 40px rgba(0, 0, 0, 0.12);
+      transform: translateY(-4px) scale(1.02);
+    }
+  }
+}
