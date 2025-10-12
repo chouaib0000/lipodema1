@@ -62,7 +62,7 @@ Centre de Référence pour le Traitement du Lipœdème au Maroc
                 <Instagram size={20} />
               </a>
               <a
-                href="https://web.facebook.com/lipedem"
+                href="https://web.facebook.com/lipedem?locale=fr_FR"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-terracotta-500 p-3 hover:bg-terracotta-600 transition-all duration-300 hover-lift"
@@ -76,7 +76,7 @@ Centre de Référence pour le Traitement du Lipœdème au Maroc
 
         <div className="border-t border-gray-800 pt-10">
           <p className="text-gray-400 text-sm text-center font-light leading-relaxed">
-            © {new Date().getFullYear()} Dr Tawfik Sefrioui - Spécialiste du traitement du Lipœdème - Casablanca, Maroc
+            © {new Date().getFullYear()} Lipœdème Maroc – Traitement & Liposuccion WAL Casablanca
           </p>
           <p className="text-gray-500 text-xs mt-3 text-center font-light">
             Traitement du lipœdème par liposuccion WAL
