@@ -19,8 +19,9 @@ export function pageMetadata(path: string): Metadata {
     title: { absolute: route.title },
     description: route.description,
     alternates: isNotFound ? undefined : { canonical: abs(route.path), languages },
+    // Next.js already adds noindex on the 404 page
     robots: isNotFound
-      ? { index: false, follow: true }
+      ? undefined
       : { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
     openGraph: {
       type: 'website',

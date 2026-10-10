@@ -3,20 +3,34 @@
 > **First check that the domain lipoedem.ma is renewed.** In October 2026 Google was showing
 > "Nom de domaine expiré" for it – nothing on the site can rank while the domain is expired.
 
-## How the site is built now
+## How the site is built and hosted
 
-The site is a **Next.js 16** app (App Router) exported as static files:
+The site is a **Next.js 16** app (App Router) hosted on **Vercel**:
 
 ```
 npm install
 npm run dev     # local development on http://localhost:3000
-npm run build   # writes the finished site to dist/  (one folder + index.html per page)
+npm run build   # production build (Vercel runs this automatically on every push)
 ```
 
-Every page is pre-rendered to HTML at build time with its own title, description, canonical,
-hreflang and JSON-LD, so Google, Bing and AI assistants read the full content without running
-JavaScript. Pages are served with a trailing slash (`/maladie/`), which works on any static host
-without rewrite rules. Deploy the `dist/` folder (Netlify settings are in `netlify.toml`).
+Every page is pre-rendered to static HTML at build time with its own title, description,
+canonical, hreflang and JSON-LD, then served from Vercel's CDN. Google, Bing and AI assistants
+read the full content without running JavaScript.
+
+- URLs end with a slash (`/maladie/`); Vercel redirects `/maladie` → `/maladie/` automatically.
+- Redirects (old `/fr/…`, `/blog`…) and security / cache headers are in `next.config.mjs`.
+- Unknown URLs return a real **404** with `noindex`.
+- **Speed Insights**: in Vercel → Project → *Speed Insights* → Enable, to see real Core Web Vitals
+  from visitors' phones.
+
+### Connecting the domain on Vercel
+
+1. Vercel → Project → Settings → **Domains** → add `lipoedem.ma` and `www.lipoedem.ma`.
+2. Set `lipoedem.ma` as the primary domain; choose "Redirect `www.lipoedem.ma` to `lipoedem.ma`" (308).
+3. At the .ma registrar, create the DNS records Vercel shows (A record `76.76.21.21` for the apex,
+   CNAME `cname.vercel-dns.com` for `www`, or the values displayed in your dashboard).
+4. Keep the `*.vercel.app` preview URL out of Google: Vercel already sends `noindex` on preview
+   deployments; only the production domain should be submitted in Search Console.
 
 ## Where to change things
 
@@ -27,6 +41,7 @@ without rewrite rules. Deploy the `dist/` folder (Netlify settings are in `netli
 | Home page FAQ (also sent to Google as FAQ schema) | `src/seo/faq.ts` |
 | Structured data (MedicalClinic, Physician, MedicalCondition, MedicalProcedure, FAQ, Breadcrumb) | `src/seo/schema.ts` |
 | Adding a new page | create `src/app/<slug>/page.tsx` (copy an existing one) **and** add it to `src/seo/routes.ts` – the sitemap updates itself |
+| Redirects, security & cache headers | `next.config.mjs` |
 | Ad / marketing tags (GTM, Meta Pixel, TikTok, Google Ads) | `src/config/site.ts` → `tracking` – paste the ID, rebuild |
 
 ## Google Analytics

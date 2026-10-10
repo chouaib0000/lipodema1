@@ -18,6 +18,7 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import MobileActionBar from '../components/MobileActionBar';
 import ClientEffects from '../components/ClientEffects';
 import MarketingTags from '../components/MarketingTags';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -45,7 +46,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // /ar gets lang="ar-MA" in its static file (scripts/postbuild.mjs) and on navigation (ClientEffects)
+    // The Arabic page marks its content with lang="ar" dir="rtl"; ClientEffects also updates <html lang>.
     <html lang="fr-MA">
       <head>
         <MarketingTags />
@@ -67,6 +68,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <MobileActionBar />
           </div>
         </LanguageProvider>
+        {/* Real-user Core Web Vitals in the Vercel dashboard (Project → Speed Insights) */}
+        <SpeedInsights />
       </body>
     </html>
   );

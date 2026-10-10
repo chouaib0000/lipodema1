@@ -1,8 +1,0 @@
-# Static site produced by `next build` (output: 'export').
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "22"
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
