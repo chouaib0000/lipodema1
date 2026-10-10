@@ -15,8 +15,7 @@ const nextConfig = {
       // Old canonical / hreflang URLs that never existed – pass their signals to the real pages
       { source: '/fr', destination: '/', permanent: true },
       { source: '/fr/:path*', destination: '/:path*', permanent: true },
-      { source: '/en', destination: '/', permanent: true },
-      { source: '/en/:path*', destination: '/:path*', permanent: true },
+      { source: '/en/:path+', destination: '/:path+', permanent: true },
       { source: '/accueil', destination: '/', permanent: true },
       { source: '/index.html', destination: '/', permanent: true },
       { source: '/blog', destination: '/actualites/', permanent: true },

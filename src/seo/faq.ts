@@ -67,3 +67,30 @@ export const arFaq: FaqItem[] = [
     a: 'يُنصح بالمشي ابتداءً من اليوم التالي للعملية، مع ارتداء لباس الضغط خلال الشهر الأول، ويبدأ التصريف بعد العملية بحوالي 3 أيام حسب بروتوكول المركز. تعود أغلب المريضات إلى نشاط خفيف خلال أيام قليلة.',
   },
 ];
+
+export const enFaq: FaqItem[] = [
+  {
+    q: 'What is lipedema?',
+    a: 'Lipedema (lipoedema) is a chronic disease of the fat tissue that affects almost only women. Fat builds up symmetrically on the legs, hips and sometimes the arms, with pain, tenderness to touch and easy bruising. This fat does not respond to diet or exercise.',
+  },
+  {
+    q: 'Where can I get lipedema surgery in Morocco?',
+    a: 'The Centre Lipœdème Maroc in Casablanca, led by Dr Tawfik Sefrioui, has been dedicated to lipedema since 2015. It treats legs and arms with WAL Bodyjet 3D water-assisted liposuction under local anaesthesia.',
+  },
+  {
+    q: 'Is the surgery done under general anaesthesia?',
+    a: 'No. Dr Sefrioui performs WAL liposuction under local (tumescent) anaesthesia: you stay awake and comfortable, and you avoid the risks of general anaesthesia.',
+  },
+  {
+    q: 'Why WAL liposuction for lipedema?',
+    a: 'A gentle pulsed water jet loosens the fat cells, which are removed with micro-cannulas. The technique is designed to limit trauma to the lymphatic vessels, which are fragile in lipedema.',
+  },
+  {
+    q: 'How long should I stay in Casablanca?',
+    a: 'Patients usually walk the day after surgery. The length of stay depends on the areas treated and the number of sessions; the team gives you a plan after the consultation and can help with accommodation.',
+  },
+  {
+    q: 'How much does lipedema surgery cost in Morocco?',
+    a: 'The price depends on the stage, the areas treated and the number of sessions. You receive a detailed quote after the consultation. You can send photos on WhatsApp for a first opinion.',
+  },
+];

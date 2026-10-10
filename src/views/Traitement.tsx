@@ -7,7 +7,7 @@ export default function Traitement() {
       <PageHero
         title="Traitement du lipœdème au Maroc"
         intro="Le lipœdème n’est pas un simple excès de graisse : c’est une maladie chronique, évolutive et douloureuse. Elle se soigne, avec une prise en charge médicale spécialisée — aujourd’hui possible à Casablanca avec le Dr Tawfik Sefrioui."
-        image="/img/appareil-bodyjet-liposuccion-wal-anesthesie-locale.jpg"
+        image="/img/appareil-bodyjet-liposuccion-wal-anesthesie-locale.webp"
         imageAlt="Appareil Body-Jet pour la liposuccion WAL sous anesthésie locale"
         imageClass="object-cover object-[50%_30%]"
       />
@@ -108,7 +108,7 @@ export default function Traitement() {
               </p>
             </Prose>
           </div>
-          <Figure src="/2028/10.jpeg" alt="Liposuccion traditionnelle et liposuccion WAL pour le lipœdème" caption="Liposuccion traditionnelle et WAL Bodyjet 3D avec micro-canules sous anesthésie locale" />
+          <Figure src="/2028/10.webp" alt="Liposuccion traditionnelle et liposuccion WAL pour le lipœdème" caption="Liposuccion traditionnelle et WAL Bodyjet 3D avec micro-canules sous anesthésie locale" />
         </div>
       </Section>
 

@@ -26,7 +26,7 @@ export function pageMetadata(path: string): Metadata {
     openGraph: {
       type: 'website',
       siteName: SITE.name,
-      locale: route.lang === 'ar' ? 'ar_MA' : 'fr_FR',
+      locale: route.lang === 'ar' ? 'ar_MA' : route.lang === 'en' ? 'en_GB' : 'fr_FR',
       url: abs(route.path),
       title: route.title,
       description: route.description,

@@ -12,24 +12,24 @@ import { homeFaq } from '../seo/faq';
 import { GUIDE } from '../content/guide';
 
 const LEGS = [
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 15.52.16.jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.50 (1).jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (1).jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (2).jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (3).jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (4).jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (6).jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (7).jpeg',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 15.52.16.webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.50 (1).webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (1).webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (2).webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (3).webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (4).webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (6).webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (7).webp',
 ];
 
 const ARMS = [
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 15.53.00.jpeg',
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (1).jpeg',
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (2).jpeg',
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (3).jpeg',
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (4).jpeg',
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (5).jpeg',
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40.jpeg',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 15.53.00.webp',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (1).webp',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (2).webp',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (3).webp',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (4).webp',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (5).webp',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40.webp',
 ];
 
 const SYMPTOMS = [
@@ -140,9 +140,9 @@ export default function Home() {
             <Link href="/diagnostic" className="underline underline-offset-4 decoration-rose-300 hover:decoration-rose-700">Comment se fait le diagnostic</Link>
           </div>
         </div>
-        <button type="button" onClick={() => open(['/2027/1.jpeg', ...LEGS], 'Stades du lipœdème et résultats')} className="group text-left">
+        <button type="button" onClick={() => open(['/2027/1.webp', ...LEGS], 'Stades du lipœdème et résultats')} className="group text-left">
           <img
-            src="/2027/1.jpeg"
+            src="/2027/1.webp"
             alt="Les stades du lipœdème des jambes : du stade 1 au stade 3"
             width="1270"
             height="666"
@@ -239,7 +239,7 @@ export default function Home() {
       <section className="bg-mist">
         <div className="container mx-auto py-16 lg:py-24 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:items-center">
           <img
-            src="/please use this folder/doctor photo in surgary.jpeg"
+            src="/please use this folder/doctor photo in surgary.webp"
             alt="Le Dr Tawfik Sefrioui pendant une liposuccion WAL sous anesthésie locale"
             width="982"
             height="1280"
@@ -287,7 +287,7 @@ export default function Home() {
             <p className="mt-3 text-ink/75">Visite du centre et du bloc opératoire où sont réalisées les interventions, au cœur du quartier Racine.</p>
             <Link href="/parcours-patient" className="mt-5 inline-block font-semibold text-rose-700 underline underline-offset-4 decoration-rose-300">Le parcours patiente en détail</Link>
           </div>
-          <VideoPlayer src="/videos/cabinet.mp4" poster="/videos/cabinet.jpg" title="Visite du cabinet" className="w-full max-w-[320px] mx-auto" />
+          <VideoPlayer src="/videos/cabinet.mp4" poster="/videos/cabinet.webp" title="Visite du cabinet" className="w-full max-w-[320px] mx-auto" />
         </div>
       </section>
 
@@ -373,7 +373,7 @@ export default function Home() {
           </div>
         </div>
         <img
-          src="/2028/1.jpeg"
+          src="/2028/1.webp"
           alt="Bloc opératoire du Centre Lipœdème Maroc à Casablanca"
           width="982"
           height="1280"

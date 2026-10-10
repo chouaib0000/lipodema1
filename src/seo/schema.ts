@@ -18,7 +18,7 @@ const clinic = {
     'Centre médical de Casablanca dédié au traitement du lipœdème depuis 2015 : consultation spécialisée et liposuccion WAL Bodyjet 3D avec micro-canules sous anesthésie locale.',
   url: `${SITE.url}/`,
   logo: absUrl(SITE.logo),
-  image: [absUrl(SITE.ogImage), absUrl('/2028/1.jpeg'), absUrl(SITE.doctorPhoto)],
+  image: [absUrl(SITE.ogImage), absUrl('/2028/1.webp'), absUrl(SITE.doctorPhoto)],
   telephone: SITE.phone.e164,
   email: SITE.email,
   address: {
@@ -125,7 +125,7 @@ export function buildSchema(route: RouteMeta) {
     '@type': 'BreadcrumbList',
     '@id': `${url}#breadcrumb`,
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: route.lang === 'ar' ? 'الرئيسية' : 'Accueil', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 1, name: route.lang === 'ar' ? 'الرئيسية' : route.lang === 'en' ? 'Home' : 'Accueil', item: `${SITE.url}/` },
       ...(route.parent ? [{ '@type': 'ListItem', position: 2, name: route.parent.name, item: pageUrl(route.parent.path) }] : []),
       ...(route.path === '/' ? [] : [{ '@type': 'ListItem', position: route.parent ? 3 : 2, name: route.breadcrumb, item: url }]),
     ],
@@ -140,7 +140,7 @@ export function buildSchema(route: RouteMeta) {
     url,
     name: route.title,
     description: route.description,
-    inLanguage: route.lang === 'ar' ? 'ar-MA' : 'fr-MA',
+    inLanguage: route.lang === 'ar' ? 'ar-MA' : route.lang === 'en' ? 'en' : 'fr-MA',
     isPartOf: { '@id': ID.website },
     breadcrumb: { '@id': `${url}#breadcrumb` },
     primaryImageOfPage: absUrl(route.image ?? SITE.ogImage),
@@ -185,7 +185,7 @@ export function buildSchema(route: RouteMeta) {
     graph.push({
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
-      inLanguage: route.lang === 'ar' ? 'ar-MA' : 'fr-MA',
+      inLanguage: route.lang === 'ar' ? 'ar-MA' : route.lang === 'en' ? 'en' : 'fr-MA',
       mainEntity: route.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
     });
   }

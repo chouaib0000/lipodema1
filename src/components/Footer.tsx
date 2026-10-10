@@ -26,6 +26,7 @@ const ABOUT = [
   { to: '/actualites', label: 'Actualités' },
   { to: '/contact', label: 'Contact et accès' },
   { to: '/ar', label: 'النسخة العربية' },
+  { to: '/en', label: 'English – Lipedema surgery Morocco' },
 ];
 
 export default function Footer() {

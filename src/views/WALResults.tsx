@@ -2,7 +2,7 @@ import { PageHero, Section, CtaBand, TextLink } from '../components/ui';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import ShowMore from '../components/ShowMore';
 
-const PAIRS = Array.from({ length: 10 }, (_, i) => [`/2031/${i + 1}-before.png`, `/2031/${i + 1}-after.jpeg`]);
+const PAIRS = Array.from({ length: 10 }, (_, i) => [`/2031/${i + 1}-before.webp`, `/2031/${i + 1}-after.webp`]);
 
 export default function WALResults() {
   return (

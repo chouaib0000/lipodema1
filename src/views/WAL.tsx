@@ -2,19 +2,19 @@ import { PageHero, Section, SectionHead, Prose, FeatureGrid, Checklist, CtaBand,
 import PhotoGallery from '../components/PhotoGallery';
 
 const LEGS = [
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 15.52.16.jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.50 (1).jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (1).jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (2).jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (3).jpeg',
-  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (4).jpeg',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 15.52.16.webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.50 (1).webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (1).webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (2).webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (3).webp',
+  '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 16.09.51 (4).webp',
 ];
 
 const ARMS = [
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 15.53.00.jpeg',
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (1).jpeg',
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (2).jpeg',
-  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (3).jpeg',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 15.53.00.webp',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (1).webp',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (2).webp',
+  '/2026/leg/2026/bra/WhatsApp Image 2025-10-04 at 16.11.40 (3).webp',
 ];
 
 const LEG_BENEFITS = [
@@ -32,7 +32,7 @@ export default function WAL() {
       <PageHero
         title="Liposuccion WAL Bodyjet 3D sous anesthésie locale"
         intro="La technique intégrative du Dr Tawfik Sefrioui pour traiter le lipœdème : un jet d’eau doux et des micro-canules, une patiente éveillée et confortable, et un système lymphatique préservé."
-        image="/please use this folder/doctor photo in surgary.jpeg"
+        image="/please use this folder/doctor photo in surgary.webp"
         imageAlt="Le Dr Tawfik Sefrioui pendant une liposuccion WAL sous anesthésie locale"
       />
 
@@ -137,7 +137,7 @@ export default function WAL() {
             </div>
           </div>
           <img
-            src="/2028/7.jpeg"
+            src="/2028/7.webp"
             alt="Le Dr Tawfik Sefrioui au bloc opératoire"
             loading="lazy"
             decoding="async"

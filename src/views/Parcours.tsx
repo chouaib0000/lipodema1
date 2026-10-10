@@ -2,17 +2,17 @@ import { PageHero, Section, SectionHead, Prose, CtaBand, TextLink } from '../com
 import PhotoGallery from '../components/PhotoGallery';
 import { SITE } from '../config/site';
 
-const PHOTOS = ['/2028/5.jpeg', '/2028/1.jpeg', '/2028/3.jpeg', '/2028/4.jpeg', '/2028/6.jpeg', '/2028/7.jpeg', '/2028/8.jpeg', '/2028/9.jpeg'];
+const PHOTOS = ['/2028/5.webp', '/2028/1.webp', '/2028/3.webp', '/2028/4.webp', '/2028/6.webp', '/2028/7.webp', '/2028/8.webp', '/2028/9.webp'];
 
 const TRAININGS = [
-  { place: 'Boston, USA', image: '/2027/Boston USA.jpeg' },
-  { place: 'New York, USA', image: '/2027/New York , USA.jpeg' },
-  { place: 'Californie, USA', image: '/2027/Californie, USA.jpeg' },
-  { place: 'IFATS, Orlando', image: '/2027/IFATS , congrès Orlando USA.jpeg' },
-  { place: 'Dubaï', image: '/2027/DUBAI.jpeg' },
-  { place: 'Thaïlande', image: '/2027/Thailand.jpeg' },
-  { place: 'New York, USA', image: '/2027/New York , USA 1.jpeg' },
-  { place: 'Californie, USA', image: '/2027/Californie, USA 1.jpeg' },
+  { place: 'Boston, USA', image: '/2027/Boston USA.webp' },
+  { place: 'New York, USA', image: '/img/dr-sefrioui-formation-new-york.webp' },
+  { place: 'Californie, USA', image: '/img/dr-sefrioui-formation-californie.webp' },
+  { place: 'IFATS, Orlando', image: '/img/dr-sefrioui-congres-ifats-orlando.webp' },
+  { place: 'Dubaï', image: '/2027/DUBAI.webp' },
+  { place: 'Thaïlande', image: '/2027/Thailand.webp' },
+  { place: 'New York, USA', image: '/img/dr-sefrioui-new-york-2.webp' },
+  { place: 'Californie, USA', image: '/img/dr-sefrioui-californie-2.webp' },
 ];
 
 const FACTS = [

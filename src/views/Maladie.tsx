@@ -18,7 +18,7 @@ export default function Maladie() {
       <PageHero
         title={<>Le lipœdème&nbsp;: symptômes, causes et stades</>}
         intro={t('whatIsLipoedemaText1')}
-        image="/2027/1.jpeg"
+        image="/2027/1.webp"
         imageAlt="Les stades du lipœdème des jambes"
         imageClass="object-contain bg-white"
       />
@@ -40,8 +40,8 @@ export default function Maladie() {
             <p className="mt-6 text-[15px] text-ink/60">{t('symptomsEvolution')}</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <Figure src="/2027/3.jpeg" alt="Lipœdème : répartition de la graisse sur les jambes" />
-            <Figure src="/2027/4.jpeg" alt="Lipœdème : évolution de la maladie" />
+            <Figure src="/2027/3.webp" alt="Lipœdème : répartition de la graisse sur les jambes" />
+            <Figure src="/2027/4.webp" alt="Lipœdème : évolution de la maladie" />
           </div>
         </div>
       </Section>

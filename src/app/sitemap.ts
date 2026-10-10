@@ -6,9 +6,9 @@ import { SITE, pageUrl } from '../config/site';
 export const dynamic = 'force-static';
 
 const IMAGES: Record<string, string[]> = {
-  '/': ['/og/lipoedeme-maroc-fr.jpg', '/2028/1.jpeg', '/2028/5.jpeg'],
+  '/': ['/og/lipoedeme-maroc-fr.jpg', '/2028/1.webp', '/2028/5.webp'],
   '/ar': ['/og/lipoedeme-maroc-ar.jpg'],
-  '/parcours': ['/2028/5.jpeg'],
+  '/parcours': ['/2028/5.webp'],
   ...Object.fromEntries(GUIDE.filter((a) => a.image).map((a) => [`/guide/${a.slug}`, [a.image as string]])),
 };
 

@@ -1,7 +1,7 @@
 // Per-page SEO. Used both at build time (prerendered HTML <head>) and in the
 // browser (when navigating between pages without a reload).
 
-import { homeFaq, arFaq, type FaqItem } from './faq';
+import { homeFaq, arFaq, enFaq, type FaqItem } from './faq';
 import { GUIDE } from '../content/guide';
 
 export type PageKind = 'home' | 'condition' | 'procedure' | 'physician' | 'contact' | 'gallery' | 'about' | 'generic' | 'article' | 'hub';
@@ -15,7 +15,7 @@ export interface RouteMeta {
   priority: number;     // sitemap
   changefreq: 'weekly' | 'monthly' | 'yearly';
   image?: string;
-  lang?: 'fr' | 'ar';                      // default 'fr'
+  lang?: 'fr' | 'ar' | 'en';                      // default 'fr'
   alternates?: { hreflang: string; path: string }[]; // language versions of the same page
   faq?: FaqItem[];                          // emitted as FAQPage schema
   parent?: { name: string; path: string };  // breadcrumb level between home and the page
@@ -25,6 +25,7 @@ export interface RouteMeta {
 const HOME_ALTERNATES = [
   { hreflang: 'fr', path: '/' },
   { hreflang: 'ar', path: '/ar' },
+  { hreflang: 'en', path: '/en' },
 ];
 
 export const ROUTES: RouteMeta[] = [
@@ -51,6 +52,18 @@ export const ROUTES: RouteMeta[] = [
     image: '/og/lipoedeme-maroc-ar.jpg',
     alternates: HOME_ALTERNATES,
     faq: arFaq,
+  },
+  {
+    path: '/en',
+    title: 'Lipedema Surgery in Morocco – Casablanca | Dr Sefrioui',
+    description: 'Lipedema treatment in Casablanca, Morocco, since 2015: WAL Bodyjet 3D water-assisted liposuction under local anaesthesia by Dr Tawfik Sefrioui. Free WhatsApp contact.',
+    breadcrumb: 'English',
+    kind: 'home',
+    priority: 0.8,
+    changefreq: 'monthly',
+    lang: 'en',
+    alternates: HOME_ALTERNATES,
+    faq: enFaq,
   },
   {
     path: '/maladie',

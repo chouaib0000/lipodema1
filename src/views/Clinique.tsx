@@ -9,7 +9,7 @@ export default function Clinique() {
       <PageHero
         title="Le centre du lipœdème à Casablanca"
         intro="Au cœur de Casablanca, dans le quartier Racine, un cabinet dédié au traitement du lipœdème : un cadre médical haut de gamme, des technologies de pointe et un accompagnement personnalisé."
-        image="/videos/cabinet.jpg"
+        image="/videos/cabinet.webp"
         imageAlt="Le cabinet du Centre Lipœdème Maroc à Casablanca"
       />
 
@@ -23,7 +23,7 @@ export default function Clinique() {
               </p>
             </Prose>
           </div>
-          <VideoPlayer src="/videos/cabinet.mp4" poster="/videos/cabinet.jpg" title="Visite du cabinet" className="mx-auto w-full max-w-[340px]" />
+          <VideoPlayer src="/videos/cabinet.mp4" poster="/videos/cabinet.webp" title="Visite du cabinet" className="mx-auto w-full max-w-[340px]" />
         </div>
       </Section>
 

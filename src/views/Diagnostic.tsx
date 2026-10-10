@@ -13,7 +13,7 @@ export default function Diagnostic() {
       <PageHero
         title="Diagnostic du lipœdème à Casablanca"
         intro="Il n’existe pas de prise de sang qui révèle le lipœdème : le diagnostic repose sur un examen clinique attentif par un médecin qui connaît la maladie. C’est le point de départ de tout traitement."
-        image="/img/dr-tawfik-sefrioui-chirurgien-lipoedeme.jpg"
+        image="/img/dr-tawfik-sefrioui-chirurgien-lipoedeme.webp"
         imageAlt="Le Dr Tawfik Sefrioui, chirurgien spécialiste du lipœdème"
         imageClass="object-cover object-top"
       />

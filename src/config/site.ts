@@ -54,7 +54,7 @@ export const SITE = {
   ogImage: '/og/lipoedeme-maroc-fr.jpg',
   ogImageAr: '/og/lipoedeme-maroc-ar.jpg',
   heroImage: '/img/dr-tawfik-sefrioui.webp',
-  doctorPhoto: '/2028/5.jpeg',
+  doctorPhoto: '/2028/5.webp',
   ga: ['G-98XDWC6P0Q', 'G-F46EC384N2'],
 
   // Marketing tags – leave empty ('') to disable. Paste the ID to switch one on:

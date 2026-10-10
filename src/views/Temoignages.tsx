@@ -3,8 +3,8 @@ import { PageHero, Section, SectionHead, CtaBand } from '../components/ui';
 import VideoPlayer from '../components/VideoPlayer';
 
 const VIDEOS = [
-  { src: '/videos/temoignage-1.mp4', poster: '/videos/temoignage-1.jpg', title: 'Une patiente raconte son parcours' },
-  { src: '/videos/temoignage-2.mp4', poster: '/videos/temoignage-2.jpg', title: 'Son expérience avec le Dr Sefrioui' },
+  { src: '/videos/temoignage-1.mp4', poster: '/videos/temoignage-1.webp', title: 'Une patiente raconte son parcours' },
+  { src: '/videos/temoignage-2.mp4', poster: '/videos/temoignage-2.webp', title: 'Son expérience avec le Dr Sefrioui' },
 ];
 
 const WRITTEN = [
