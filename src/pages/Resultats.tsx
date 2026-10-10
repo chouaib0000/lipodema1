@@ -58,8 +58,8 @@ export default function Resultats() {
     <div className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center">
-            Résultats Avant / Après
+          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
+            Résultats avant / après traitement du lipœdème
           </h1>
 
           <div className="bg-gradient-to-br from-terracotta-50 to-beige-100 p-8 md:p-12 rounded-2xl mb-12 shadow-lg">
@@ -107,9 +107,8 @@ export default function Resultats() {
           </div>
 
           <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-2xl" style={{
-            background: 'linear-gradient(135deg, #87CEEB 0%, #4A90E2 25%, #87CEEB 50%, #B0E0E6 75%, #87CEEB 100%)',
+            background: 'linear-gradient(135deg, #FBF3F5 0%, #F6E3E8 50%, #EDC6D0 100%)',
             backgroundSize: '400% 400%',
-            animation: 'skyGradient 15s ease infinite',
             minHeight: '700px'
           }}>
             <style>{`

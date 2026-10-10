@@ -1,18 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Calendar, FileText, Stethoscope, Activity, Heart, CheckCircle } from 'lucide-react';
-import AutoSlideshow from '../components/AutoSlideshow';
 
 export default function ParcoursPatient() {
-  const doctorPhotos = [
-    '/2028/10.jpeg'
-  ];
-
   return (
     <div className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-            Parcours Patient
+          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
+            Parcours patiente : les étapes du traitement
           </h1>
 
           <div className="bg-gradient-to-br from-sky-50 to-blue-50 p-8 md:p-12 rounded-2xl mb-12">
@@ -162,7 +157,7 @@ export default function ParcoursPatient() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 md:p-12 rounded-2xl mb-12">
+          <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-8 md:p-12 rounded-2xl mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
               Pour les patientes venant de l'étranger
             </h2>

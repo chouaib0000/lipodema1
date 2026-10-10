@@ -7,8 +7,8 @@ export default function Maladie() {
     <div className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-            {t('maladieTitle')}
+          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
+            Le lipœdème : symptômes, causes et stades
           </h1>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -117,7 +117,7 @@ export default function Maladie() {
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
               {t('recognizeIntro')}
             </p>
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-6 md:p-8 rounded-xl mb-8">
+            <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-6 md:p-8 rounded-xl mb-8">
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start gap-3">
                   <span className="text-sky-600 font-bold text-xl">✓</span>
@@ -207,7 +207,7 @@ export default function Maladie() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 md:p-12 rounded-2xl mb-12">
+          <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-8 md:p-12 rounded-2xl mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
               {t('lipoedemaStages')}
             </h2>

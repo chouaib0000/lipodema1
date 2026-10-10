@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { translations } from '../translations';
 
 type Language = 'fr' | 'en' | 'es';
@@ -12,14 +12,24 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode}) {
-  const [language, setLanguage] = useState<Language>(() => {
-    const saved = localStorage.getItem('language');
-    return (saved as Language) || 'fr';
-  });
+  // Always start in French so the prerendered HTML (what Google indexes) and the
+  // first client render match; a saved preference is applied right after mount.
+  const [language, setLanguage] = useState<Language>('fr');
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('language') as Language | null;
+      if (saved && saved !== 'fr' && saved in translations) setLanguage(saved);
+    } catch { /* storage unavailable */ }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = language === 'fr' ? 'fr-MA' : language;
+  }, [language]);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
-    localStorage.setItem('language', lang);
+    try { localStorage.setItem('language', lang); } catch { /* ignore */ }
   };
 
   const t = (key: string): string => {

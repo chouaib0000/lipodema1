@@ -5,8 +5,8 @@ export default function Clinique() {
     <div className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-            Le Cabinet
+          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
+            Le centre du lipœdème à Casablanca
           </h1>
 
           <div className="bg-gradient-to-br from-terracotta-50 to-beige-100 p-8 md:p-12 rounded-2xl mb-12 shadow-lg">
@@ -24,9 +24,12 @@ export default function Clinique() {
           <div className="mb-12">
             <video
               controls
-              className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl"
+              playsInline
+              preload="none"
+              poster="/video/cabinet-poster.jpg"
+              className="w-full max-w-[360px] aspect-[9/16] object-cover mx-auto rounded-3xl bg-ink"
             >
-              <source src="Cabinet video.mp4" type="video/mp4" />
+              <source src="/2026/leg/2026/video/Cabinet video.mp4" type="video/mp4" />
             </video>
           </div>
 

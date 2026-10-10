@@ -6,8 +6,8 @@ export default function Publications() {
     <div className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-            Publications Scientifiques
+          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
+            Publications et médias
           </h1>
 
           <div className="bg-gradient-to-br from-sky-50 to-blue-50 p-8 md:p-12 rounded-2xl mb-12">
@@ -63,19 +63,15 @@ export default function Publications() {
             <p className="text-lg text-gray-700 mb-6 leading-relaxed text-center">
               Le Professeur Tawfik Sefrioui, spécialiste en médecine régénérative, invité sur Sabahiyat
             </p>
-            <div className="aspect-video w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl mb-8">
-              <video
-                className="w-full h-full"
-                controls
-                preload="metadata"
-              >
-                <source src="/البروفيسور توفيق الصفريوي , اخصائي في الطب التجديدي , ضيف صباحيات (1) (1) (1).mp4" type="video/mp4" />
-                Votre navigateur ne supporte pas la lecture de vidéos.
-              </video>
+            {/* The original interview file in /public is corrupted (cut at 512 KB during upload).
+                Re-upload the full video or a YouTube link, then restore the <video> player here. */}
+            <div className="max-w-4xl mx-auto rounded-3xl bg-rose-50 p-8 text-center mb-8">
+              <p className="text-ink/80 mb-5">Retrouvez l’interview et les vidéos du Dr Sefrioui sur sa chaîne YouTube.</p>
+              <a href="https://www.youtube.com/@scarless.cosmeticsurgery" target="_blank" rel="noopener noreferrer" className="btn-primary">Voir les vidéos sur YouTube</a>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 md:p-12 rounded-2xl mb-12">
+          <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-8 md:p-12 rounded-2xl mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
               Congrès et formations
             </h2>

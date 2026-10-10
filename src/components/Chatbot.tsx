@@ -274,18 +274,18 @@ export default function Chatbot() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-sky-600 to-sky-700 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 group"
+          className="hidden xl:block fixed bottom-6 right-6 z-40 bg-plum-800 text-white p-3.5 lg:p-4 rounded-full shadow-[0_12px_30px_-10px_rgba(40,24,38,0.7)] hover:bg-plum-700 transition-colors group"
           aria-label="Ouvrir le chat"
         >
-          <MessageCircle className="w-7 h-7" />
-          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center animate-pulse">
+          <MessageCircle className="w-6 h-6 lg:w-7 lg:h-7" />
+          <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center ring-2 ring-white">
             <Sparkles className="w-3 h-3" />
           </span>
         </button>
       )}
 
       {isOpen && (
-        <div className="fixed bottom-4 right-4 z-50 w-[90vw] max-w-[340px] h-[500px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200">
+        <div className="fixed z-[60] inset-x-3 bottom-[calc(12px+env(safe-area-inset-bottom))] h-[min(560px,calc(100dvh-96px))] sm:inset-x-auto sm:right-4 sm:w-[360px] lg:bottom-4 bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-rose-100">
           <div className="bg-gradient-to-r from-sky-600 to-sky-700 text-white p-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden shadow-md">
@@ -376,9 +376,11 @@ export default function Chatbot() {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onKeyDown={handleKeyPress}
+                enterKeyHint="send"
+                aria-label="Votre message"
                 placeholder="Tapez votre message..."
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-sm"
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-base"
               />
               <button
                 onClick={() => handleSend()}

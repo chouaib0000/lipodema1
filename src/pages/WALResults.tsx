@@ -46,13 +46,13 @@ export default function WALResults() {
   return (
     <div className="bg-white">
       <section className="relative min-h-[400px] overflow-hidden" style={{
-        background: 'linear-gradient(135deg, #87CEEB 0%, #4A90E2 50%, #87CEEB 100%)'
+        background: 'linear-gradient(135deg, #FBF3F5 0%, #F6E3E8 55%, #EDC6D0 100%)'
       }}>
         <div className="relative z-10 container mx-auto px-4 py-24">
           <div className="max-w-4xl mx-auto text-center">
             <div className="border-4 border-white bg-white/95 backdrop-blur-sm p-8 md:p-12">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                Résultats Avant / Après
+              <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
+                Liposuccion WAL : résultats avant / après
               </h1>
               <p className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 Technique WAL Bodyjet 3D

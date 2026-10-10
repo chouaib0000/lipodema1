@@ -31,8 +31,8 @@ export default function Parcours() {
     <div className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-            DR TAWFIK SEFRIOUI
+          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
+            Dr Tawfik Sefrioui, chirurgien du lipœdème
           </h1>
           <h2 className="text-2xl md:text-3xl font-medium text-gray-700 mb-8 text-center">
             Parcours
@@ -90,7 +90,7 @@ export default function Parcours() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 md:p-12 rounded-2xl mb-12">
+          <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-8 md:p-12 rounded-2xl mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
               Une Approche Innovante et Personnalisée
             </h2>

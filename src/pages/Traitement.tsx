@@ -5,14 +5,12 @@ export default function Traitement() {
     <div className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-            Traitement du Lipœdème
+          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
+            Traitement du lipœdème au Maroc
           </h1>
 
           <div className="relative p-8 md:p-12 rounded-2xl mb-12 overflow-hidden" style={{
-            background: 'linear-gradient(135deg, #87CEEB 0%, #4A90E2 25%, #87CEEB 50%, #B0E0E6 75%, #87CEEB 100%)',
-            backgroundSize: '400% 400%',
-            animation: 'skyGradient 15s ease infinite'
+            background: 'linear-gradient(140deg, #6E2539 0%, #4F2F4D 100%)'
           }}>
             <style>{`
               @keyframes skyGradient {
@@ -113,7 +111,7 @@ export default function Traitement() {
                     </div>
                   </li>
                 </ul>
-                <div className="mt-6 bg-amber-50 p-4 rounded-lg border border-amber-200">
+                <div className="mt-6 bg-rose-50 p-4 rounded-lg border border-rose-200">
                   <p className="text-gray-700 font-medium">
                     ⚠️ Ces méthodes soulagent, mais ne réduisent pas les amas graisseux typiques du lipœdème.
                   </p>
@@ -226,7 +224,7 @@ export default function Traitement() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 md:p-12 rounded-2xl mb-12">
+          <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-8 md:p-12 rounded-2xl mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
               Le parcours de traitement avec le Dr Sefrioui
             </h2>
@@ -271,7 +269,7 @@ export default function Traitement() {
               />
             </div>
 
-            <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 p-8 md:p-12 rounded-2xl mb-12">
+            <div className="bg-gradient-to-br from-rose-50 from-rose-50 to-plum-50 p-8 md:p-12 rounded-2xl mb-12">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
                 Différence entre liposuction intégrative WAL Bodyjet 3D avec micro canules sous anesthésie locale et Les Liposuctions traditionnelles du Lipoedème
               </h3>

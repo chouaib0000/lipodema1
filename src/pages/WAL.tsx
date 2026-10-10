@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Check } from 'lucide-react';
 
 export default function WAL() {
   return (
     <div className="bg-white">
       <section className="relative min-h-[500px] overflow-hidden" style={{
-        background: 'linear-gradient(135deg, #87CEEB 0%, #4A90E2 50%, #87CEEB 100%)'
+        background: 'linear-gradient(135deg, #FBF3F5 0%, #F6E3E8 55%, #EDC6D0 100%)'
       }}>
         <div className="relative z-10 container mx-auto px-4 py-32">
           <div className="max-w-4xl mx-auto text-center">

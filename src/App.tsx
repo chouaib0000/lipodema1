@@ -1,13 +1,13 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
 import WhatsAppButton from './components/WhatsAppButton';
-import SplashScreen from './components/SplashScreen';
-import StructuredData from './components/StructuredData';
-import MetaTags from './components/MetaTags';
+import MobileActionBar from './components/MobileActionBar';
+import { applyHead } from './seo/head';
+import { getRoute } from './seo/routes';
 import Home from './pages/Home';
 import Maladie from './pages/Maladie';
 import Diagnostic from './pages/Diagnostic';
@@ -23,63 +23,62 @@ import ParcoursPatient from './pages/ParcoursPatient';
 import Actualites from './pages/Actualites';
 import Contact from './pages/Contact';
 import WALResults from './pages/WALResults';
+import NotFound from './pages/NotFound';
 
-function ScrollToTop() {
+/** Scrolls to top and updates <title>, meta, canonical and JSON-LD on navigation. */
+function RouteEffects() {
   const { pathname } = useLocation();
+  const first = useRef(true);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (!first.current) window.scrollTo(0, 0);
+    first.current = false;
+    applyHead(getRoute(pathname));
   }, [pathname]);
 
   return null;
 }
 
-function App() {
-  const [showSplash, setShowSplash] = useState(() => {
-    const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
-    return !hasSeenSplash;
-  });
+export const appRoutes = [
+  { path: '/', element: <Home /> },
+  { path: '/maladie', element: <Maladie /> },
+  { path: '/diagnostic', element: <Diagnostic /> },
+  { path: '/traitement', element: <Traitement /> },
+  { path: '/wal', element: <WAL /> },
+  { path: '/wal-results', element: <WALResults /> },
+  { path: '/parcours', element: <Parcours /> },
+  { path: '/publications', element: <Publications /> },
+  { path: '/resultats', element: <Resultats /> },
+  { path: '/clinique', element: <Clinique /> },
+  { path: '/services', element: <Services /> },
+  { path: '/temoignages', element: <Temoignages /> },
+  { path: '/parcours-patient', element: <ParcoursPatient /> },
+  { path: '/actualites', element: <Actualites /> },
+  { path: '/contact', element: <Contact /> },
+];
 
-  const handleSplashComplete = () => {
-    sessionStorage.setItem('hasSeenSplash', 'true');
-    setShowSplash(false);
-  };
-
+export default function App() {
   return (
     <LanguageProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <MetaTags />
-        <StructuredData />
-        {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-        <div className="min-h-screen bg-white">
-          <Header />
-          <main className="pt-[88px]">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/maladie" element={<Maladie />} />
-              <Route path="/diagnostic" element={<Diagnostic />} />
-              <Route path="/traitement" element={<Traitement />} />
-              <Route path="/wal" element={<WAL />} />
-              <Route path="/wal-results" element={<WALResults />} />
-              <Route path="/parcours" element={<Parcours />} />
-              <Route path="/publications" element={<Publications />} />
-              <Route path="/resultats" element={<Resultats />} />
-              <Route path="/clinique" element={<Clinique />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/temoignages" element={<Temoignages />} />
-              <Route path="/parcours-patient" element={<ParcoursPatient />} />
-              <Route path="/actualites" element={<Actualites />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </main>
-          <Footer />
-          <Chatbot />
-          <WhatsAppButton />
-        </div>
-      </BrowserRouter>
+      <RouteEffects />
+      <a href="#contenu" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded">
+        Aller au contenu
+      </a>
+      <div className="min-h-screen bg-white">
+        <Header />
+        <main id="contenu" className="pt-16 xl:pt-[112px]">
+          <Routes>
+            {appRoutes.map((r) => (
+              <Route key={r.path} path={r.path} element={r.element} />
+            ))}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+        <Chatbot />
+        <WhatsAppButton />
+        <MobileActionBar />
+      </div>
     </LanguageProvider>
   );
 }
-
-export default App;

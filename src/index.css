@@ -1,137 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: 96px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
-    @apply antialiased text-gray-700 font-sans;
+    @apply antialiased text-ink font-sans bg-white;
+    overflow-x: hidden;
+  }
+
+  /* Leave room for the mobile call / WhatsApp bar (+ iPhone home indicator). */
+  @media (max-width: 1279px) {
+    body {
+      padding-bottom: calc(68px + env(safe-area-inset-bottom));
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif text-gray-900;
-    letter-spacing: 0.01em;
-    line-height: 1.2;
+    @apply font-serif text-ink;
+    line-height: 1.15;
+    text-wrap: balance;
   }
 
-  h1 {
-    font-weight: 400;
-  }
-
-  h2 {
-    font-weight: 500;
-  }
+  h1 { font-weight: 600; letter-spacing: -0.01em; }
+  h2 { font-weight: 600; }
+  h3, h4, h5, h6 { font-weight: 600; }
 
   p {
     line-height: 1.75;
-    font-weight: 300;
+    text-wrap: pretty;
   }
 
-  strong {
-    font-weight: 500;
+  strong { font-weight: 600; }
+
+  img, video { max-width: 100%; height: auto; }
+
+  /* iOS zooms into inputs with font-size < 16px */
+  input, select, textarea { font-size: 16px; }
+
+  :focus-visible {
+    outline: 2px solid #A93A5B;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .container {
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
   }
 }
 
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap text-center rounded-full px-6 py-3.5 text-[15px] font-semibold transition-colors duration-200 min-h-[48px];
+  }
+  .btn-primary { @apply btn bg-rose-600 text-white hover:bg-rose-700; }
+  .btn-ghost { @apply btn border border-rose-200 bg-white text-rose-700 hover:border-rose-400; }
+  .btn-whatsapp { @apply btn bg-[#1FA855] text-white hover:bg-[#178a45]; }
+  .eyebrow-rule { @apply block w-10 h-px bg-rose-400 mb-5; }
+}
+
 @layer utilities {
-  .fade-in {
-    animation: fadeIn 0.8s ease-out;
-  }
-
+  .fade-in { animation: fadeIn 0.6s ease-out both; }
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
   }
 
-  .slide-in-up {
-    animation: slideInUp 0.7s ease-out;
+  .slide-in-up { animation: fadeIn 0.6s ease-out both; }
+
+  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  @media (hover: hover) {
+    .hover-lift:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -12px rgba(74, 26, 39, 0.25); }
   }
 
-  @keyframes slideInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  .card-3d, .card-3d-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .float-3d { animation: none; }
+  .perspective-card { perspective: 1000px; }
+  .transform-3d { transform-style: preserve-3d; }
+  .mobile-depth { box-shadow: 0 1px 2px rgba(46, 16, 24, 0.06), 0 8px 24px -12px rgba(46, 16, 24, 0.18); }
 
-  .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+}
 
-  .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-  }
-
-  .card-3d {
-    transform-style: preserve-3d;
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
-  }
-
-  @media (max-width: 768px) {
-    .card-3d:active {
-      transform: translateY(-6px) rotateX(3deg) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
-    }
-  }
-
-  .card-3d-lift {
-    transform-style: preserve-3d;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  @media (max-width: 768px) {
-    .card-3d-lift:active {
-      transform: translateZ(20px) scale(1.03);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  .float-3d {
-    animation: float3d 3s ease-in-out infinite;
-  }
-
-  @keyframes float3d {
-    0%, 100% {
-      transform: translateY(0px) translateZ(0px);
-    }
-    50% {
-      transform: translateY(-10px) translateZ(10px);
-    }
-  }
-
-  .perspective-card {
-    perspective: 1000px;
-  }
-
-  .transform-3d {
-    transform-style: preserve-3d;
-  }
-
-  @media (max-width: 768px) {
-    .mobile-depth {
-      box-shadow:
-        0 1px 3px rgba(0, 0, 0, 0.08),
-        0 4px 12px rgba(0, 0, 0, 0.08),
-        0 16px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .mobile-depth-hover:active {
-      box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.12),
-        0 8px 20px rgba(0, 0, 0, 0.12),
-        0 20px 40px rgba(0, 0, 0, 0.12);
-      transform: translateY(-4px) scale(1.02);
-    }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
