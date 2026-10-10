@@ -10,6 +10,9 @@ const LINKS = [
   { to: '/wal', label: 'Liposuccion WAL Bodyjet 3D' },
   { to: '/resultats', label: 'Résultats avant / après' },
   { to: '/temoignages', label: 'Témoignages de patientes' },
+  { to: '/guide', label: 'Guide du lipœdème' },
+  { to: '/guide/lipoedeme-ou-cellulite', label: 'Lipœdème ou cellulite ?' },
+  { to: '/guide/prix-operation-lipoedeme-maroc', label: 'Prix d’une opération au Maroc' },
 ];
 
 const ABOUT = [

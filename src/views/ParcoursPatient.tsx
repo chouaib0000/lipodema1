@@ -6,6 +6,8 @@ export default function ParcoursPatient() {
       <PageHero
         title={<>Parcours patiente&nbsp;: les étapes du traitement</>}
         intro="Votre traitement du lipœdème est planifié avec vous, de la première consultation jusqu’au suivi à long terme. Voici comment il se déroule."
+        image="/img/marquage-avant-liposuccion-lipoedeme-mollets.jpg"
+        imageAlt="Marquage des zones à traiter avant une liposuccion du lipœdème des mollets"
       />
 
       <Section>

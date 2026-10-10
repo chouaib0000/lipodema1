@@ -33,6 +33,7 @@ const GROUPS: Group[] = [
 
 const SINGLE: Item[] = [
   { to: '/parcours-patient', key: 'patientJourney' },
+  { to: '/guide', key: 'guide' },
   { to: '/actualites', key: 'news' },
 ];
 

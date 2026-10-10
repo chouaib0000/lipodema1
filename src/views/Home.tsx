@@ -9,6 +9,7 @@ import VideoPlayer from '../components/VideoPlayer';
 import { WhatsAppIcon } from '../components/MobileActionBar';
 import { SITE, mapsLink, whatsappLink } from '../config/site';
 import { homeFaq } from '../seo/faq';
+import { GUIDE } from '../content/guide';
 
 const LEGS = [
   '/2026/leg/2026/Jambes/WhatsApp Image 2025-10-04 at 15.52.16.jpeg',
@@ -288,6 +289,29 @@ export default function Home() {
           </div>
           <VideoPlayer src="/videos/cabinet.mp4" poster="/videos/cabinet.jpg" title="Visite du cabinet" className="w-full max-w-[320px] mx-auto" />
         </div>
+      </section>
+
+      {/* ───────── Guide teaser (internal links to in-depth articles) ───────── */}
+      <section className="container mx-auto py-16 lg:py-24">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <span className="eyebrow-rule" />
+            <h2 className="text-4xl lg:text-5xl">Le guide du lipœdème</h2>
+            <p className="mt-4 text-lg text-ink/75">Les réponses du Dr Sefrioui aux questions que vous vous posez.</p>
+          </div>
+          <Link href="/guide" className="btn-ghost self-start lg:self-auto">Tout le guide</Link>
+        </div>
+        <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 no-scrollbar lg:mx-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0">
+          {GUIDE.slice(0, 3).map((g) => (
+            <li key={g.slug} className="snap-start shrink-0 w-[80%] sm:w-[46%] lg:w-auto">
+              <Link href={`/guide/${g.slug}`} className="flex h-full flex-col rounded-3xl bg-mist p-6 ring-1 ring-rose-100 active:scale-[0.99] transition">
+                <span className="font-serif text-2xl leading-snug text-ink">{g.title}</span>
+                <span className="mt-3 text-[15px] leading-relaxed text-ink/70">{g.description}</span>
+                <span className="mt-auto pt-5 text-sm font-semibold text-rose-700">Lire l’article</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* ───────── FAQ (also emitted as FAQPage schema) ───────── */}

@@ -37,4 +37,5 @@ Disallow: /
 User-agent: dotbot
 Disallow: /
 
+# Plain-text summaries for AI assistants: https://lipoedem.ma/llms.txt and https://lipoedem.ma/llms-full.txt
 Sitemap: https://lipoedem.ma/sitemap.xml

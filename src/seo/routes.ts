@@ -2,8 +2,9 @@
 // browser (when navigating between pages without a reload).
 
 import { homeFaq, arFaq, type FaqItem } from './faq';
+import { GUIDE } from '../content/guide';
 
-export type PageKind = 'home' | 'condition' | 'procedure' | 'physician' | 'contact' | 'gallery' | 'about' | 'generic';
+export type PageKind = 'home' | 'condition' | 'procedure' | 'physician' | 'contact' | 'gallery' | 'about' | 'generic' | 'article' | 'hub';
 
 export interface RouteMeta {
   path: string;
@@ -17,6 +18,8 @@ export interface RouteMeta {
   lang?: 'fr' | 'ar';                      // default 'fr'
   alternates?: { hreflang: string; path: string }[]; // language versions of the same page
   faq?: FaqItem[];                          // emitted as FAQPage schema
+  parent?: { name: string; path: string };  // breadcrumb level between home and the page
+  article?: { published: string; updated: string; headline: string };
 }
 
 const HOME_ALTERNATES = [
@@ -176,6 +179,32 @@ export const ROUTES: RouteMeta[] = [
     changefreq: 'yearly',
   },
 ];
+
+// Guide hub + one route per article (content in src/content/guide.ts)
+ROUTES.push(
+  {
+    path: '/guide',
+    title: 'Guide du lipœdème : symptômes, stades, prix, récupération',
+    description: 'Les réponses claires du Centre Lipœdème Maroc : lipœdème ou cellulite, stades, prix d’une opération au Maroc, lipœdème des bras, récupération après liposuccion.',
+    breadcrumb: 'Guide du lipœdème',
+    kind: 'hub',
+    priority: 0.8,
+    changefreq: 'weekly',
+  },
+  ...GUIDE.map((a): RouteMeta => ({
+    path: `/guide/${a.slug}`,
+    title: a.metaTitle,
+    description: a.description,
+    breadcrumb: a.title.split(' : ')[0],
+    kind: 'article',
+    priority: 0.8,
+    changefreq: 'monthly',
+    image: a.image,
+    faq: a.faq,
+    parent: { name: 'Guide', path: '/guide' },
+    article: { published: a.published, updated: a.updated, headline: a.title },
+  }))
+);
 
 export const NOT_FOUND: RouteMeta = {
   path: '/404',

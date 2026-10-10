@@ -44,6 +44,25 @@ read the full content without running JavaScript.
 | Redirects, security & cache headers | `next.config.mjs` |
 | Ad / marketing tags (GTM, Meta Pixel, TikTok, Google Ads) | `src/config/site.ts` → `tracking` – paste the ID, rebuild |
 
+## Guide du lipœdème (content that ranks)
+
+`/guide/` holds in-depth articles answering what people search ("lipœdème ou cellulite", "stades du lipœdème",
+"prix opération lipœdème Maroc", "lipœdème des bras", récupération, lymphœdème). Each article has an
+"L’essentiel" summary, a FAQ, Article + FAQ schema and the doctor as author/reviewer.
+
+To add an article: add an entry to `src/content/guide.ts` (same shape as the others). The page, sitemap,
+`llms.txt` and `llms-full.txt` update automatically. Publishing one useful article per month is the most
+effective way to climb on "lipoedeme" (≈1,300 searches/month in Morocco, low competition).
+
+## AI assistants (ChatGPT, Perplexity, Gemini, Claude) – "GEO"
+
+- `/llms.txt` and `/llms-full.txt` are generated from the site content: clinic facts, all FAQs and guide articles.
+- `robots.txt` explicitly allows AI crawlers.
+- The same name, address, phone and doctor description are repeated consistently everywhere
+  (site, schema, llms files) – AI answers rely on this consistency, as Google does.
+- Off-site matters as much: Google Business Profile, Dabadoc, press (Le Matin, 2M, Femmes du Maroc) and the
+  MOSLIPOD association are sources AI assistants quote.
+
 ## Google Analytics
 
 Both tags are loaded in `index.html`: **G-98XDWC6P0Q** (new) and G-F46EC384N2 (old).

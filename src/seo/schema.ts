@@ -72,7 +72,7 @@ const doctor = {
   address: clinic.address,
   telephone: SITE.phone.e164,
   knowsAbout: ['Lipœdème', 'Lipedema', 'Liposuccion WAL', 'Water-assisted liposuction', 'Anesthésie tumescente', 'Médecine régénérative'],
-  sameAs: [SITE.social.youtube],
+  sameAs: [SITE.social.youtube, SITE.social.instagram, 'https://www.dabadoc.com/ma/en/obstetrician-gynecologist/casablanca/tawfik-sefrioui-1'],
 };
 
 const condition = {
@@ -126,7 +126,8 @@ export function buildSchema(route: RouteMeta) {
     '@id': `${url}#breadcrumb`,
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: route.lang === 'ar' ? 'الرئيسية' : 'Accueil', item: `${SITE.url}/` },
-      ...(route.path === '/' ? [] : [{ '@type': 'ListItem', position: 2, name: route.breadcrumb, item: url }]),
+      ...(route.parent ? [{ '@type': 'ListItem', position: 2, name: route.parent.name, item: pageUrl(route.parent.path) }] : []),
+      ...(route.path === '/' ? [] : [{ '@type': 'ListItem', position: route.parent ? 3 : 2, name: route.breadcrumb, item: url }]),
     ],
   };
 
@@ -152,7 +153,32 @@ export function buildSchema(route: RouteMeta) {
   if (route.kind === 'physician') webpage.mainEntity = { '@id': ID.doctor };
   if (route.kind === 'contact') webpage.mainEntity = { '@id': ID.clinic };
 
+  if (route.article) {
+    webpage.lastReviewed = route.article.updated;
+    webpage.datePublished = route.article.published;
+    webpage.dateModified = route.article.updated;
+  }
+
   const graph: unknown[] = [website, clinic, doctor, webpage, breadcrumb];
+  if (route.article) {
+    graph.push({
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: route.article.headline,
+      description: route.description,
+      inLanguage: 'fr-MA',
+      datePublished: route.article.published,
+      dateModified: route.article.updated,
+      image: absUrl(route.image ?? SITE.ogImage),
+      author: { '@id': ID.doctor },
+      reviewedBy: { '@id': ID.doctor },
+      publisher: { '@id': ID.clinic },
+      mainEntityOfPage: { '@id': `${url}#webpage` },
+      about: { '@id': ID.condition },
+      isPartOf: { '@id': ID.website },
+    });
+    graph.push(condition);
+  }
   if (route.kind === 'condition' || route.kind === 'home') graph.push(condition);
   if (route.kind === 'procedure' || route.kind === 'home' || route.kind === 'condition') graph.push(procedure);
   if (route.faq?.length) {

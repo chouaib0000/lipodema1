@@ -9,6 +9,8 @@ export default function Clinique() {
       <PageHero
         title="Le centre du lipœdème à Casablanca"
         intro="Au cœur de Casablanca, dans le quartier Racine, un cabinet dédié au traitement du lipœdème : un cadre médical haut de gamme, des technologies de pointe et un accompagnement personnalisé."
+        image="/videos/cabinet.jpg"
+        imageAlt="Le cabinet du Centre Lipœdème Maroc à Casablanca"
       />
 
       <Section>
