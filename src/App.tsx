@@ -24,16 +24,28 @@ import Actualites from './pages/Actualites';
 import Contact from './pages/Contact';
 import WALResults from './pages/WALResults';
 import NotFound from './pages/NotFound';
+import Arabic from './pages/Arabic';
+import Breadcrumbs from './components/Breadcrumbs';
+import { useLanguage } from './contexts/LanguageContext';
 
 /** Scrolls to top and updates <title>, meta, canonical and JSON-LD on navigation. */
 function RouteEffects() {
   const { pathname } = useLocation();
+  const { language } = useLanguage();
   const first = useRef(true);
 
   useEffect(() => {
-    if (!first.current) window.scrollTo(0, 0);
+    const route = getRoute(pathname);
+    document.documentElement.lang = route.lang === 'ar' ? 'ar-MA' : language === 'fr' ? 'fr-MA' : language;
+  }, [pathname, language]);
+
+  useEffect(() => {
+    const route = getRoute(pathname);
+    applyHead(route);
+    if (!first.current) {
+      window.scrollTo(0, 0);
+    }
     first.current = false;
-    applyHead(getRoute(pathname));
   }, [pathname]);
 
   return null;
@@ -55,6 +67,7 @@ export const appRoutes = [
   { path: '/parcours-patient', element: <ParcoursPatient /> },
   { path: '/actualites', element: <Actualites /> },
   { path: '/contact', element: <Contact /> },
+  { path: '/ar', element: <Arabic /> },
 ];
 
 export default function App() {
@@ -67,6 +80,7 @@ export default function App() {
       <div className="min-h-screen bg-white">
         <Header />
         <main id="contenu" className="pt-16 xl:pt-[112px]">
+          <Breadcrumbs />
           <Routes>
             {appRoutes.map((r) => (
               <Route key={r.path} path={r.path} element={r.element} />

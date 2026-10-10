@@ -12,16 +12,18 @@ const ssrEntry = path.join(root, 'dist-ssr', 'entry-server.js');
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
 const { render, ROUTES, NOT_FOUND } = await import(pathToFileURL(ssrEntry).href);
 
-const fill = (url) => {
+const fill = (url, lang = 'fr') => {
   const { html, head } = render(url);
   if (!html || html.length < 500) throw new Error(`Prerender of ${url} produced almost no HTML`);
-  return template.replace('<!--app-head-->', head).replace('<!--app-html-->', html);
+  return template
+    .replace('<html lang="fr-MA">', lang === 'ar' ? '<html lang="ar-MA">' : '<html lang="fr-MA">')
+    .replace('<!--app-head-->', head).replace('<!--app-html-->', html);
 };
 
 const fileFor = (p) => (p === '/' ? 'index.html' : `${p.slice(1)}.html`);
 
 for (const r of ROUTES) {
-  fs.writeFileSync(path.join(dist, fileFor(r.path)), fill(r.path));
+  fs.writeFileSync(path.join(dist, fileFor(r.path)), fill(r.path, r.lang));
   console.log(`  prerendered ${r.path.padEnd(18)} → ${fileFor(r.path)}`);
 }
 fs.writeFileSync(path.join(dist, '404.html'), fill(NOT_FOUND.path));
@@ -31,7 +33,8 @@ console.log('  prerendered 404.html');
 const today = new Date().toISOString().slice(0, 10);
 const SITE = 'https://lipoedem.ma';
 const images = {
-  '/': ['/2028/1.jpeg', '/2028/5.jpeg'],
+  '/': ['/og/lipoedeme-maroc-fr.jpg', '/2028/1.jpeg', '/2028/5.jpeg'],
+  '/ar': ['/og/lipoedeme-maroc-ar.jpg'],
   '/parcours': ['/2028/5.jpeg'],
   '/wal': ['/2028/1.jpeg'],
 };

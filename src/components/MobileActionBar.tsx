@@ -1,5 +1,5 @@
 import { Phone, CalendarDays } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { SITE, whatsappLink } from '../config/site';
 
 const WhatsAppIcon = () => (
@@ -10,23 +10,27 @@ const WhatsAppIcon = () => (
 
 /** Thumb-reachable contact bar for phones, above the iPhone home indicator. */
 export default function MobileActionBar() {
+  const ar = useLocation().pathname === '/ar';
+  const L = ar
+    ? { call: 'اتصال', rdv: 'موعد', wa: 'السلام عليكم، أود الحصول على معلومات حول علاج الوذمة الشحمية.', font: ' font-arabic text-[13px]' }
+    : { call: 'Appeler', rdv: 'Rendez-vous', wa: undefined, font: '' };
   return (
     <div
       className="xl:hidden fixed inset-x-0 bottom-0 z-40 border-t border-rose-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       <div className="mx-auto grid max-w-xl grid-cols-3 gap-2 px-3 py-2.5" style={{ paddingLeft: 'max(0.75rem, env(safe-area-inset-left))', paddingRight: 'max(0.75rem, env(safe-area-inset-right))' }}>
-        <a href={`tel:${SITE.phone.e164}`} className="flex h-12 flex-col items-center justify-center rounded-2xl bg-rose-50 text-rose-700 text-[12px] font-semibold">
+        <a href={`tel:${SITE.phone.e164}`} className={`flex h-12 flex-col items-center justify-center rounded-2xl bg-rose-50 text-rose-700 text-[12px] font-semibold${L.font}`}>
           <Phone size={19} aria-hidden="true" />
-          Appeler
+          {L.call}
         </a>
-        <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="flex h-12 flex-col items-center justify-center rounded-2xl bg-[#1FA855] text-white text-[12px] font-semibold">
+        <a href={whatsappLink(L.wa)} target="_blank" rel="noopener noreferrer" className="flex h-12 flex-col items-center justify-center rounded-2xl bg-[#1FA855] text-white text-[12px] font-semibold">
           <WhatsAppIcon />
           WhatsApp
         </a>
-        <Link to="/contact" className="flex h-12 flex-col items-center justify-center rounded-2xl bg-rose-600 text-white text-[12px] font-semibold">
+        <Link to="/contact" className={`flex h-12 flex-col items-center justify-center rounded-2xl bg-rose-600 text-white text-[12px] font-semibold${L.font}`}>
           <CalendarDays size={19} aria-hidden="true" />
-          Rendez-vous
+          {L.rdv}
         </Link>
       </div>
     </div>

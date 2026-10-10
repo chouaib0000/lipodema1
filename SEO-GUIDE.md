@@ -25,6 +25,25 @@ Deploy the `dist/` folder as before (Netlify / Bolt). No server is needed.
 | Structured data (MedicalClinic, Physician, MedicalCondition, MedicalProcedure, FAQ, Breadcrumb) | `src/seo/schema.ts` |
 | Adding a new page | add the route in `src/App.tsx` **and** in `src/seo/routes.ts` |
 
+## Google Analytics
+
+Both tags are loaded in `index.html`: **G-98XDWC6P0Q** (new) and G-F46EC384N2 (old).
+Taps on contact links are sent as events (`src/analytics.ts`):
+`contact_phone`, `contact_whatsapp`, `contact_email`, `get_directions`.
+In GA4 → Admin → Events, mark `contact_whatsapp` and `contact_phone` as **key events** to see
+which pages bring appointment requests.
+
+## Arabic page
+
+`/ar` is a full Arabic (RTL) page for people searching «الوذمة الشحمية», «الليبوديما», «علاج الوذمة الشحمية في المغرب».
+It is linked to the French home page with `hreflang` (fr ↔ ar), has its own Arabic FAQ schema and
+its own share image. Text lives in `src/pages/Arabic.tsx` and `src/seo/faq.ts` (`arFaq`).
+
+## Share image
+
+`public/og/lipoedeme-maroc-fr.jpg` and `-ar.jpg` (1200×630) are what WhatsApp, Facebook and LinkedIn show
+when someone shares a link to the site.
+
 ## After deploying
 
 1. **Google Search Console** → Sitemaps → submit `https://lipoedem.ma/sitemap.xml`.

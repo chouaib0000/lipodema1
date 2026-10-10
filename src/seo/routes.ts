@@ -1,6 +1,8 @@
 // Per-page SEO. Used both at build time (prerendered HTML <head>) and in the
 // browser (when navigating between pages without a reload).
 
+import { homeFaq, arFaq, type FaqItem } from './faq';
+
 export type PageKind = 'home' | 'condition' | 'procedure' | 'physician' | 'contact' | 'gallery' | 'about' | 'generic';
 
 export interface RouteMeta {
@@ -12,7 +14,15 @@ export interface RouteMeta {
   priority: number;     // sitemap
   changefreq: 'weekly' | 'monthly' | 'yearly';
   image?: string;
+  lang?: 'fr' | 'ar';                      // default 'fr'
+  alternates?: { hreflang: string; path: string }[]; // language versions of the same page
+  faq?: FaqItem[];                          // emitted as FAQPage schema
 }
+
+const HOME_ALTERNATES = [
+  { hreflang: 'fr', path: '/' },
+  { hreflang: 'ar', path: '/ar' },
+];
 
 export const ROUTES: RouteMeta[] = [
   {
@@ -23,6 +33,21 @@ export const ROUTES: RouteMeta[] = [
     kind: 'home',
     priority: 1.0,
     changefreq: 'weekly',
+    alternates: HOME_ALTERNATES,
+    faq: homeFaq,
+  },
+  {
+    path: '/ar',
+    title: 'علاج الوذمة الشحمية (الليبوديما) في المغرب | الدار البيضاء',
+    description: 'مركز متخصص في علاج الوذمة الشحمية بالدار البيضاء منذ 2015. شفط الدهون بتقنية WAL بالماء تحت التخدير الموضعي مع الدكتور توفيق الصفريوي. احجزي موعدك.',
+    breadcrumb: 'العربية',
+    kind: 'home',
+    priority: 0.9,
+    changefreq: 'monthly',
+    lang: 'ar',
+    image: '/og/lipoedeme-maroc-ar.jpg',
+    alternates: HOME_ALTERNATES,
+    faq: arFaq,
   },
   {
     path: '/maladie',

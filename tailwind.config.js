@@ -47,6 +47,7 @@ export default {
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        arabic: ['"Noto Naskh Arabic"', 'Tahoma', 'sans-serif'],
         sans: ['Montserrat', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       spacing: {

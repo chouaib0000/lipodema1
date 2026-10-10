@@ -52,7 +52,7 @@ export default function WALResults() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="border-4 border-white bg-white/95 backdrop-blur-sm p-8 md:p-12">
               <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
-                Liposuccion WAL : résultats avant / après
+                Liposuccion WAL : résultats avant / après
               </h1>
               <p className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 Technique WAL Bodyjet 3D

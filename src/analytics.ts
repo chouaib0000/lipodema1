@@ -1,0 +1,27 @@
+// Sends a Google Analytics event when a visitor taps "call", "WhatsApp" or "e-mail",
+// so you can see in GA4 which pages bring appointment requests.
+// In GA4, mark `contact_whatsapp` and `contact_phone` as key events (Admin → Events).
+
+type Gtag = (...args: unknown[]) => void;
+
+export function trackContactClicks() {
+  document.addEventListener(
+    'click',
+    (e) => {
+      const a = (e.target as Element | null)?.closest?.('a');
+      if (!a) return;
+      const href = a.getAttribute('href') || '';
+      const gtag = (window as unknown as { gtag?: Gtag }).gtag;
+      if (!gtag) return;
+      const page = window.location.pathname;
+      if (href.startsWith('tel:')) gtag('event', 'contact_phone', { page_path: page, link_url: href });
+      else if (href.includes('wa.me/')) gtag('event', 'contact_whatsapp', { page_path: page });
+      else if (href.startsWith('mailto:')) gtag('event', 'contact_email', { page_path: page });
+      else if (href.includes('google.com/maps')) gtag('event', 'get_directions', { page_path: page });
+    },
+    { capture: true, passive: true }
+  );
+}
+
+// Page views on client-side navigation are already sent by GA4 "enhanced measurement"
+// (page changes based on browser history events), so none are sent manually here.

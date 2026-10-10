@@ -51,9 +51,11 @@ export const SITE = {
   areaServed: ['Casablanca', 'Rabat', 'Marrakech', 'Tanger', 'Fès', 'Agadir', 'Kénitra', 'El Jadida', 'Mohammedia', 'Meknès', 'Oujda'],
 
   logo: '/2027/logo.png',
-  ogImage: '/2028/1.jpeg',
+  ogImage: '/og/lipoedeme-maroc-fr.jpg',
+  ogImageAr: '/og/lipoedeme-maroc-ar.jpg',
+  heroImage: '/img/dr-tawfik-sefrioui.webp',
   doctorPhoto: '/2028/5.jpeg',
-  ga: 'G-F46EC384N2',
+  ga: ['G-98XDWC6P0Q', 'G-F46EC384N2'],
 } as const;
 
 export const fullAddress = `${SITE.address.street}, ${SITE.address.district}, ${SITE.address.postalCode} ${SITE.address.city}, ${SITE.address.countryName}`;

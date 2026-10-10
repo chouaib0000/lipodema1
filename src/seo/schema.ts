@@ -1,5 +1,4 @@
 import { SITE, absUrl, mapsLink } from '../config/site';
-import { homeFaq } from './faq';
 import type { RouteMeta } from './routes';
 
 const ID = {
@@ -19,7 +18,7 @@ const clinic = {
     'Centre médical de Casablanca dédié au traitement du lipœdème depuis 2015 : consultation spécialisée et liposuccion WAL Bodyjet 3D avec micro-canules sous anesthésie locale.',
   url: `${SITE.url}/`,
   logo: absUrl(SITE.logo),
-  image: [absUrl(SITE.ogImage), absUrl(SITE.doctorPhoto)],
+  image: [absUrl(SITE.ogImage), absUrl('/2028/1.jpeg'), absUrl(SITE.doctorPhoto)],
   telephone: SITE.phone.e164,
   email: SITE.email,
   address: {
@@ -126,7 +125,7 @@ export function buildSchema(route: RouteMeta) {
     '@type': 'BreadcrumbList',
     '@id': `${url}#breadcrumb`,
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 1, name: route.lang === 'ar' ? 'الرئيسية' : 'Accueil', item: `${SITE.url}/` },
       ...(route.path === '/' ? [] : [{ '@type': 'ListItem', position: 2, name: route.breadcrumb, item: url }]),
     ],
   };
@@ -140,7 +139,7 @@ export function buildSchema(route: RouteMeta) {
     url,
     name: route.title,
     description: route.description,
-    inLanguage: 'fr-MA',
+    inLanguage: route.lang === 'ar' ? 'ar-MA' : 'fr-MA',
     isPartOf: { '@id': ID.website },
     breadcrumb: { '@id': `${url}#breadcrumb` },
     primaryImageOfPage: absUrl(route.image ?? SITE.ogImage),
@@ -156,11 +155,12 @@ export function buildSchema(route: RouteMeta) {
   const graph: unknown[] = [website, clinic, doctor, webpage, breadcrumb];
   if (route.kind === 'condition' || route.kind === 'home') graph.push(condition);
   if (route.kind === 'procedure' || route.kind === 'home' || route.kind === 'condition') graph.push(procedure);
-  if (route.kind === 'home') {
+  if (route.faq?.length) {
     graph.push({
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
-      mainEntity: homeFaq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      inLanguage: route.lang === 'ar' ? 'ar-MA' : 'fr-MA',
+      mainEntity: route.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
     });
   }
 

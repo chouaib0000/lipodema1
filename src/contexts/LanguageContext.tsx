@@ -23,10 +23,6 @@ export function LanguageProvider({ children }: { children: ReactNode}) {
     } catch { /* storage unavailable */ }
   }, []);
 
-  useEffect(() => {
-    document.documentElement.lang = language === 'fr' ? 'fr-MA' : language;
-  }, [language]);
-
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
     try { localStorage.setItem('language', lang); } catch { /* ignore */ }

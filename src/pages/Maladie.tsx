@@ -8,7 +8,7 @@ export default function Maladie() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
-            Le lipœdème : symptômes, causes et stades
+            Le lipœdème : symptômes, causes et stades
           </h1>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">

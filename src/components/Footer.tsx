@@ -18,6 +18,7 @@ const ABOUT = [
   { to: '/publications', label: 'Publications' },
   { to: '/actualites', label: 'Actualités' },
   { to: '/contact', label: 'Contact et accès' },
+  { to: '/ar', label: 'النسخة العربية' },
 ];
 
 export default function Footer() {
@@ -62,7 +63,7 @@ export default function Footer() {
           <nav aria-label="Le centre">
             <p className="font-serif text-xl text-white mb-5">Le centre</p>
             <ul className="space-y-3 text-sm">
-              {ABOUT.map((l) => <li key={l.to}><Link to={l.to} className="hover:text-white">{l.label}</Link></li>)}
+              {ABOUT.map((l) => <li key={l.to}><Link to={l.to} lang={l.to === '/ar' ? 'ar' : undefined} className={`hover:text-white ${l.to === '/ar' ? 'font-arabic text-[15px]' : ''}`}>{l.label}</Link></li>)}
             </ul>
           </nav>
 

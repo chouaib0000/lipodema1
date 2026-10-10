@@ -99,10 +99,10 @@ export default function Home() {
           <figure className="relative mx-auto w-full max-w-[420px] lg:max-w-[460px] lg:mr-0">
             <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-[28px] bg-rose-100 ring-1 ring-rose-200">
               <img
-                src={SITE.doctorPhoto}
+                src={SITE.heroImage}
                 alt="Dr Tawfik Sefrioui, chirurgien spécialiste du lipœdème à Casablanca"
-                width="975"
-                height="1133"
+                width="800"
+                height="930"
                 {...({ fetchpriority: 'high' } as Record<string, string>)}
                 className="h-full w-full object-cover object-[50%_30%]"
               />

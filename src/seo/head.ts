@@ -26,10 +26,19 @@ export function headTags(route: RouteMeta): HeadTag[] {
     { tag: 'meta', attrs: { name: 'twitter:description', content: route.description } },
     { tag: 'meta', attrs: { name: 'twitter:image', content: image } },
   ];
+  if (route.kind === 'home') {
+    // Start downloading the hero portrait immediately (Largest Contentful Paint).
+    tags.push({ tag: 'link', attrs: { rel: 'preload', as: 'image', href: SITE.heroImage, type: 'image/webp', fetchpriority: 'high' } });
+  }
+  tags.push({ tag: 'meta', attrs: { property: 'og:locale', content: route.lang === 'ar' ? 'ar_MA' : 'fr_FR' } });
   if (!isNotFound) {
     tags.push({ tag: 'link', attrs: { rel: 'canonical', href: url } });
-    tags.push({ tag: 'link', attrs: { rel: 'alternate', hreflang: 'fr', href: url } });
-    tags.push({ tag: 'link', attrs: { rel: 'alternate', hreflang: 'x-default', href: url } });
+    const alts = route.alternates ?? [{ hreflang: 'fr', path: route.path }];
+    for (const a of alts) {
+      tags.push({ tag: 'link', attrs: { rel: 'alternate', hreflang: a.hreflang, href: a.path === '/' ? `${SITE.url}/` : `${SITE.url}${a.path}` } });
+    }
+    const xDefault = alts.find((a) => a.hreflang === 'fr')?.path ?? route.path;
+    tags.push({ tag: 'link', attrs: { rel: 'alternate', hreflang: 'x-default', href: xDefault === '/' ? `${SITE.url}/` : `${SITE.url}${xDefault}` } });
   }
   return tags;
 }

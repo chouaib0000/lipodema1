@@ -9,7 +9,10 @@ import '@fontsource/montserrat/latin-500.css';
 import '@fontsource/montserrat/latin-600.css';
 import '@fontsource/montserrat/latin-700.css';
 import '@fontsource/cormorant-garamond/latin-700.css';
+import '@fontsource/noto-naskh-arabic/arabic-400.css';
+import '@fontsource/noto-naskh-arabic/arabic-700.css';
 import './index.css';
+import { trackContactClicks } from './analytics';
 
 const container = document.getElementById('root')!;
 const app = (
@@ -26,3 +29,5 @@ if (container.firstElementChild) {
 } else {
   createRoot(container).render(app);
 }
+
+trackContactClicks();

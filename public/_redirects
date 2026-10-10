@@ -3,8 +3,7 @@
 /fr/*    /:splat   301
 /en      /   301
 /en/*    /:splat   301
-/ar      /   301
-/ar/*    /:splat   301
+/ar/*    /ar   301
 /accueil /   301
 /blog    /actualites   301
 /blog/*  /actualites   301
