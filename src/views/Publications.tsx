@@ -1,143 +1,61 @@
-import Link from 'next/link';
-import { BookOpen, FileText, Users } from 'lucide-react';
+import { Youtube } from '../components/SocialIcons';
+import { PageHero, Section, SectionHead, Prose, FeatureGrid, CtaBand } from '../components/ui';
+import { SITE } from '../config/site';
 
 export default function Publications() {
   return (
-    <div className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
-            Publications et médias
-          </h1>
+    <>
+      <PageHero
+        title="Publications et médias"
+        intro="Le Dr Tawfik Sefrioui contribue à faire avancer la connaissance du lipœdème : formations, congrès internationaux et interventions dans les médias."
+        actions={false}
+      />
 
-          <div className="bg-gradient-to-br from-sky-50 to-blue-50 p-8 md:p-12 rounded-2xl mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Contribution à la recherche médicale
-            </h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Le Dr Tawfik Sefrioui contribue activement à l'avancement des connaissances médicales sur le lipœdème et son traitement. Ses travaux et son expertise sont reconnus dans la communauté médicale internationale.
-            </p>
+      <Section>
+        <SectionHead title="Domaines d’expertise" />
+        <FeatureGrid
+          cols={3}
+          items={[
+            { title: 'Lipœdème', text: 'Diagnostic, classification et traitement par liposuccion WAL.' },
+            { title: 'Techniques chirurgicales', text: 'Liposuccion assistée par jet d’eau et approches innovantes sous anesthésie locale.' },
+            { title: 'Qualité de vie', text: 'Impact psychologique de la maladie et bien-être des patientes.' },
+          ]}
+        />
+      </Section>
+
+      <Section tone="mist">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 lg:items-center">
+          <div>
+            <SectionHead title="À la télévision" intro="Le Pr Tawfik Sefrioui, spécialiste en médecine régénérative, invité de l’émission Sabahiyat." />
           </div>
-
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
-              Domaines d'expertise
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-xl border-2 border-sky-100 shadow-sm text-center">
-                <div className="bg-sky-100 p-4 rounded-full inline-block mb-4">
-                  <BookOpen className="text-sky-600" size={32} />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Lipœdème</h3>
-                <p className="text-gray-700">
-                  Diagnostic, classification et traitement par liposuccion WAL
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl border-2 border-sky-100 shadow-sm text-center">
-                <div className="bg-sky-100 p-4 rounded-full inline-block mb-4">
-                  <FileText className="text-sky-600" size={32} />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Techniques chirurgicales</h3>
-                <p className="text-gray-700">
-                  Liposuccion assistée par jet d'eau et approches innovantes
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl border-2 border-sky-100 shadow-sm text-center">
-                <div className="bg-sky-100 p-4 rounded-full inline-block mb-4">
-                  <Users className="text-sky-600" size={32} />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Qualité de vie</h3>
-                <p className="text-gray-700">
-                  Impact psychologique et amélioration du bien-être des patientes
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-8 md:p-12 rounded-2xl mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
-              Interview télévisée
-            </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed text-center">
-              Le Professeur Tawfik Sefrioui, spécialiste en médecine régénérative, invité sur Sabahiyat
-            </p>
-            {/* The original interview file in /public is corrupted (cut at 512 KB during upload).
-                Re-upload the full video or a YouTube link, then restore the <video> player here. */}
-            <div className="max-w-4xl mx-auto rounded-3xl bg-rose-50 p-8 text-center mb-8">
-              <p className="text-ink/80 mb-5">Retrouvez l’interview et les vidéos du Dr Sefrioui sur sa chaîne YouTube.</p>
-              <a href="https://www.youtube.com/@scarless.cosmeticsurgery" target="_blank" rel="noopener noreferrer" className="btn-primary">Voir les vidéos sur YouTube</a>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-8 md:p-12 rounded-2xl mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Congrès et formations
-            </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Le Dr Sefrioui participe régulièrement à des congrès médicaux internationaux consacrés au lipœdème et à la chirurgie esthétique. Ces échanges lui permettent de rester à la pointe des dernières avancées et de partager son expérience avec d'autres spécialistes.
-            </p>
-            <div className="space-y-4">
-              <div className="bg-white p-6 rounded-xl">
-                <h3 className="text-xl font-bold text-sky-600 mb-2">Formation continue</h3>
-                <p className="text-gray-700">
-                  Participation à des formations spécialisées sur les nouvelles techniques de traitement du lipœdème et les protocoles de soins optimisés.
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl">
-                <h3 className="text-xl font-bold text-sky-600 mb-2">Échanges internationaux</h3>
-                <p className="text-gray-700">
-                  Collaboration avec des centres d'excellence européens et internationaux spécialisés dans le traitement du lipœdème.
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl">
-                <h3 className="text-xl font-bold text-sky-600 mb-2">Conférences</h3>
-                <p className="text-gray-700">
-                  Interventions dans des événements médicaux pour partager son expertise et sensibiliser la communauté médicale locale.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Engagement dans l'excellence médicale
-            </h2>
-            <div className="bg-white p-8 rounded-xl border-2 border-sky-100 shadow-lg">
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                L'engagement du Dr Sefrioui dans la recherche et la formation continue garantit que ses patientes bénéficient des meilleures pratiques médicales actuelles. Il applique les protocoles les plus récents et les plus efficaces, basés sur les données scientifiques les plus à jour.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Cette rigueur scientifique, combinée à une approche humaine et personnalisée, fait du Dr Sefrioui un spécialiste de référence pour le traitement du lipœdème au Maroc et dans la région.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-sky-600 text-white p-8 md:p-12 rounded-2xl text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Bénéficiez d'une expertise de pointe
-            </h2>
-            <p className="text-lg mb-6 opacity-90">
-              Consultez un spécialiste reconnu pour votre traitement du lipœdème
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/parcours"
-                className="bg-white text-sky-600 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition"
-              >
-                Découvrir le parcours
-              </Link>
-              <Link
-                href="/contact"
-                className="bg-sky-700 text-white px-8 py-3 rounded-full font-medium hover:bg-sky-800 transition border-2 border-white"
-              >
-                Prendre rendez-vous
-              </Link>
-            </div>
-          </div>
+          <a href={SITE.social.youtube} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-5 rounded-3xl bg-white p-6 ring-1 ring-rose-100">
+            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-rose-600 text-white"><Youtube size={26} /></span>
+            <span>
+              <span className="block font-serif text-2xl">Les vidéos du Dr Sefrioui</span>
+              <span className="block text-sm text-ink/65 group-hover:text-rose-700">Interview et explications sur sa chaîne YouTube</span>
+            </span>
+          </a>
         </div>
-      </div>
-    </div>
+      </Section>
+
+      <Section>
+        <SectionHead title="Congrès et formations" />
+        <FeatureGrid
+          cols={3}
+          items={[
+            { title: 'Formation continue', text: 'Formations spécialisées sur les nouvelles techniques et les protocoles de soins du lipœdème.' },
+            { title: 'Échanges internationaux', text: 'Collaboration avec des centres d’excellence européens et internationaux.' },
+            { title: 'Conférences', text: 'Interventions pour partager son expertise et sensibiliser la communauté médicale.' },
+          ]}
+        />
+        <Prose className="mt-10">
+          <p>
+            Cette rigueur scientifique, associée à une approche humaine et personnalisée, garantit aux patientes des protocoles à jour, fondés sur les données médicales les plus récentes.
+          </p>
+        </Prose>
+      </Section>
+
+      <CtaBand title="Bénéficier de cette expertise" secondary={{ href: '/parcours/', label: 'Son parcours' }} />
+    </>
   );
 }

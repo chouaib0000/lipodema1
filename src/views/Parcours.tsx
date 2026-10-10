@@ -1,148 +1,89 @@
-import Link from 'next/link';
-import { MapPin } from 'lucide-react';
-import AutoSlideshow from '../components/AutoSlideshow';
+import { PageHero, Section, SectionHead, Prose, CtaBand, TextLink } from '../components/ui';
+import PhotoGallery from '../components/PhotoGallery';
+import { SITE } from '../config/site';
+
+const PHOTOS = ['/2028/5.jpeg', '/2028/1.jpeg', '/2028/3.jpeg', '/2028/4.jpeg', '/2028/6.jpeg', '/2028/7.jpeg', '/2028/8.jpeg', '/2028/9.jpeg'];
+
+const TRAININGS = [
+  { place: 'Boston, USA', image: '/2027/Boston USA.jpeg' },
+  { place: 'New York, USA', image: '/2027/New York , USA.jpeg' },
+  { place: 'Californie, USA', image: '/2027/Californie, USA.jpeg' },
+  { place: 'IFATS, Orlando', image: '/2027/IFATS , congrès Orlando USA.jpeg' },
+  { place: 'Dubaï', image: '/2027/DUBAI.jpeg' },
+  { place: 'Thaïlande', image: '/2027/Thailand.jpeg' },
+  { place: 'New York, USA', image: '/2027/New York , USA 1.jpeg' },
+  { place: 'Californie, USA', image: '/2027/Californie, USA 1.jpeg' },
+];
+
+const FACTS = [
+  { k: 'Formation', v: 'George Washington University, USA' },
+  { k: 'Au Maroc', v: 'Premier à introduire la liposuccion WAL Bodyjet sous anesthésie locale, il y a plus de 15 ans' },
+  { k: 'Sociétés savantes', v: 'American College of Surgeons, American Society of Cosmetic Surgery, IFATS, IMCAS ; directeur du Board de l’ABRM (USA)' },
+  { k: 'Formateur', v: 'Médecin référent et formateur Bodyjet (Humanmed) : USA, Dubaï, Koweït, Italie, Roumanie, Taïwan, Hong Kong, Vietnam, Thaïlande' },
+  { k: 'Distinctions', v: 'Diamond Crystal Award 2017 ; Gold Global Award of Lipedema 2020, Paris' },
+];
 
 export default function Parcours() {
-  const doctorPhotos = [
-    '/2028/1.jpeg',
-    '/2028/2.jpeg',
-    '/2028/3.jpeg',
-    '/2028/4.jpeg',
-    '/2028/5.jpeg',
-    '/2028/6.jpeg',
-    '/2028/7.jpeg',
-    '/2028/8.jpeg',
-    '/2028/9.jpeg'
-  ];
-
-  const trainingLocations = [
-    { location: 'Thailand', image: '/2027/Thailand.jpeg' },
-    { location: 'Dubai', image: '/2027/DUBAI.jpeg' },
-    { location: 'Boston, USA', image: '/2027/Boston USA.jpeg' },
-    { location: 'New York, USA', image: '/2027/New York , USA.jpeg' },
-    { location: 'New York, USA', image: '/2027/New York , USA 1.jpeg' },
-    { location: 'Californie, USA', image: '/2027/Californie, USA.jpeg' },
-    { location: 'Californie, USA', image: '/2027/Californie, USA 1.jpeg' },
-    { location: 'Orlando, USA', image: '/2027/IFATS , congrès Orlando USA.jpeg' },
-    { location: 'USA', image: '/2027/usa.jpeg' }
-  ];
-
   return (
-    <div className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
-            Dr Tawfik Sefrioui, chirurgien du lipœdème
-          </h1>
-          <h2 className="text-2xl md:text-3xl font-medium text-gray-700 mb-8 text-center">
-            Parcours
-          </h2>
+    <>
+      <PageHero
+        title="Dr Tawfik Sefrioui, chirurgien du lipœdème"
+        intro="Depuis plus de 15 ans, le Dr Sefrioui se consacre au traitement chirurgical du lipœdème à Casablanca, avec sa technique de liposuccion WAL Bodyjet 3D avec micro-canules sous anesthésie locale."
+        image={SITE.heroImage}
+        imageAlt="Portrait du Dr Tawfik Sefrioui"
+        imageClass="object-cover object-[50%_30%]"
+      />
 
-          <div className="mb-12">
-            <div className="flex justify-center mb-8">
-              <div className="w-full md:w-3/4 lg:w-2/3">
-                <AutoSlideshow images={doctorPhotos} interval={5000} showControls={false} />
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+          <SectionHead title="Un parcours international" />
+          <dl className="divide-y divide-rose-100 border-y border-rose-100">
+            {FACTS.map((f) => (
+              <div key={f.k} className="grid gap-1 py-5 sm:grid-cols-[150px_1fr] sm:gap-6">
+                <dt className="text-sm font-semibold text-rose-700">{f.k}</dt>
+                <dd className="text-[16px] leading-relaxed text-ink/85">{f.v}</dd>
               </div>
-            </div>
-          </div>
+            ))}
+          </dl>
+        </div>
+      </Section>
 
-          <div className="bg-gradient-to-br from-sky-50 to-blue-50 p-8 md:p-12 rounded-2xl mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Expert Internationalement Reconnu
-            </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Depuis plus de 15 ans au Maroc, le Dr Tawfik Sefrioui est un chirurgien hautement qualifié et internationalement réputé, spécialisé dans le traitement chirurgical du lipœdème. Sa passion pour aider les patientes atteintes de lipœdème à vivre une vie meilleure est palpable.
-            </p>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Diplômé de l'université de George Washington aux USA, fort de nombreuses années de carrière hautement spécialisée dans le traitement chirurgical du lipœdème utilisant la Liposuction WAL intégrative 3D avec micro canules sous anesthésie locale.
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Il est le médecin référent et formateur de la liposuction Bodyjet par Humanmed depuis des années, et le premier au Maroc à avoir introduit la liposuction WAL Bodyjet sous anesthésie locale à Casablanca il y a 15 ans. Aujourd'hui, son centre du Lipœdème est le Centre de Référence et d'Expertise du Lipœdème au Maroc.
-            </p>
-          </div>
+      <Section tone="mist">
+        <SectionHead title="Il forme des chirurgiens dans le monde entier" intro="Congrès et formations à la liposuccion WAL Bodyjet." />
+        <div className="mt-10 -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 no-scrollbar sm:mx-0 sm:grid sm:grid-cols-3 sm:px-0 lg:grid-cols-4">
+          {TRAININGS.map((t) => (
+            <figure key={t.image} className="snap-start shrink-0 w-[70%] sm:w-auto">
+              <img src={t.image} alt={`Dr Sefrioui – formation, ${t.place}`} loading="lazy" decoding="async" className="aspect-[4/5] w-full rounded-2xl object-cover ring-1 ring-rose-100" />
+              <figcaption className="mt-2 text-sm font-medium text-ink/70">{t.place}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </Section>
 
-
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
-              Formations Internationales
-            </h2>
-            <p className="text-lg text-gray-700 mb-8 text-center max-w-3xl mx-auto">
-              Le Dr Sefrioui a partagé son expertise et formé des chirurgiens dans le monde entier
-            </p>
-            <div className="grid md:grid-cols-3 gap-6">
-              {trainingLocations.map((item, index) => (
-                <div key={index} className="relative overflow-hidden rounded-xl shadow-lg group card-3d mobile-depth mobile-depth-hover">
-                  <img
-                    src={item.image}
-                    alt={`Formation à ${item.location}`}
-                    className="w-full h-64 object-contain bg-gradient-to-br from-sky-50 to-blue-50 transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                    <div className="p-4 w-full">
-                      <div className="flex items-center gap-2 text-white">
-                        <MapPin size={20} />
-                        <h3 className="text-xl font-bold">{item.location}</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-8 md:p-12 rounded-2xl mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Une Approche Innovante et Personnalisée
-            </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Les compétences innovantes du Dr Sefrioui, combinées à son approche chirurgicale unique et performante, vous offrent un cadre serein pour votre intervention chirurgicale. Son succès en chirurgie du lipœdème sous anesthésie locale repose non seulement sur son expertise médicale, mais aussi sur sa compréhension du parcours émotionnel qui accompagne le lipœdème.
-            </p>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Il est à la fois votre chirurgien et votre allié, s'engageant à créer un environnement sûr et bienveillant pour vous. Chaque traitement est adapté individuellement, en tenant compte de la sévérité du lipœdème, des objectifs de la patiente et de sa situation personnelle.
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              La galerie de photos avant/après saisissantes de ses interventions précédentes témoigne de son engagement indéfectible envers la satisfaction de ses patients. Choisir de subir une chirurgie du lipœdème sous anesthésie locale avec le Dr Sefrioui, c'est choisir un parcours bien informé, compatissant et responsable pour alléger le fardeau du lipœdème avec un expert reconnu à vos côtés.
-            </p>
-          </div>
-
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Engagement dans la sensibilisation
-            </h2>
-            <div className="bg-white p-8 rounded-xl border-2 border-sky-100 shadow-lg">
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Le Dr Sefrioui est profondément engagé dans la sensibilisation au lipœdème au Maroc et en Afrique. Il travaille activement à faire connaître cette pathologie auprès du public et des professionnels de santé, afin que davantage de femmes puissent être diagnostiquées et traitées correctement.
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <SectionHead title="Votre chirurgien, et votre allié" />
+            <Prose className="mt-6">
+              <p>
+                Son approche repose sur l’expertise médicale, mais aussi sur la compréhension du parcours émotionnel qui accompagne le lipœdème. Chaque traitement est adapté à la sévérité de la maladie, aux objectifs et à la situation de chaque patiente.
               </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Son objectif est de rendre le traitement du lipœdème accessible aux femmes de toute la région, en offrant une expertise de niveau international dans un environnement local, sûr et accueillant.
+              <p>
+                Le Dr Sefrioui s’engage aussi pour faire connaître le lipœdème au Maroc et en Afrique, auprès du public comme des professionnels de santé, afin que davantage de femmes soient diagnostiquées et soignées.
               </p>
+            </Prose>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+              <TextLink href="/publications/">Publications et médias</TextLink>
+              <TextLink href="/resultats/">Ses résultats</TextLink>
             </div>
           </div>
-
-          <div className="bg-sky-600 text-white p-8 md:p-12 rounded-2xl text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Rencontrez le Dr Sefrioui
-            </h2>
-            <p className="text-lg mb-6 opacity-90">
-              Prenez rendez-vous pour une consultation personnalisée
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/resultats"
-                className="bg-white text-sky-600 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition"
-              >
-                Voir les résultats
-              </Link>
-              <Link
-                href="/contact"
-                className="bg-sky-700 text-white px-8 py-3 rounded-full font-medium hover:bg-sky-800 transition border-2 border-white"
-              >
-                Prendre rendez-vous
-              </Link>
-            </div>
+          <div>
+            <PhotoGallery images={PHOTOS} label="Le Dr Tawfik Sefrioui" limit={4} ratio="aspect-square" />
           </div>
         </div>
-      </div>
-    </div>
+      </Section>
+
+      <CtaBand title="Rencontrer le Dr Sefrioui" text="Une consultation personnalisée au centre de Casablanca, ou un premier échange sur WhatsApp." secondary={{ href: '/resultats/', label: 'Voir les résultats' }} />
+    </>
   );
 }

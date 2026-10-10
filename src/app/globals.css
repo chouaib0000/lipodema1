@@ -64,7 +64,7 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap text-center rounded-full px-6 py-3.5 text-[15px] font-semibold transition-colors duration-200 min-h-[48px];
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap text-center rounded-full px-6 py-3.5 text-[15px] font-semibold transition-[color,background-color,border-color,transform] duration-200 min-h-[48px];
   }
   .btn-primary { @apply btn bg-rose-600 text-white hover:bg-rose-700; }
   .btn-ghost { @apply btn border border-rose-200 bg-white text-rose-700 hover:border-rose-400; }
@@ -104,3 +104,24 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Before/after slider: a tall, wide invisible thumb so a finger can grab the split line anywhere */
+.ba-range { -webkit-appearance: none; appearance: none; background: transparent; margin: 0; touch-action: pan-y; }
+.ba-range::-webkit-slider-runnable-track { height: 100%; background: transparent; }
+.ba-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 56px; height: 100vh; background: transparent; }
+.ba-range::-moz-range-thumb { width: 56px; height: 100vh; border: 0; background: transparent; }
+.ba-range::-moz-range-track { background: transparent; }
+
+/* App feel ------------------------------------------------------------- */
+.page-enter { animation: pageEnter 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+/* Pressed state on touch, like native buttons */
+.btn:active, .btn-primary:active, .btn-ghost:active, .btn-whatsapp:active { transform: scale(0.97); }
+@media (hover: none) {
+  a, button { -webkit-touch-callout: none; }
+}
+/* Momentum scrolling for horizontal carousels on iOS */
+.no-scrollbar { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }

@@ -1,270 +1,125 @@
 'use client';
 
-import Link from 'next/link';
 import { useLanguage } from '../contexts/LanguageContext';
+import { PageHero, Section, SectionHead, Prose, Checklist, CtaBand, TextLink, Figure } from '../components/ui';
 
 export default function Maladie() {
   const { t } = useLanguage();
+
+  const stages = [
+    { n: 1, title: t('stage1'), text: t('stage1Description') },
+    { n: 2, title: t('stage2'), text: t('stage2Description') },
+    { n: 3, title: t('stage3'), text: t('stage3Description') },
+    { n: 4, title: 'Stade 4', text: 'Lipo-lymphœdème : le lipœdème s’accompagne d’un lymphœdème secondaire, avec atteinte possible des pieds.' },
+  ];
+
   return (
-    <div className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
-            Le lipœdème : symptômes, causes et stades
-          </h1>
+    <>
+      <PageHero
+        title={<>Le lipœdème&nbsp;: symptômes, causes et stades</>}
+        intro={t('whatIsLipoedemaText1')}
+        image="/2027/1.jpeg"
+        imageAlt="Les stades du lipœdème des jambes"
+        imageClass="object-contain bg-white"
+      />
 
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="rounded-lg shadow-xl overflow-hidden">
-              <img
-                src="/2027/3.jpeg"
-                alt="Lipœdème"
-                className="w-full h-auto object-contain"
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:items-start">
+          <div>
+            <SectionHead title={t('whatIsLipoedema')} />
+            <Prose className="mt-6">
+              <p>{t('whatIsLipoedemaText2')}</p>
+            </Prose>
+            <h3 className="mt-10 text-2xl">{t('howToRecognize')}</h3>
+            <p className="mt-2 text-ink/70">{t('recognizeIntro')}</p>
+            <div className="mt-6">
+              <Checklist
+                items={[t('symmetricSwelling'), t('spontaneousPain'), t('unusualSensitivity'), t('bruising'), t('heavyLegs'), t('disproportionateLegs')]}
               />
             </div>
-            <div className="rounded-lg shadow-xl overflow-hidden">
-              <img
-                src="/2027/4.jpeg"
-                alt="Lipœdème traitement"
-                className="w-full h-auto object-contain"
-              />
-            </div>
+            <p className="mt-6 text-[15px] text-ink/60">{t('symptomsEvolution')}</p>
           </div>
-
-          <div className="bg-gradient-to-br from-sky-50 to-blue-50 p-8 md:p-12 rounded-2xl mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              {t('whatIsLipoedema')}
-            </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              {t('whatIsLipoedemaText1')}
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              {t('whatIsLipoedemaText2')}
-            </p>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <Figure src="/2027/3.jpeg" alt="Lipœdème : répartition de la graisse sur les jambes" />
+            <Figure src="/2027/4.jpeg" alt="Lipœdème : évolution de la maladie" />
           </div>
+        </div>
+      </Section>
 
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              {t('whatAreCauses')}
-            </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              {t('causesIntro')}
-            </p>
+      <Section tone="mist">
+        <SectionHead title={t('lipoedemaStages')} intro="Le lipœdème évolue avec le temps. Le stade se détermine lors de l’examen clinique." />
+        <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {stages.map((s) => (
+            <li key={s.n} className="rounded-3xl bg-white p-6 ring-1 ring-rose-100">
+              <span className="font-serif text-5xl text-rose-300">{s.n}</span>
+              <h3 className="mt-1 text-2xl">{s.title}</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink/75">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
 
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-xl border-2 border-sky-100 shadow-sm card-3d mobile-depth mobile-depth-hover">
-                <h3 className="text-xl font-bold text-sky-600 mb-3">1. {t('geneticPredisposition')}</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  {t('geneticText')}
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl border-2 border-sky-100 shadow-sm card-3d mobile-depth mobile-depth-hover">
-                <h3 className="text-xl font-bold text-sky-600 mb-3">2. {t('hormonalInfluence')}</h3>
-                <p className="text-gray-700 mb-4 leading-relaxed">
-                  {t('hormonalText')}
-                </p>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="text-sky-600 font-bold">•</span>
-                    <span>{t('puberty')}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-sky-600 font-bold">•</span>
-                    <span>{t('pregnancy')}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-sky-600 font-bold">•</span>
-                    <span>{t('postPartum')}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-sky-600 font-bold">•</span>
-                    <span>{t('menopause')}</span>
-                  </li>
-                </ul>
-                <p className="text-gray-700 mt-4 leading-relaxed">
-                  {t('hormonalConcluion')}
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl border-2 border-sky-100 shadow-sm card-3d mobile-depth mobile-depth-hover">
-                <h3 className="text-xl font-bold text-sky-600 mb-3">3. {t('circulatoryDisorders')}</h3>
-                <p className="text-gray-700 mb-4 leading-relaxed">
-                  {t('circulatoryText')}
-                </p>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="text-sky-600 font-bold">•</span>
-                    <span>{t('venousInsufficiency')}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-sky-600 font-bold">•</span>
-                    <span>{t('lymphedema')}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-sky-600 font-bold">•</span>
-                    <span>{t('capillaryFragility')}</span>
-                  </li>
-                </ul>
-                <p className="text-gray-700 mt-4 leading-relaxed">
-                  {t('circulatoryConclusion')}
-                </p>
-              </div>
-            </div>
+      <Section>
+        <SectionHead title={t('whatAreCauses')} intro={t('causesIntro')} />
+        <div className="mt-10 grid gap-x-12 gap-y-10 lg:grid-cols-3">
+          <div className="border-t border-rose-200 pt-6">
+            <h3 className="text-2xl">{t('geneticPredisposition')}</h3>
+            <p className="mt-3 text-[16px] leading-relaxed text-ink/75">{t('geneticText')}</p>
           </div>
-
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              {t('howToRecognize')}
-            </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              {t('recognizeIntro')}
-            </p>
-            <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-6 md:p-8 rounded-xl mb-8">
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start gap-3">
-                  <span className="text-sky-600 font-bold text-xl">✓</span>
-                  <span>{t('symmetricSwelling')}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-sky-600 font-bold text-xl">✓</span>
-                  <span>{t('spontaneousPain')}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-sky-600 font-bold text-xl">✓</span>
-                  <span>{t('unusualSensitivity')}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-sky-600 font-bold text-xl">✓</span>
-                  <span>{t('bruising')}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-sky-600 font-bold text-xl">✓</span>
-                  <span>{t('heavyLegs')}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-sky-600 font-bold text-xl">✓</span>
-                  <span>{t('disproportionateLegs')}</span>
-                </li>
-              </ul>
-              <p className="text-gray-700 mt-6 leading-relaxed italic">
-                {t('symptomsEvolution')}
-              </p>
-            </div>
-
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
-              {t('detailedSymptoms')}
-            </h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-xl border-2 border-sky-100 shadow-sm card-3d mobile-depth mobile-depth-hover">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{t('physicalSymptoms')}</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-sky-600">•</span>
-                    <span>{t('symmetricFatAccumulation')}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-sky-600">•</span>
-                    <span>{t('heavinessInLimbs')}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-sky-600">•</span>
-                    <span>{t('painOnTouch')}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-sky-600">•</span>
-                    <span>{t('easyBruising')}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-sky-600">•</span>
-                    <span>{t('dimplingSkin')}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl border-2 border-sky-100 shadow-sm card-3d mobile-depth mobile-depth-hover">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{t('dailyLifeImpact')}</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-sky-600">•</span>
-                    <span>{t('clothingDifficulties')}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-sky-600">•</span>
-                    <span>{t('walkingFatigue')}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-sky-600">•</span>
-                    <span>{t('psychologicalImpact')}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-sky-600">•</span>
-                    <span>{t('physicalLimitations')}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-sky-600">•</span>
-                    <span>{t('socialIsolation')}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+          <div className="border-t border-rose-200 pt-6">
+            <h3 className="text-2xl">{t('hormonalInfluence')}</h3>
+            <p className="mt-3 text-[16px] leading-relaxed text-ink/75">{t('hormonalText')}</p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {[t('puberty'), t('pregnancy'), t('postPartum'), t('menopause')].map((x) => (
+                <li key={x} className="rounded-full bg-rose-50 px-3 py-1 text-sm text-rose-800">{x}</li>
+              ))}
+            </ul>
+            <p className="mt-3 text-[15px] text-ink/65">{t('hormonalConcluion')}</p>
           </div>
-
-          <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-8 md:p-12 rounded-2xl mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              {t('lipoedemaStages')}
-            </h2>
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-xl">
-                <h3 className="text-xl font-bold text-sky-600 mb-2">{t('stage1')}</h3>
-                <p className="text-gray-700">{t('stage1Description')}</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl">
-                <h3 className="text-xl font-bold text-sky-600 mb-2">{t('stage2')}</h3>
-                <p className="text-gray-700">{t('stage2Description')}</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl">
-                <h3 className="text-xl font-bold text-sky-600 mb-2">{t('stage3')}</h3>
-                <p className="text-gray-700">{t('stage3Description')}</p>
-              </div>
-            </div>
+          <div className="border-t border-rose-200 pt-6">
+            <h3 className="text-2xl">{t('circulatoryDisorders')}</h3>
+            <p className="mt-3 text-[16px] leading-relaxed text-ink/75">{t('circulatoryText')}</p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {[t('venousInsufficiency'), t('lymphedema'), t('capillaryFragility')].map((x) => (
+                <li key={x} className="rounded-full bg-rose-50 px-3 py-1 text-sm text-rose-800">{x}</li>
+              ))}
+            </ul>
+            <p className="mt-3 text-[15px] text-ink/65">{t('circulatoryConclusion')}</p>
           </div>
+        </div>
+      </Section>
 
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              {t('whyPoorlyKnown')}
-            </h2>
-            <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-              {t('poorlyKnownText1')}
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              {t('poorlyKnownText2')}
-            </p>
+      <Section tone="mist">
+        <SectionHead title={t('detailedSymptoms')} />
+        <div className="mt-10 grid gap-10 lg:grid-cols-2">
+          <div>
+            <h3 className="text-2xl mb-5">{t('physicalSymptoms')}</h3>
+            <Checklist items={[t('symmetricFatAccumulation'), t('heavinessInLimbs'), t('painOnTouch'), t('easyBruising'), t('dimplingSkin')]} />
           </div>
+          <div>
+            <h3 className="text-2xl mb-5">{t('dailyLifeImpact')}</h3>
+            <Checklist items={[t('clothingDifficulties'), t('walkingFatigue'), t('psychologicalImpact'), t('physicalLimitations'), t('socialIsolation')]} />
+          </div>
+        </div>
+      </Section>
 
-          <div className="bg-sky-600 text-white p-8 md:p-12 rounded-2xl text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              {t('concernedQuestion')}
-            </h2>
-            <p className="text-lg mb-6 opacity-90">
-              {t('bookAppointment')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/diagnostic"
-                className="bg-white text-sky-600 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition"
-              >
-                {t('learnMoreDiagnostic')}
-              </Link>
-              <Link
-                href="/contact"
-                className="bg-sky-700 text-white px-8 py-3 rounded-full font-medium hover:bg-sky-800 transition border-2 border-white"
-              >
-                {t('bookAppointmentButton')}
-              </Link>
+      <Section>
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
+          <SectionHead title={t('whyPoorlyKnown')} />
+          <div>
+            <Prose>
+              <p>{t('poorlyKnownText1')}</p>
+              <p>{t('poorlyKnownText2')}</p>
+            </Prose>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+              <TextLink href="/diagnostic/">{t('learnMoreDiagnostic')}</TextLink>
+              <TextLink href="/traitement/">Les traitements</TextLink>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Section>
+
+      <CtaBand title={t('concernedQuestion')} text={t('bookAppointment')} secondary={{ href: '/diagnostic/', label: 'Le diagnostic' }} />
+    </>
   );
 }

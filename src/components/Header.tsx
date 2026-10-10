@@ -52,6 +52,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [section, setSection] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const pathname = usePath();
   const { t } = useLanguage();
 
@@ -64,7 +65,16 @@ export default function Header() {
   }
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    // App-like behaviour on phones: the bar slides away while reading down, comes back on scroll up.
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 8);
+      if (Math.abs(y - lastY) > 6) {
+        setHidden(y > lastY && y > 140);
+        lastY = y;
+      }
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -79,7 +89,7 @@ export default function Header() {
 
   return (
     <>
-    <header className={`fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85 transition-shadow ${scrolled ? 'shadow-[0_1px_0_rgba(46,16,24,0.08),0_8px_24px_-16px_rgba(46,16,24,0.3)]' : 'border-b border-rose-100'}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/75 pt-[env(safe-area-inset-top)] transition-[transform,box-shadow] duration-300 ${hidden && !open ? '-translate-y-full xl:translate-y-0' : 'translate-y-0'} ${scrolled ? 'shadow-[0_1px_0_rgba(46,16,24,0.08),0_8px_24px_-16px_rgba(46,16,24,0.3)]' : 'border-b border-rose-100'}`}>
       {/* Desktop info bar: local signals (address + phone) visible on every page */}
       <div className="hidden xl:block bg-plum-900 text-plum-100 text-[13px]">
         <div className="container mx-auto flex h-9 items-center justify-between gap-6">
@@ -159,7 +169,7 @@ export default function Header() {
       {/* Mobile drawer */}
       <div
         id="menu-mobile"
-        className={`xl:hidden fixed inset-x-0 top-16 bottom-0 z-[45] bg-white overflow-y-auto overscroll-contain transition-[opacity,visibility] duration-200 ${open ? 'visible opacity-100' : 'invisible opacity-0'}`}
+        className={`xl:hidden fixed inset-x-0 top-[calc(4rem+env(safe-area-inset-top))] bottom-0 z-[45] bg-white overflow-y-auto overscroll-contain transition-[opacity,visibility] duration-200 ${open ? 'visible opacity-100' : 'invisible opacity-0'}`}
         style={{ paddingBottom: 'calc(96px + env(safe-area-inset-bottom))' }}
       >
         <nav className="container mx-auto pt-2" aria-label="Menu mobile">

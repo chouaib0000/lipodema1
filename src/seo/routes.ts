@@ -132,9 +132,9 @@ export const ROUTES: RouteMeta[] = [
   },
   {
     path: '/services',
-    title: 'Soins et services du Centre Lipœdème Maroc | Casablanca',
-    description: 'Consultation lipœdème, liposuccion WAL, suivi post-opératoire, pressothérapie et programme Hypoxi : les soins proposés au centre à Casablanca.',
-    breadcrumb: 'Services',
+    title: 'Séjour médical à Casablanca – lipœdème | Accompagnement',
+    description: 'Patientes venant d’une autre ville ou de l’étranger : voyage, hébergement, transferts et planning organisés autour de votre traitement du lipœdème à Casablanca.',
+    breadcrumb: 'Séjour médical',
     kind: 'about',
     priority: 0.6,
     changefreq: 'yearly',

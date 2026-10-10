@@ -28,7 +28,8 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
   icons: { icon: SITE.logo, apple: '/apple-touch-icon.png' },
   manifest: '/site.webmanifest',
-  appleWebApp: { title: 'Lipœdème Maroc', statusBarStyle: 'default' },
+  // "Add to Home Screen" on iPhone opens the site full-screen, like an app
+  appleWebApp: { capable: true, title: 'Lipœdème Maroc', statusBarStyle: 'default' },
   other: {
     'geo.region': 'MA-06',
     'geo.placename': 'Casablanca',
@@ -59,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </a>
           <div className="min-h-screen bg-white">
             <Header />
-            <main id="contenu" className="pt-16 xl:pt-[112px]">
+            <main id="contenu" className="pt-[calc(4rem+env(safe-area-inset-top))] xl:pt-[112px]">
               {children}
             </main>
             <Footer />

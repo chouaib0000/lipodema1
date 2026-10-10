@@ -16,6 +16,7 @@ const ABOUT = [
   { to: '/parcours', label: 'Dr Tawfik Sefrioui' },
   { to: '/clinique', label: 'Le centre à Casablanca' },
   { to: '/parcours-patient', label: 'Parcours patiente' },
+  { to: '/services', label: 'Séjour médical' },
   { to: '/publications', label: 'Publications' },
   { to: '/actualites', label: 'Actualités' },
   { to: '/contact', label: 'Contact et accès' },

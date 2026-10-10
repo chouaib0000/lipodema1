@@ -1,98 +1,50 @@
-import Link from 'next/link';
-import { Calendar, BookOpen } from 'lucide-react';
+import { PageHero, Section, CtaBand } from '../components/ui';
+import { Facebook, Instagram, Youtube } from '../components/SocialIcons';
+import { SITE } from '../config/site';
+
+const NEWS = [
+  { date: 'Mars 2025', title: 'Sensibilisation au lipœdème au Maroc', text: 'Le Dr Tawfik Sefrioui poursuit sa mission de sensibilisation au lipœdème auprès du public marocain et africain. La maladie reste méconnue dans la région, ce qui retarde le diagnostic et prolonge des souffrances évitables.' },
+  { date: 'Février 2025', title: 'Drainage post-opératoire', text: 'Le cabinet fait évoluer son protocole de drainage après liposuccion WAL pour réduire encore les œdèmes et accélérer la récupération.' },
+  { date: 'Janvier 2025', title: 'Congrès international sur le lipœdème', text: 'Le Dr Sefrioui a participé à un congrès européen consacré au lipœdème, pour échanger avec d’autres spécialistes sur les dernières avancées du diagnostic et du traitement.' },
+];
 
 export default function Actualites() {
   return (
-    <div className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-[40px] leading-[1.05] sm:text-5xl lg:text-6xl text-ink mb-8">
-            Actualités et formations internationales
-          </h1>
+    <>
+      <PageHero
+        title="Actualités et formations internationales"
+        intro="Les nouvelles du centre, des congrès et des avancées dans le traitement du lipœdème."
+        actions={false}
+      />
 
-          <div className="bg-gradient-to-br from-sky-50 to-blue-50 p-8 md:p-12 rounded-2xl mb-12 text-center">
-            <BookOpen className="text-sky-600 mx-auto mb-4" size={48} />
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Restez informée des dernières actualités sur le lipœdème, les avancées médicales et les événements de notre cabinet.
-            </p>
+      <Section>
+        <ol className="relative border-s border-rose-200 ps-8 space-y-12 max-w-3xl">
+          {NEWS.map((n) => (
+            <li key={n.title} className="relative">
+              <span className="absolute -start-[41px] top-1.5 h-4 w-4 rounded-full border-4 border-white bg-rose-500 ring-1 ring-rose-200" />
+              <time className="text-sm font-semibold text-rose-700">{n.date}</time>
+              <h2 className="mt-1 text-3xl">{n.title}</h2>
+              <p className="mt-3 text-[16px] leading-relaxed text-ink/75">{n.text}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section tone="mist">
+        <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <h2 className="text-[32px] leading-tight lg:text-4xl">Suivez le centre</h2>
+            <p className="mt-3 text-ink/75">Conseils, résultats et témoignages chaque semaine.</p>
           </div>
-
-          <div className="space-y-8 mb-12">
-            <div className="bg-white p-8 rounded-xl border-2 border-sky-100 shadow-lg">
-              <div className="flex items-center gap-2 text-sky-600 mb-4">
-                <Calendar size={20} />
-                <span className="text-sm font-medium">Mars 2025</span>
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Sensibilisation au lipœdème au Maroc
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Le Dr Tawfik Sefrioui continue sa mission de sensibilisation au lipœdème auprès du public marocain et africain. Cette pathologie reste encore méconnue dans notre région, conduisant à des diagnostics tardifs et des souffrances inutiles pour de nombreuses femmes.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl border-2 border-sky-100 shadow-lg">
-              <div className="flex items-center gap-2 text-sky-600 mb-4">
-                <Calendar size={20} />
-                <span className="text-sm font-medium">Février 2025</span>
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Nouvelle technique de drainage post-opératoire
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Notre cabinet adopte les dernières techniques de drainage lymphatique manuel pour optimiser la récupération après liposuccion WAL, réduisant encore davantage les œdèmes et accélérant les résultats.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl border-2 border-sky-100 shadow-lg">
-              <div className="flex items-center gap-2 text-sky-600 mb-4">
-                <Calendar size={20} />
-                <span className="text-sm font-medium">Janvier 2025</span>
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Participation à un congrès international sur le lipœdème
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Le Dr Sefrioui a participé à un congrès européen sur le lipœdème, où il a échangé avec d'autres spécialistes et découvert les dernières avancées en matière de diagnostic et de traitement de cette pathologie.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-rose-50 to-plum-50 p-8 md:p-12 rounded-2xl mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-              Suivez-nous sur les réseaux sociaux
-            </h2>
-            <p className="text-center text-gray-700 mb-6">
-              Rejoignez notre communauté Facebook pour ne rien manquer de nos actualités, conseils et témoignages de patientes.
-            </p>
-            <div className="text-center">
-              <a
-                href="https://www.facebook.com/lipedem"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-sky-600 text-white px-8 py-3 rounded-full font-medium hover:bg-sky-700 transition"
-              >
-                Suivre sur Facebook
-              </a>
-            </div>
-          </div>
-
-          <div className="bg-sky-600 text-white p-8 md:p-12 rounded-2xl text-center">
-            <h2 className="text-2xl font-bold mb-4">
-              Des questions sur le lipœdème ?
-            </h2>
-            <p className="text-lg mb-6 opacity-90">
-              Contactez-nous pour obtenir plus d'informations
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-white text-sky-600 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition"
-            >
-              Nous contacter
-            </Link>
+          <div className="flex flex-wrap gap-3">
+            <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" className="btn-ghost"><Instagram size={18} /> Instagram</a>
+            <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" className="btn-ghost"><Facebook size={18} /> Facebook</a>
+            <a href={SITE.social.youtube} target="_blank" rel="noopener noreferrer" className="btn-ghost"><Youtube size={18} /> YouTube</a>
           </div>
         </div>
-      </div>
-    </div>
+      </Section>
+
+      <CtaBand title="Des questions sur le lipœdème ?" />
+    </>
   );
 }

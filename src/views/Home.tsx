@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Check, ChevronDown, MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import Lightbox from '../components/Lightbox';
+import VideoPlayer from '../components/VideoPlayer';
 import { WhatsAppIcon } from '../components/MobileActionBar';
 import { SITE, mapsLink, whatsappLink } from '../config/site';
 import { homeFaq } from '../seo/faq';
@@ -285,10 +286,7 @@ export default function Home() {
             <p className="mt-3 text-ink/75">Visite du centre et du bloc opératoire où sont réalisées les interventions, au cœur du quartier Racine.</p>
             <Link href="/parcours-patient" className="mt-5 inline-block font-semibold text-rose-700 underline underline-offset-4 decoration-rose-300">Le parcours patiente en détail</Link>
           </div>
-          <video controls playsInline preload="none" poster="/video/cabinet-poster.jpg"
-            className="w-full max-w-[320px] mx-auto aspect-[9/16] rounded-3xl bg-ink object-cover">
-            <source src="/2026/leg/2026/video/Cabinet video.mp4" type="video/mp4" />
-          </video>
+          <VideoPlayer src="/videos/cabinet.mp4" poster="/videos/cabinet.jpg" title="Visite du cabinet" className="w-full max-w-[320px] mx-auto" />
         </div>
       </section>
 
