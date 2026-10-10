@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
 
@@ -231,6 +233,8 @@ export default function Chatbot() {
     scrollToBottom();
   }, [messages]);
 
+  // Event handler (not render): Date.now() / Math.random() are fine here.
+  /* eslint-disable react-hooks/purity */
   const handleSend = (messageText?: string) => {
     const textToSend = messageText || inputValue.trim();
     if (!textToSend) return;
@@ -257,6 +261,7 @@ export default function Chatbot() {
       setIsTyping(false);
     }, 1500 + Math.random() * 1000);
   };
+  /* eslint-enable react-hooks/purity */
 
   const handleQuickQuestion = (question: string) => {
     handleSend(question);

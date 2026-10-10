@@ -1,6 +1,10 @@
+'use client';
+
+import { usePath } from './usePath';
 import { Menu, X, ChevronDown, Phone, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import NavLink from './NavLink';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import { SITE, mapsLink, whatsappLink } from '../config/site';
@@ -34,7 +38,7 @@ const SINGLE: Item[] = [
 
 function Brand() {
   return (
-    <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Centre Lipœdème Maroc – accueil">
+    <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="Centre Lipœdème Maroc – accueil">
       <img src={SITE.logo} alt="" width="56" height="56" className="h-11 w-11 xl:h-14 xl:w-14 object-contain" />
       <span className="leading-tight">
         <span className="block font-serif text-[19px] xl:text-[22px] font-semibold text-ink">Lipœdème Maroc</span>
@@ -48,10 +52,16 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [section, setSection] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const { pathname } = useLocation();
+  const pathname = usePath();
   const { t } = useLanguage();
 
-  useEffect(() => { setOpen(false); setSection(null); }, [pathname]);
+  // Close the mobile menu when the page changes (state adjusted during render, no effect needed)
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpen(false);
+    setSection(null);
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -91,7 +101,7 @@ export default function Header() {
         <Brand />
 
         <nav className="hidden xl:flex items-center gap-0.5 text-[14px] font-medium" aria-label="Navigation principale">
-          <NavLink to="/" end className={({ isActive }) => `px-3 py-2 rounded-full ${isActive ? 'text-rose-700' : 'text-ink hover:text-rose-700'}`}>
+          <NavLink href="/" end className={({ isActive }) => `px-3 py-2 rounded-full ${isActive ? 'text-rose-700' : 'text-ink hover:text-rose-700'}`}>
             {t('home')}
           </NavLink>
           {GROUPS.map((g) => (
@@ -108,7 +118,7 @@ export default function Header() {
                 <ul className="w-64 rounded-2xl bg-white p-2 shadow-[0_20px_50px_-20px_rgba(46,16,24,0.35)] ring-1 ring-rose-100">
                   {g.items.map((i) => (
                     <li key={i.to}>
-                      <NavLink to={i.to} className={({ isActive }) => `block rounded-xl px-4 py-2.5 ${isActive ? 'bg-rose-50 text-rose-700' : 'text-ink hover:bg-rose-50'}`}>
+                      <NavLink href={i.to} className={({ isActive }) => `block rounded-xl px-4 py-2.5 ${isActive ? 'bg-rose-50 text-rose-700' : 'text-ink hover:bg-rose-50'}`}>
                         {t(i.key)}
                       </NavLink>
                     </li>
@@ -118,11 +128,11 @@ export default function Header() {
             </div>
           ))}
           {SINGLE.map((i) => (
-            <NavLink key={i.to} to={i.to} className={({ isActive }) => `px-3 py-2 rounded-full ${isActive ? 'text-rose-700' : 'text-ink hover:text-rose-700'}`}>
+            <NavLink key={i.to} href={i.to} className={({ isActive }) => `px-3 py-2 rounded-full ${isActive ? 'text-rose-700' : 'text-ink hover:text-rose-700'}`}>
               {t(i.key)}
             </NavLink>
           ))}
-          <Link to="/contact" className="btn-primary ml-3 !py-2.5 !min-h-0 text-sm">
+          <Link href="/contact" className="btn-primary ml-3 !py-2.5 !min-h-0 text-sm">
             Prendre rendez-vous
           </Link>
         </nav>
@@ -153,7 +163,7 @@ export default function Header() {
         style={{ paddingBottom: 'calc(96px + env(safe-area-inset-bottom))' }}
       >
         <nav className="container mx-auto pt-2" aria-label="Menu mobile">
-          <NavLink to="/" end className="flex items-center min-h-[56px] border-b border-rose-100 font-serif text-2xl text-ink">
+          <NavLink href="/" end className="flex items-center min-h-[56px] border-b border-rose-100 font-serif text-2xl text-ink">
             {t('home')}
           </NavLink>
           {GROUPS.map((g) => {
@@ -173,7 +183,7 @@ export default function Header() {
                   <ul className="pb-3">
                     {g.items.map((i) => (
                       <li key={i.to}>
-                        <NavLink to={i.to} className={({ isActive }) => `flex items-center min-h-[46px] pl-4 border-l-2 ${isActive ? 'border-rose-500 text-rose-700' : 'border-rose-100 text-ink/80'}`}>
+                        <NavLink href={i.to} className={({ isActive }) => `flex items-center min-h-[46px] pl-4 border-l-2 ${isActive ? 'border-rose-500 text-rose-700' : 'border-rose-100 text-ink/80'}`}>
                           {t(i.key)}
                         </NavLink>
                       </li>
@@ -184,11 +194,11 @@ export default function Header() {
             );
           })}
           {SINGLE.map((i) => (
-            <NavLink key={i.to} to={i.to} className="flex items-center min-h-[56px] border-b border-rose-100 font-serif text-2xl text-ink">
+            <NavLink key={i.to} href={i.to} className="flex items-center min-h-[56px] border-b border-rose-100 font-serif text-2xl text-ink">
               {t(i.key)}
             </NavLink>
           ))}
-          <NavLink to="/contact" className="flex items-center min-h-[56px] border-b border-rose-100 font-serif text-2xl text-ink">
+          <NavLink href="/contact" className="flex items-center min-h-[56px] border-b border-rose-100 font-serif text-2xl text-ink">
             {t('contact')}
           </NavLink>
 

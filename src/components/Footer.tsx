@@ -1,5 +1,6 @@
-import { Youtube, Instagram, Mail, Phone, MapPin, Facebook, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Youtube, Instagram, Facebook } from './SocialIcons';
+import Link from 'next/link';
 import { SITE, mapsLink, whatsappLink } from '../config/site';
 
 const LINKS = [
@@ -56,14 +57,14 @@ export default function Footer() {
           <nav aria-label="Le lipœdème">
             <p className="font-serif text-xl text-white mb-5">Le lipœdème</p>
             <ul className="space-y-3 text-sm">
-              {LINKS.map((l) => <li key={l.to}><Link to={l.to} className="hover:text-white">{l.label}</Link></li>)}
+              {LINKS.map((l) => <li key={l.to}><Link href={l.to} className="hover:text-white">{l.label}</Link></li>)}
             </ul>
           </nav>
 
           <nav aria-label="Le centre">
             <p className="font-serif text-xl text-white mb-5">Le centre</p>
             <ul className="space-y-3 text-sm">
-              {ABOUT.map((l) => <li key={l.to}><Link to={l.to} lang={l.to === '/ar' ? 'ar' : undefined} className={`hover:text-white ${l.to === '/ar' ? 'font-arabic text-[15px]' : ''}`}>{l.label}</Link></li>)}
+              {ABOUT.map((l) => <li key={l.to}><Link href={l.to} lang={l.to === '/ar' ? 'ar' : undefined} className={`hover:text-white ${l.to === '/ar' ? 'font-arabic text-[15px]' : ''}`}>{l.label}</Link></li>)}
             </ul>
           </nav>
 

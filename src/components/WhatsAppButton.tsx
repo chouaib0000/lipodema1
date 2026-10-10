@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { whatsappLink } from '../config/site';
 import { WhatsAppIcon } from './MobileActionBar';

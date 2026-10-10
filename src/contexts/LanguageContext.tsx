@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { translations } from '../translations';
 
@@ -19,6 +21,8 @@ export function LanguageProvider({ children }: { children: ReactNode}) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem('language') as Language | null;
+      // Applied after hydration on purpose so the prerendered (French) HTML matches the first render.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (saved && saved !== 'fr' && saved in translations) setLanguage(saved);
     } catch { /* storage unavailable */ }
   }, []);

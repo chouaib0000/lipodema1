@@ -1,4 +1,8 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+'use client';
+
+import { usePath } from './usePath';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const LANGS = [
@@ -10,9 +14,9 @@ const LANGS = [
 export default function LanguageSwitcher({ variant = 'light' }: { variant?: 'light' | 'dark' }) {
   const { language, setLanguage } = useLanguage();
   const dark = variant === 'dark';
-  const { pathname } = useLocation();
+  const pathname = usePath();
   const onArabic = pathname === '/ar';
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div className={`inline-flex items-center rounded-full p-0.5 ${dark ? 'bg-white/10' : 'bg-rose-50'}`} role="group" aria-label="Langue">
@@ -25,7 +29,7 @@ export default function LanguageSwitcher({ variant = 'light' }: { variant?: 'lig
             lang={l.code}
             title={l.name}
             aria-pressed={active}
-            onClick={() => { setLanguage(l.code); if (onArabic) navigate('/'); }}
+            onClick={() => { setLanguage(l.code); if (onArabic) router.push('/'); }}
             className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
               active
                 ? dark ? 'bg-white text-plum-900' : 'bg-rose-600 text-white'
@@ -38,7 +42,7 @@ export default function LanguageSwitcher({ variant = 'light' }: { variant?: 'lig
       })}
       {/* Arabic is a separate, indexable page rather than a client-side translation */}
       <Link
-        to="/ar"
+        href="/ar"
         lang="ar"
         hrefLang="ar"
         title="العربية"

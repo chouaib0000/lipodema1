@@ -56,6 +56,15 @@ export const SITE = {
   heroImage: '/img/dr-tawfik-sefrioui.webp',
   doctorPhoto: '/2028/5.jpeg',
   ga: ['G-98XDWC6P0Q', 'G-F46EC384N2'],
+
+  // Marketing tags – leave empty ('') to disable. Paste the ID to switch one on:
+  tracking: {
+    gtm: '',            // Google Tag Manager container, e.g. 'GTM-XXXXXXX'
+    metaPixel: '',      // Meta (Facebook/Instagram) Pixel ID, e.g. '123456789012345'
+    tiktokPixel: '',    // TikTok Pixel ID, e.g. 'CXXXXXXXXXXXXXXXXXXX'
+    googleAds: '',      // Google Ads tag, e.g. 'AW-123456789'
+    googleAdsLeadLabel: '', // conversion label for WhatsApp/call clicks, e.g. 'AbCdEfGhIj'
+  },
 } as const;
 
 export const fullAddress = `${SITE.address.street}, ${SITE.address.district}, ${SITE.address.postalCode} ${SITE.address.city}, ${SITE.address.countryName}`;
@@ -68,3 +77,6 @@ export const whatsappLink = (text = 'Bonjour, je souhaite obtenir des informatio
   `https://wa.me/${SITE.whatsapp.wa}?text=${encodeURIComponent(text)}`;
 
 export const absUrl = (path: string) => SITE.url + encodeURI(path);
+
+/** Absolute URL of a page (pages are served with a trailing slash: /maladie/). */
+export const pageUrl = (path: string) => (path === '/' ? `${SITE.url}/` : `${SITE.url}${path.replace(/\/+$/, '')}/`);

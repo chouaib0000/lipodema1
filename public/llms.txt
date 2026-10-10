@@ -12,13 +12,13 @@
 
 ## Pages principales
 
-- [Le lipœdème : symptômes, causes et stades](https://lipoedem.ma/maladie)
-- [Diagnostic du lipœdème](https://lipoedem.ma/diagnostic)
-- [Traitements du lipœdème au Maroc](https://lipoedem.ma/traitement)
-- [Liposuccion WAL Bodyjet 3D](https://lipoedem.ma/wal)
-- [Résultats avant / après](https://lipoedem.ma/resultats)
-- [Parcours du Dr Tawfik Sefrioui](https://lipoedem.ma/parcours)
-- [Parcours patiente](https://lipoedem.ma/parcours-patient)
-- [Témoignages](https://lipoedem.ma/temoignages)
-- [Contact et rendez-vous](https://lipoedem.ma/contact)
-- [النسخة العربية – علاج الوذمة الشحمية في المغرب](https://lipoedem.ma/ar)
+- [Le lipœdème : symptômes, causes et stades](https://lipoedem.ma/maladie/)
+- [Diagnostic du lipœdème](https://lipoedem.ma/diagnostic/)
+- [Traitements du lipœdème au Maroc](https://lipoedem.ma/traitement/)
+- [Liposuccion WAL Bodyjet 3D](https://lipoedem.ma/wal/)
+- [Résultats avant / après](https://lipoedem.ma/resultats/)
+- [Parcours du Dr Tawfik Sefrioui](https://lipoedem.ma/parcours/)
+- [Parcours patiente](https://lipoedem.ma/parcours-patient/)
+- [Témoignages](https://lipoedem.ma/temoignages/)
+- [Contact et rendez-vous](https://lipoedem.ma/contact/)
+- [النسخة العربية – علاج الوذمة الشحمية في المغرب](https://lipoedem.ma/ar/)

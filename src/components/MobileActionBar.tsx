@@ -1,5 +1,8 @@
+'use client';
+
+import { usePath } from './usePath';
 import { Phone, CalendarDays } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
 import { SITE, whatsappLink } from '../config/site';
 
 const WhatsAppIcon = () => (
@@ -10,7 +13,7 @@ const WhatsAppIcon = () => (
 
 /** Thumb-reachable contact bar for phones, above the iPhone home indicator. */
 export default function MobileActionBar() {
-  const ar = useLocation().pathname === '/ar';
+  const ar = usePath() === '/ar';
   const L = ar
     ? { call: 'اتصال', rdv: 'موعد', wa: 'السلام عليكم، أود الحصول على معلومات حول علاج الوذمة الشحمية.', font: ' font-arabic text-[13px]' }
     : { call: 'Appeler', rdv: 'Rendez-vous', wa: undefined, font: '' };
@@ -28,7 +31,7 @@ export default function MobileActionBar() {
           <WhatsAppIcon />
           WhatsApp
         </a>
-        <Link to="/contact" className={`flex h-12 flex-col items-center justify-center rounded-2xl bg-rose-600 text-white text-[12px] font-semibold${L.font}`}>
+        <Link href="/contact" className={`flex h-12 flex-col items-center justify-center rounded-2xl bg-rose-600 text-white text-[12px] font-semibold${L.font}`}>
           <CalendarDays size={19} aria-hidden="true" />
           {L.rdv}
         </Link>

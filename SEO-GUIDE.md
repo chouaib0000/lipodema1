@@ -1,19 +1,22 @@
 # SEO & local SEO – lipoedem.ma
 
+> **First check that the domain lipoedem.ma is renewed.** In October 2026 Google was showing
+> "Nom de domaine expiré" for it – nothing on the site can rank while the domain is expired.
+
 ## How the site is built now
 
-`npm run build` does three things:
+The site is a **Next.js 16** app (App Router) exported as static files:
 
-1. builds the React app (Vite),
-2. builds a server version of the same app,
-3. runs `scripts/prerender.mjs`, which writes one real HTML file per page
-   (`index.html`, `maladie.html`, `contact.html`…), a `404.html` and `sitemap.xml`.
+```
+npm install
+npm run dev     # local development on http://localhost:3000
+npm run build   # writes the finished site to dist/  (one folder + index.html per page)
+```
 
-Google, Bing and AI assistants (ChatGPT, Perplexity, Gemini…) now receive the full text,
-title, description, canonical URL and structured data of every page without running JavaScript.
-The browser then "hydrates" the page so menus, galleries and the chatbot work as before.
-
-Deploy the `dist/` folder as before (Netlify / Bolt). No server is needed.
+Every page is pre-rendered to HTML at build time with its own title, description, canonical,
+hreflang and JSON-LD, so Google, Bing and AI assistants read the full content without running
+JavaScript. Pages are served with a trailing slash (`/maladie/`), which works on any static host
+without rewrite rules. Deploy the `dist/` folder (Netlify settings are in `netlify.toml`).
 
 ## Where to change things
 
@@ -23,7 +26,8 @@ Deploy the `dist/` folder as before (Netlify / Bolt). No server is needed.
 | Title / meta description of each page | `src/seo/routes.ts` |
 | Home page FAQ (also sent to Google as FAQ schema) | `src/seo/faq.ts` |
 | Structured data (MedicalClinic, Physician, MedicalCondition, MedicalProcedure, FAQ, Breadcrumb) | `src/seo/schema.ts` |
-| Adding a new page | add the route in `src/App.tsx` **and** in `src/seo/routes.ts` |
+| Adding a new page | create `src/app/<slug>/page.tsx` (copy an existing one) **and** add it to `src/seo/routes.ts` – the sitemap updates itself |
+| Ad / marketing tags (GTM, Meta Pixel, TikTok, Google Ads) | `src/config/site.ts` → `tracking` – paste the ID, rebuild |
 
 ## Google Analytics
 
@@ -47,7 +51,7 @@ when someone shares a link to the site.
 ## After deploying
 
 1. **Google Search Console** → Sitemaps → submit `https://lipoedem.ma/sitemap.xml`.
-   Then URL inspection → test `/`, `/maladie`, `/traitement`, `/wal`, `/contact` → *Request indexing*.
+   Then URL inspection → test `/`, `/ar/`, `/maladie/`, `/traitement/`, `/wal/`, `/contact/` → *Request indexing*.
 2. **Bing Webmaster Tools** → submit the same sitemap (Bing also feeds ChatGPT search).
 3. Check structured data with https://search.google.com/test/rich-results
 

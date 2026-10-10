@@ -1,12 +1,12 @@
-import { SITE, absUrl, mapsLink } from '../config/site';
+import { SITE, absUrl, mapsLink, pageUrl } from '../config/site';
 import type { RouteMeta } from './routes';
 
 const ID = {
   website: `${SITE.url}/#website`,
   clinic: `${SITE.url}/#clinic`,
   doctor: `${SITE.url}/#dr-tawfik-sefrioui`,
-  condition: `${SITE.url}/maladie#lipoedeme`,
-  procedure: `${SITE.url}/wal#liposuccion-wal`,
+  condition: `${SITE.url}/maladie/#lipoedeme`,
+  procedure: `${SITE.url}/wal/#liposuccion-wal`,
 };
 
 const clinic = {
@@ -61,7 +61,7 @@ const doctor = {
   '@id': ID.doctor,
   name: SITE.doctor,
   alternateName: ['Tawfik Sefrioui', 'Pr Tawfik Sefrioui', 'Dr Sefrioui'],
-  url: `${SITE.url}/parcours`,
+  url: `${SITE.url}/parcours/`,
   image: absUrl(SITE.doctorPhoto),
   jobTitle: 'Chirurgien spécialiste du lipœdème',
   description:
@@ -119,7 +119,7 @@ const website = {
 };
 
 export function buildSchema(route: RouteMeta) {
-  const url = route.path === '/' ? `${SITE.url}/` : `${SITE.url}${route.path}`;
+  const url = pageUrl(route.path);
 
   const breadcrumb = {
     '@type': 'BreadcrumbList',
