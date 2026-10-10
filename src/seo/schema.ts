@@ -13,7 +13,7 @@ const clinic = {
   '@type': ['MedicalClinic', 'MedicalBusiness'],
   '@id': ID.clinic,
   name: SITE.name,
-  alternateName: ['Centre Lipoedème Maroc', 'Lipoedem Maroc', 'Centre du Lipœdème Casablanca', SITE.legalName],
+  alternateName: ['Centre Lipoedème Maroc', 'Lipoedem Maroc', 'Lipoedem Casablanca', 'Lipedema Clinic Morocco','Centre du Lipœdème Casablanca', SITE.legalName],
   description:
     'Centre médical de Casablanca dédié au traitement du lipœdème depuis 2015 : consultation spécialisée et liposuccion WAL Bodyjet 3D avec micro-canules sous anesthésie locale.',
   url: `${SITE.url}/`,
@@ -79,7 +79,7 @@ const condition = {
   '@type': 'MedicalCondition',
   '@id': ID.condition,
   name: 'Lipœdème',
-  alternateName: ['Lipedema', 'Lipoedema', 'Lipoedème', 'Lipeodeme', 'الوذمة الشحمية'],
+  alternateName: ['Lipedema', 'Lipoedema', 'Lipoedem','Lipoedème', 'Lipeodeme', 'الوذمة الشحمية'],
   description:
     'Maladie chronique du tissu adipeux, touchant presque exclusivement les femmes, caractérisée par une accumulation symétrique et douloureuse de graisse sur les jambes, les hanches et parfois les bras, résistante aux régimes.',
   associatedAnatomy: { '@type': 'AnatomicalStructure', name: 'Tissu adipeux sous-cutané des membres' },

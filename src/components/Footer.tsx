@@ -13,6 +13,8 @@ const LINKS = [
   { to: '/guide', label: 'Guide du lipœdème' },
   { to: '/guide/lipoedeme-ou-cellulite', label: 'Lipœdème ou cellulite ?' },
   { to: '/guide/prix-operation-lipoedeme-maroc', label: 'Prix d’une opération au Maroc' },
+  { to: '/guide/quel-medecin-consulter-lipoedeme-maroc', label: 'Quel médecin consulter au Maroc ?' },
+  { to: '/guide/liposuccion-wal-ou-classique', label: 'Liposuccion WAL ou classique ?' },
 ];
 
 const ABOUT = [

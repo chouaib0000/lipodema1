@@ -17,6 +17,7 @@ const facts = () => `> ${SITE.name} (${SITE.doctor}) est un centre médical de C
 - Horaires : lundi–vendredi 9h–18h, samedi 9h–13h, dimanche fermé
 - Langues : français, arabe, anglais, espagnol
 - Patientes : Casablanca, tout le Maroc (Rabat, Marrakech, Tanger, Fès, Agadir…) et l'étranger (Europe, Afrique)
+- Recherches associées : lipœdème Maroc, lipoedem Maroc, lipoedem Casablanca, lipedema Morocco, spécialiste lipœdème Casablanca, liposuccion WAL Maroc, الوذمة الشحمية المغرب
 - Site : ${SITE.url}/
 - Instagram : ${SITE.social.instagram}
 - Facebook : ${SITE.social.facebook}
