@@ -11,6 +11,7 @@ export default function ParcoursPatient() {
       />
 
       <Section>
+        <SectionHead title="Les 6 étapes de votre prise en charge" />
         <Steps
           items={[
             {

@@ -348,7 +348,7 @@ export const GUIDE: GuideArticle[] = [
     slug: 'lipoedeme-des-bras',
     title: 'Lipœdème des bras : symptômes et traitement',
     metaTitle: 'Lipœdème des bras : symptômes, diagnostic et traitement',
-    description: 'Bras lourds et douloureux, graisse qui s’arrête au poignet : reconnaître le lipœdème des bras et le traiter par liposuccion WAL sous anesthésie locale à Casablanca.',
+    description: 'Bras lourds et douloureux, graisse qui s’arrête au poignet : reconnaître le lipœdème des bras et le traiter par liposuccion WAL à Casablanca.',
     intro:
       'Le lipœdème ne touche pas que les jambes. Chez de nombreuses patientes, les bras sont aussi atteints, en particulier le haut du bras. La graisse s’arrête net au niveau du poignet, laissant la main fine.',
     keyPoints: [
@@ -454,8 +454,8 @@ export const GUIDE: GuideArticle[] = [
   {
     slug: 'liposuccion-wal-ou-classique',
     title: 'Liposuccion WAL ou liposuccion classique : quelle différence pour le lipœdème ?',
-    metaTitle: 'Liposuccion WAL ou classique : la différence pour le lipœdème',
-    description: 'Jet d’eau, micro-canules, anesthésie locale, vaisseaux lymphatiques : ce qui distingue la liposuccion WAL de la liposuccion classique dans le traitement du lipœdème.',
+    metaTitle: 'Liposuccion WAL ou classique : quelle différence ?',
+    description: 'Jet d’eau, micro-canules, anesthésie locale, lymphatiques préservés : ce qui distingue la liposuccion WAL de la liposuccion classique pour le lipœdème.',
     intro:
       'Toutes les liposuccions ne se valent pas face au lipœdème. La graisse malade entoure des vaisseaux lymphatiques fragiles, et la technique choisie compte autant que la quantité retirée. La liposuccion WAL (Water-Assisted Liposuction) a été conçue pour être plus douce.',
     keyPoints: [
@@ -510,7 +510,7 @@ export const GUIDE: GuideArticle[] = [
     slug: 'traitement-lipoedeme-sans-chirurgie',
     title: 'Peut-on traiter le lipœdème sans chirurgie ?',
     metaTitle: 'Traiter le lipœdème sans chirurgie : ce qui soulage vraiment',
-    description: 'Compression, drainage, activité physique, alimentation : ce que les traitements sans chirurgie apportent au lipœdème, leurs limites, et quand envisager une opération.',
+    description: 'Compression, drainage, sport, alimentation : ce que les traitements sans chirurgie apportent au lipœdème, leurs limites, et quand envisager une opération.',
     intro:
       'Toutes les patientes atteintes de lipœdème n’ont pas besoin d’être opérées. Les traitements dits conservateurs soulagent la douleur et la lourdeur, et ralentissent parfois l’évolution. Ils ont cependant une limite : ils ne retirent pas la graisse du lipœdème.',
     keyPoints: [
@@ -557,7 +557,7 @@ export const GUIDE: GuideArticle[] = [
     slug: 'diagnostic-lipoedeme-test',
     title: 'Existe-t-il un test pour reconnaître un lipœdème ?',
     metaTitle: 'Test du lipœdème : comment le diagnostic est posé',
-    description: 'Pas de prise de sang ni d’imagerie qui prouve le lipœdème : comment le médecin pose le diagnostic, les examens utiles et le questionnaire pour savoir s’il faut consulter.',
+    description: 'Aucune prise de sang ne prouve le lipœdème : comment le médecin pose le diagnostic, les examens utiles et un questionnaire pour savoir s’il faut consulter.',
     intro:
       'Beaucoup de patientes cherchent un « test du lipœdème ». Il n’existe pas d’analyse ni d’imagerie qui le confirme à elle seule : le diagnostic est clinique. Quelques questions simples permettent toutefois de savoir s’il faut consulter.',
     keyPoints: [

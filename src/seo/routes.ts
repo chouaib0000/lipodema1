@@ -32,7 +32,7 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/',
     title: 'Lipœdème Maroc – Traitement à Casablanca | Dr Sefrioui',
-    description: 'Centre spécialisé du lipœdème au Maroc depuis 2015. Liposuccion WAL Bodyjet 3D sous anesthésie locale à Casablanca par le Dr Tawfik Sefrioui. Prenez rendez-vous.',
+    description: 'Centre du lipœdème au Maroc depuis 2015 : liposuccion WAL Bodyjet 3D sous anesthésie locale à Casablanca par le Dr Tawfik Sefrioui. Prenez rendez-vous.',
     breadcrumb: 'Accueil',
     kind: 'home',
     priority: 1.0,
@@ -56,7 +56,7 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/en',
     title: 'Lipedema Surgery in Morocco – Casablanca | Dr Sefrioui',
-    description: 'Lipedema treatment in Casablanca, Morocco, since 2015: WAL Bodyjet 3D water-assisted liposuction under local anaesthesia by Dr Tawfik Sefrioui. Free WhatsApp contact.',
+    description: 'Lipedema treatment in Casablanca, Morocco, since 2015: WAL Bodyjet 3D water-assisted liposuction under local anaesthesia by Dr Tawfik Sefrioui.',
     breadcrumb: 'English',
     kind: 'home',
     priority: 0.8,
