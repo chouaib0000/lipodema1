@@ -12,6 +12,8 @@ const nextConfig = {
 
   async redirects() {
     return [
+      // One single domain for Google: www.lipoedem.ma → lipoedem.ma (if www is attached to this Vercel project)
+      { source: '/:path*', has: [{ type: 'host', value: 'www.lipoedem.ma' }], destination: 'https://lipoedem.ma/:path*', permanent: true },
       // Old canonical / hreflang URLs that never existed – pass their signals to the real pages
       { source: '/fr', destination: '/', permanent: true },
       { source: '/fr/:path*', destination: '/:path*', permanent: true },
