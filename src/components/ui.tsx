@@ -183,3 +183,23 @@ export function TextLink({ href, children }: { href: string; children: ReactNode
     </Link>
   );
 }
+
+/** Accordion FAQ (native <details>, works without JavaScript). Pair with FAQPage schema on the route. */
+export function FaqList({ items, title = 'Questions fréquentes' }: { items: { q: string; a: string }[]; title?: string }) {
+  return (
+    <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      <SectionHead title={title} />
+      <div className="divide-y divide-rose-200 border-y border-rose-200">
+        {items.map((f) => (
+          <details key={f.q} className="group py-5">
+            <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-[17px] font-semibold text-ink">
+              <h3 className="font-sans text-[17px] font-semibold">{f.q}</h3>
+              <span className="mt-1 text-xl leading-none text-rose-600 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p className="mt-3 text-[16px] leading-relaxed text-ink/80">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  );
+}

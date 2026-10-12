@@ -1,7 +1,7 @@
 // Per-page SEO. Used both at build time (prerendered HTML <head>) and in the
 // browser (when navigating between pages without a reload).
 
-import { homeFaq, arFaq, enFaq, type FaqItem } from './faq';
+import { homeFaq, arFaq, enFaq, maladieFaq, type FaqItem } from './faq';
 import { GUIDE } from '../content/guide';
 
 export type PageKind = 'home' | 'condition' | 'procedure' | 'physician' | 'contact' | 'gallery' | 'about' | 'generic' | 'article' | 'hub';
@@ -67,12 +67,13 @@ export const ROUTES: RouteMeta[] = [
   },
   {
     path: '/maladie',
-    title: 'Lipœdème : symptômes, causes et stades | Lipœdème Maroc',
+    title: 'Lipœdème : définition, symptômes, causes et stades',
     description: 'Qu’est-ce que le lipœdème ? Symptômes (jambes lourdes, douleurs, bleus), causes hormonales et génétiques, les 4 stades et la différence avec l’obésité.',
     breadcrumb: 'Le lipœdème',
     kind: 'condition',
     priority: 0.9,
     changefreq: 'monthly',
+    faq: maladieFaq,
   },
   {
     path: '/diagnostic',

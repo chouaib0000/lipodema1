@@ -595,6 +595,101 @@ export const GUIDE: GuideArticle[] = [
     updated: '2026-10-10',
     related: ['stades-du-lipoedeme', 'lipoedeme-ou-cellulite', 'quel-medecin-consulter-lipoedeme-maroc'],
   },
+  {
+    slug: 'lipoedeme-et-grossesse',
+    title: 'Lipœdème et grossesse : ce qu’il faut savoir',
+    metaTitle: 'Lipœdème et grossesse : risques, conseils et traitement',
+    description: 'La grossesse peut déclencher ou aggraver un lipœdème. Ce qui se passe, comment se protéger, et quand envisager une liposuccion WAL après l’accouchement.',
+    intro:
+      'Beaucoup de patientes racontent que leurs jambes ont changé pendant ou après une grossesse. Les variations hormonales sont l’un des moments clés du lipœdème. Voici ce qu’il faut savoir avant, pendant et après une grossesse.',
+    keyPoints: [
+      'La grossesse est, avec la puberté et la ménopause, un moment où le lipœdème apparaît ou s’aggrave.',
+      'Le lipœdème n’empêche pas d’avoir des enfants.',
+      'Pendant la grossesse, on privilégie la marche, une compression adaptée si le médecin la conseille et une prise de poids encadrée.',
+      'Aucune liposuccion n’est réalisée pendant la grossesse ni l’allaitement.',
+      'Après l’accouchement, une liposuccion WAL peut être discutée une fois le corps stabilisé.',
+    ],
+    sections: [
+      {
+        h2: 'Pourquoi la grossesse influence le lipœdème',
+        paragraphs: [
+          'Le lipœdème est très lié aux hormones féminines. Pendant la grossesse, les changements hormonaux, la rétention d’eau et la prise de poids peuvent augmenter le volume des jambes, la douleur et la sensation de lourdeur.',
+          'Chez certaines femmes, c’est après une grossesse que la disproportion entre le haut et le bas du corps devient évidente. Chez d’autres, un lipœdème déjà présent progresse d’un stade.',
+        ],
+      },
+      {
+        h2: 'Pendant la grossesse : les bons réflexes',
+        list: [
+          'Marcher chaque jour, nager ou faire de l’aquagym si votre médecin l’autorise',
+          'Porter une compression adaptée si elle est prescrite, surtout en fin de journée',
+          'Surélever les jambes au repos',
+          'Suivre une alimentation équilibrée et une prise de poids encadrée par votre médecin',
+          'Signaler toute douleur ou gonflement inhabituel à votre gynécologue',
+        ],
+      },
+      {
+        h2: 'Après l’accouchement : quand envisager un traitement ?',
+        paragraphs: [
+          'On attend en général que le corps se soit stabilisé après l’accouchement et, le cas échéant, la fin de l’allaitement avant d’envisager une liposuccion. Le délai exact est fixé lors de la consultation.',
+          'Au Centre Lipœdème Maroc, à Casablanca, le Dr Tawfik Sefrioui évalue le stade et propose, selon les cas, un traitement sans chirurgie ou une liposuccion WAL Bodyjet 3D sous anesthésie locale.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on être enceinte avec un lipœdème ?', a: 'Oui. Le lipœdème n’empêche pas une grossesse. Il peut en revanche s’aggraver pendant cette période, d’où l’intérêt d’un suivi et de bonnes habitudes.' },
+      { q: 'Peut-on faire une liposuccion pendant la grossesse ?', a: 'Non. Aucune liposuccion n’est réalisée pendant la grossesse ni pendant l’allaitement.' },
+      { q: 'Faut-il attendre d’avoir fini ses grossesses pour se faire opérer ?', a: 'Pas forcément. Une grossesse ultérieure reste possible après une liposuccion du lipœdème ; la décision se prend avec le médecin selon votre projet et le stade de la maladie.' },
+    ],
+    published: '2026-10-12',
+    updated: '2026-10-12',
+    related: ['stades-du-lipoedeme', 'traitement-lipoedeme-sans-chirurgie', 'recuperation-apres-liposuccion-lipoedeme'],
+  },
+  {
+    slug: 'vetements-de-compression-lipoedeme',
+    title: 'Vêtements de compression et lipœdème : à quoi ça sert ?',
+    metaTitle: 'Compression et lipœdème : bas, collants, panty',
+    description: 'Bas, collants ou panty de compression : ce que la compression apporte au lipœdème, comment la choisir, et son rôle essentiel après une liposuccion WAL.',
+    intro:
+      'La compression est un pilier du traitement du lipœdème, avant comme après une opération. Elle ne fait pas disparaître la graisse, mais elle soulage la lourdeur, limite l’œdème et accompagne la récupération.',
+    keyPoints: [
+      'La compression soulage la lourdeur et l’œdème, elle ne retire pas la graisse du lipœdème.',
+      'Elle doit être adaptée et prise aux bonnes mesures, idéalement sur conseil médical.',
+      'Les modèles à tricot plat sont souvent mieux tolérés sur des jambes de forme irrégulière.',
+      'Après une liposuccion WAL, un panty de compression se porte surtout pendant le premier mois.',
+    ],
+    sections: [
+      {
+        h2: 'Ce que la compression apporte',
+        list: [
+          'Moins de sensation de jambes lourdes, surtout en fin de journée',
+          'Diminution de l’œdème associé',
+          'Meilleur confort à la marche et pendant le sport',
+          'Après une liposuccion : moins de gonflement et une peau qui se rétracte mieux',
+        ],
+      },
+      {
+        h2: 'Bien choisir sa compression',
+        paragraphs: [
+          'Bas, collants, panty ou manchons pour les bras : le modèle dépend des zones touchées. La classe de compression et la taille se choisissent sur mesures, idéalement le matin, quand les jambes sont le moins gonflées.',
+          'Sur des jambes de forme irrégulière, les vêtements à tricot plat, plus épais, glissent moins et serrent de façon plus homogène. Une compression mal adaptée peut faire mal ou créer un garrot : demandez conseil.',
+        ],
+      },
+      {
+        h2: 'La compression après une liposuccion WAL',
+        paragraphs: [
+          'Au Centre Lipœdème Maroc, la patiente repart avec un vêtement de compression après sa liposuccion WAL sous anesthésie locale. Il se porte jour et nuit les premières semaines, puis le protocole s’allège selon les consignes du Dr Tawfik Sefrioui, avec un drainage post-opératoire.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Les bas de contention font-ils maigrir les jambes ?', a: 'Non. Ils soulagent la lourdeur et l’œdème, mais ne retirent pas la graisse du lipœdème.' },
+      { q: 'Combien de temps porter la compression après une liposuccion ?', a: 'Surtout pendant le premier mois, jour et nuit au début, puis selon le protocole donné par le médecin.' },
+      { q: 'Faut-il porter une compression toute sa vie ?', a: 'Cela dépend des symptômes. Beaucoup de patientes la portent dans les moments de lourdeur (chaleur, voyages, station debout). Le médecin adapte les conseils à chaque cas.' },
+    ],
+    published: '2026-10-12',
+    updated: '2026-10-12',
+    related: ['recuperation-apres-liposuccion-lipoedeme', 'traitement-lipoedeme-sans-chirurgie', 'liposuccion-wal-ou-classique'],
+  },
 ];
 
 export const getArticle = (slug: string) => GUIDE.find((a) => a.slug === slug);

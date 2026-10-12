@@ -94,3 +94,35 @@ export const enFaq: FaqItem[] = [
     a: 'The price depends on the stage, the areas treated and the number of sessions. You receive a detailed quote after the consultation. You can send photos on WhatsApp for a first opinion.',
   },
 ];
+
+// /maladie – the pillar page for the search "lipœdème"
+export const maladieFaq: FaqItem[] = [
+  {
+    q: 'Qu’est-ce que le lipœdème ?',
+    a: 'Le lipœdème est une maladie chronique du tissu graisseux qui touche presque exclusivement les femmes. La graisse s’accumule de façon symétrique et disproportionnée sur les hanches, les cuisses, les jambes et parfois les bras. Elle est douloureuse au toucher, les bleus apparaissent facilement et elle résiste aux régimes et au sport.',
+  },
+  {
+    q: 'Le lipœdème se guérit-il ?',
+    a: 'Le lipœdème est une maladie chronique. Compression, activité physique et drainage soulagent les symptômes. La liposuccion adaptée au lipœdème, comme la liposuccion WAL, retire durablement la graisse malade et améliore souvent la douleur et la mobilité ; un suivi reste conseillé.',
+  },
+  {
+    q: 'Le lipœdème est-il héréditaire ?',
+    a: 'Il existe souvent une composante familiale : une mère, une sœur ou une tante présente fréquemment la même silhouette. Les changements hormonaux (puberté, grossesse, ménopause) jouent aussi un rôle dans son apparition ou son aggravation.',
+  },
+  {
+    q: 'Le sport et le régime font-ils disparaître le lipœdème ?',
+    a: 'Non. Ils restent utiles pour la santé, la mobilité et pour éviter un surpoids qui aggraverait les symptômes, mais la graisse du lipœdème diminue peu ou pas avec le régime et le sport.',
+  },
+  {
+    q: 'Les hommes peuvent-ils avoir un lipœdème ?',
+    a: 'C’est exceptionnel. Le lipœdème touche presque exclusivement les femmes, ce qui confirme le rôle des hormones féminines dans la maladie.',
+  },
+  {
+    q: 'Comment savoir si j’ai un lipœdème ?',
+    a: 'Des jambes ou des bras nettement plus forts que le reste du corps, douloureux au toucher, avec des bleus faciles et des pieds épargnés doivent faire penser au lipœdème. Seul un examen clinique par un médecin qui connaît la maladie permet de confirmer le diagnostic et le stade.',
+  },
+  {
+    q: 'Où consulter pour un lipœdème au Maroc ?',
+    a: 'Au Centre Lipœdème Maroc, à Casablanca (5 boulevard Abdellatif Benqaddour, Racine), dédié au diagnostic et au traitement du lipœdème depuis 2015 par le Dr Tawfik Sefrioui. Rendez-vous au 05 22 39 86 89 ou par WhatsApp.',
+  },
+];
