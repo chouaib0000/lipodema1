@@ -203,3 +203,20 @@ export function FaqList({ items, title = 'Questions fréquentes' }: { items: { q
     </div>
   );
 }
+
+/** "Sources médicales" list – external, authoritative references (opened in a new tab). */
+export function References({ items }: { items: { label: string; publisher: string; url: string }[] }) {
+  return (
+    <section aria-labelledby="sources-medicales" className="rounded-3xl bg-mist p-6 lg:p-8">
+      <h2 id="sources-medicales" className="font-serif text-2xl text-ink">Sources médicales</h2>
+      <ol className="mt-4 list-decimal space-y-2 pl-5 text-[15px] leading-relaxed text-ink/75 marker:text-rose-600">
+        {items.map((r) => (
+          <li key={r.url}>
+            <a href={r.url} target="_blank" rel="noopener" className="underline decoration-rose-300 underline-offset-4 hover:text-rose-700">{r.label}</a>
+            {' '}— {r.publisher}
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}

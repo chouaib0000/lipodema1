@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { Check } from 'lucide-react';
 import type { GuideArticle as Article } from '../content/guide';
 import { getArticle } from '../content/guide';
-import { Section, CtaBand, Checklist } from '../components/ui';
+import { Section, CtaBand, Checklist, References } from '../components/ui';
+import { MEDICAL_REFERENCES } from '../content/references';
 import { SITE } from '../config/site';
 
 const fmt = (d: string) => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -90,6 +91,8 @@ export default function GuideArticle({ article: a }: { article: Article }) {
                   ))}
                 </div>
               </section>
+
+              <References items={MEDICAL_REFERENCES} />
 
               <p className="text-sm text-ink/55">
                 Article d’information, relu par le Dr Tawfik Sefrioui. Il ne remplace pas une consultation médicale.

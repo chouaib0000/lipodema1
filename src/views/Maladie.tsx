@@ -3,7 +3,8 @@
 import { useLanguage } from '../contexts/LanguageContext';
 import Link from 'next/link';
 import { Check } from 'lucide-react';
-import { PageHero, Section, SectionHead, Prose, Checklist, CtaBand, TextLink, Figure, FaqList } from '../components/ui';
+import { PageHero, Section, SectionHead, Prose, Checklist, CtaBand, TextLink, Figure, FaqList, References } from '../components/ui';
+import { MEDICAL_REFERENCES } from '../content/references';
 import { maladieFaq } from '../seo/faq';
 import { GUIDE } from '../content/guide';
 
@@ -211,6 +212,7 @@ export default function Maladie() {
 
       <Section>
         <FaqList items={maladieFaq} title="Questions fréquentes sur le lipœdème" />
+        <div className="mx-auto mt-14 max-w-4xl"><References items={MEDICAL_REFERENCES} /></div>
       </Section>
 
       <CtaBand title={t('concernedQuestion')} text={t('bookAppointment')} secondary={{ href: '/diagnostic/', label: 'Le diagnostic' }} />

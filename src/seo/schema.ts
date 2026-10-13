@@ -1,5 +1,8 @@
 import { SITE, absUrl, mapsLink, pageUrl } from '../config/site';
 import type { RouteMeta } from './routes';
+import { MEDICAL_REFERENCES } from '../content/references';
+
+const citation = MEDICAL_REFERENCES.map((r) => ({ '@type': 'CreativeWork', name: r.label, url: r.url, publisher: { '@type': 'Organization', name: r.publisher } }));
 
 const ID = {
   website: `${SITE.url}/#website`,
@@ -147,6 +150,7 @@ export function buildSchema(route: RouteMeta) {
   };
   if (pageType === 'MedicalWebPage') {
     webpage.about = { '@id': ID.condition };
+    if (route.kind === 'condition') webpage.citation = citation;
     webpage.audience = { '@type': 'PeopleAudience', audienceType: 'Patient' };
     webpage.reviewedBy = { '@id': ID.doctor };
   }
@@ -176,6 +180,7 @@ export function buildSchema(route: RouteMeta) {
       mainEntityOfPage: { '@id': `${url}#webpage` },
       about: { '@id': ID.condition },
       isPartOf: { '@id': ID.website },
+      citation,
     });
     graph.push(condition);
   }
