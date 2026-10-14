@@ -1,86 +1,109 @@
-import { Youtube, Instagram, Mail, Phone, MapPin, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Youtube, Instagram, Facebook } from './SocialIcons';
+import Link from 'next/link';
+import { SITE, mapsLink, whatsappLink } from '../config/site';
+
+const LINKS = [
+  { to: '/maladie', label: 'Qu’est-ce que le lipœdème ?' },
+  { to: '/diagnostic', label: 'Diagnostic du lipœdème' },
+  { to: '/traitement', label: 'Traitement du lipœdème au Maroc' },
+  { to: '/wal', label: 'Liposuccion WAL Bodyjet 3D' },
+  { to: '/resultats', label: 'Résultats avant / après' },
+  { to: '/temoignages', label: 'Témoignages de patientes' },
+  { to: '/guide', label: 'Guide du lipœdème' },
+  { to: '/guide/lipoedeme-ou-cellulite', label: 'Lipœdème ou cellulite ?' },
+  { to: '/guide/prix-operation-lipoedeme-maroc', label: 'Prix d’une opération au Maroc' },
+  { to: '/guide/quel-medecin-consulter-lipoedeme-maroc', label: 'Quel médecin consulter au Maroc ?' },
+  { to: '/guide/liposuccion-wal-ou-classique', label: 'Liposuccion WAL ou classique ?' },
+];
+
+const ABOUT = [
+  { to: '/parcours', label: 'Dr Tawfik Sefrioui' },
+  { to: '/clinique', label: 'Le centre à Casablanca' },
+  { to: '/parcours-patient', label: 'Parcours patiente' },
+  { to: '/services', label: 'Séjour médical' },
+  { to: '/publications', label: 'Publications' },
+  { to: '/actualites', label: 'Actualités' },
+  { to: '/contact', label: 'Contact et accès' },
+  { to: '/ar', label: 'النسخة العربية' },
+  { to: '/en', label: 'English – Lipedema surgery Morocco' },
+];
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-20">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    <footer className="bg-plum-950 text-plum-100">
+      <div className="container mx-auto py-16 lg:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
           <div>
-            <h3 className="text-lg font-serif mb-6 text-terracotta-300 tracking-wide">Centre</h3>
-            <p className="text-gray-400 text-sm leading-relaxed font-light">
-Centre de Référence pour le Traitement du Lipœdème au Maroc
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-serif mb-6 text-terracotta-300 tracking-wide">Contact</h4>
-            <div className="space-y-4 text-gray-400 text-sm">
-              <a href="tel:+21205223-98689" className="flex items-center gap-3 hover:text-terracotta-400 transition font-light">
-                <Phone size={16} />
-                <span>05223-98689</span>
-              </a>
-              <a href="mailto:contact@lipoedem.ma" className="flex items-center gap-3 hover:text-terracotta-400 transition font-light">
-                <Mail size={16} />
-                <span>contact@lipoedem.ma</span>
-              </a>
-              <div className="flex items-start gap-3">
-                <MapPin size={16} className="mt-1" />
-                <span className="font-light">Casablanca, Maroc</span>
+            <div className="flex items-center gap-3">
+              <span className="grid h-14 w-14 place-items-center rounded-full bg-white">
+                <img src={SITE.logo} alt="" width="48" height="48" loading="lazy" className="h-11 w-11 object-contain" />
+              </span>
+              <div>
+                <p className="font-serif text-2xl text-white">Centre Lipœdème Maroc</p>
+                <p className="text-sm text-rose-300">Dr Tawfik Sefrioui</p>
               </div>
             </div>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-serif mb-6 text-terracotta-300 tracking-wide">Horaires</h4>
-            <div className="space-y-3 text-gray-400 text-sm font-light">
-              <p>Lundi - Vendredi</p>
-              <p>9h00 - 18h00</p>
-              <p className="pt-3">Samedi: 9h00 - 13h00</p>
-              <p>Dimanche: Fermé</p>
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-plum-200">
+              Centre dédié au traitement du lipœdème à Casablanca depuis 2015 : consultation spécialisée et liposuccion WAL Bodyjet 3D sous anesthésie locale. Patientes de tout le Maroc et de l’étranger.
+            </p>
+            <div className="mt-6 flex gap-2">
+              {[
+                { href: SITE.social.instagram, label: 'Instagram', Icon: Instagram },
+                { href: SITE.social.facebook, label: 'Facebook', Icon: Facebook },
+                { href: SITE.social.youtube, label: 'YouTube', Icon: Youtube },
+              ].map(({ href, label, Icon }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                  className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-white hover:bg-white/10 transition-colors">
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
 
-          <div>
-            <h4 className="text-lg font-serif mb-6 text-terracotta-300 tracking-wide">Suivez-nous</h4>
-            <div className="flex gap-4">
-              <a
-                href="https://youtube.com/@scarless.cosmeticsurgery?si=Sf5-mz9iCx0w3LdP"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-terracotta-500 p-3 hover:bg-terracotta-600 transition-all duration-300 hover-lift"
-                aria-label="YouTube"
-              >
-                <Youtube size={20} />
-              </a>
-              <a
-                href="https://www.instagram.com/lipedemacentrecasablanca?igsh=bHE0dThjNHAydjRk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-terracotta-500 p-3 hover:bg-terracotta-600 transition-all duration-300 hover-lift"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="https://web.facebook.com/lipedem?locale=fr_FR"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-terracotta-500 p-3 hover:bg-terracotta-600 transition-all duration-300 hover-lift"
-                aria-label="Facebook"
-              >
-                <Facebook size={20} />
-              </a>
+          <nav aria-label="Le lipœdème">
+            <p className="font-serif text-xl text-white mb-5">Le lipœdème</p>
+            <ul className="space-y-3 text-sm">
+              {LINKS.map((l) => <li key={l.to}><Link href={l.to} className="hover:text-white">{l.label}</Link></li>)}
+            </ul>
+          </nav>
+
+          <nav aria-label="Le centre">
+            <p className="font-serif text-xl text-white mb-5">Le centre</p>
+            <ul className="space-y-3 text-sm">
+              {ABOUT.map((l) => <li key={l.to}><Link href={l.to} lang={l.to === '/ar' ? 'ar' : undefined} className={`hover:text-white ${l.to === '/ar' ? 'font-arabic text-[15px]' : ''}`}>{l.label}</Link></li>)}
+            </ul>
+          </nav>
+
+          {/* NAP block – must match the Google Business Profile exactly */}
+          <address className="not-italic text-sm space-y-4">
+            <p className="font-serif text-xl text-white">Nous trouver</p>
+            <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="flex gap-3 hover:text-white">
+              <MapPin size={18} className="mt-0.5 shrink-0 text-rose-300" />
+              <span>{SITE.address.street}<br />{SITE.address.district}, {SITE.address.postalCode} {SITE.address.city}<br />Maroc</span>
+            </a>
+            <a href={`tel:${SITE.phone.e164}`} className="flex gap-3 hover:text-white">
+              <Phone size={18} className="shrink-0 text-rose-300" /> {SITE.phone.display}
+            </a>
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="flex gap-3 hover:text-white">
+              <Phone size={18} className="shrink-0 text-rose-300" /> WhatsApp {SITE.whatsapp.display}
+            </a>
+            <a href={`mailto:${SITE.email}`} className="flex gap-3 hover:text-white">
+              <Mail size={18} className="shrink-0 text-rose-300" /> {SITE.email}
+            </a>
+            <div className="flex gap-3">
+              <Clock size={18} className="mt-0.5 shrink-0 text-rose-300" />
+              <span>
+                {SITE.hours.map((h) => <span key={h.label} className="block">{h.label} : {h.time}</span>)}
+                <span className="block">{SITE.closedLabel}</span>
+              </span>
             </div>
-          </div>
+          </address>
         </div>
 
-        <div className="border-t border-gray-800 pt-10">
-          <p className="text-gray-400 text-sm text-center font-light leading-relaxed">
-            © {new Date().getFullYear()} Lipœdème Maroc – Traitement & Liposuccion WAL Casablanca
-          </p>
-          <p className="text-gray-500 text-xs mt-3 text-center font-light">
-            Traitement du lipœdème par liposuccion WAL
-          </p>
+        <div className="mt-14 border-t border-white/10 pt-8 text-xs text-plum-300 flex flex-col gap-2 sm:flex-row sm:justify-between">
+          <p>© {new Date().getFullYear()} Centre Lipœdème Maroc – Traitement du lipœdème à Casablanca</p>
+          <p>Les informations de ce site ne remplacent pas une consultation médicale.</p>
         </div>
       </div>
     </footer>
