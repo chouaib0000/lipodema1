@@ -61,7 +61,7 @@ export const translations = {
     // Maladie Page
     maladieTitle: 'La Maladie du Lipœdème',
     whatIsLipoedema: 'Qu\'est-ce que le lipœdème ?',
-    whatIsLipoedemaText1: 'Le lipœdème est une maladie chronique du tissu adipeux qui touche principalement les femmes. Elle se caractérise par une accumulation anormale et symétrique de graisse au niveau des jambes, des cuisses, et parfois des bras, créant une disproportion notable avec le reste du corps.',
+    whatIsLipoedemaText1: 'Le lipœdème est une maladie chronique du tissu adipeux qui touche principalement les femmes. Elle se caractérise par une accumulation anormale et symétrique de graisse au niveau des jambes, des cuisses, et parfois des bras, créant une disproportion notable avec le reste du corps. On l’écrit aussi lipoedème, lipoedem ou lipedema.',
     whatIsLipoedemaText2: 'Contrairement à l\'obésité classique, le lipœdème ne répond pas aux régimes alimentaires ou à l\'exercice physique. La graisse accumulée est résistante et s\'accompagne souvent de douleurs, de sensibilité au toucher, et d\'une tendance aux ecchymoses.',
     whatAreCauses: 'Quelles sont les causes ?',
     causesIntro: 'Bien que les causes exactes du lipœdème ne soient pas encore totalement comprises, la recherche scientifique et l\'expérience clinique mettent en évidence plusieurs facteurs déclencheurs ou aggravants. Ces éléments n\'agissent pas isolément, mais se combinent souvent pour favoriser l\'apparition et l\'évolution de la maladie.',

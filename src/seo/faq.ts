@@ -11,7 +11,7 @@ export interface FaqItem {
 export const homeFaq: FaqItem[] = [
   {
     q: 'Qu’est-ce que le lipœdème ?',
-    a: 'Le lipœdème est une maladie chronique du tissu graisseux qui touche presque exclusivement les femmes. La graisse s’accumule de façon symétrique sur les jambes, les hanches et parfois les bras, avec des douleurs, une sensibilité au toucher et des bleus fréquents. Cette graisse résiste aux régimes et au sport.',
+    a: 'Le lipœdème est une maladie chronique du tissu graisseux qui touche presque exclusivement les femmes. La graisse s’accumule de façon symétrique sur les jambes, les hanches et parfois les bras, avec des douleurs, une sensibilité au toucher et des bleus fréquents. Cette graisse résiste aux régimes et au sport. On l’écrit aussi lipoedème, lipoedem ou lipedema.',
   },
   {
     q: 'Où se faire traiter pour un lipœdème au Maroc ?',
