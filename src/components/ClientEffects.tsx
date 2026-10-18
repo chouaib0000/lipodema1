@@ -11,7 +11,7 @@ export default function ClientEffects() {
   const { language } = useLanguage();
 
   useEffect(() => {
-    document.documentElement.lang = pathname === '/ar' ? 'ar-MA' : pathname === '/en' ? 'en' : language === 'fr' ? 'fr-MA' : language;
+    document.documentElement.lang = pathname === '/ar' || pathname.startsWith('/ar/') ? 'ar-MA' : pathname === '/en' ? 'en' : language === 'fr' ? 'fr-MA' : language;
   }, [pathname, language]);
 
   useEffect(() => trackContactClicks(), []);

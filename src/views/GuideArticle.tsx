@@ -4,6 +4,7 @@ import type { GuideArticle as Article } from '../content/guide';
 import { getArticle } from '../content/guide';
 import { Section, CtaBand, Checklist, References } from '../components/ui';
 import { MEDICAL_REFERENCES } from '../content/references';
+import { arForFr } from '../content/guide-ar';
 import { SITE } from '../config/site';
 
 const fmt = (d: string) => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -25,6 +26,9 @@ export default function GuideArticle({ article: a }: { article: Article }) {
                 <br />
                 Mis à jour le <time dateTime={a.updated}>{fmt(a.updated)}</time>
               </span>
+              {arForFr(a.slug) && (
+                <Link href={`/ar/${arForFr(a.slug)!.slug}/`} lang="ar" className="ms-auto rounded-full bg-white px-3 py-1.5 font-arabic text-[15px] text-rose-700 ring-1 ring-rose-200">العربية</Link>
+              )}
             </div>
           </div>
         </header>

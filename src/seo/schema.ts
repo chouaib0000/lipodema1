@@ -170,7 +170,7 @@ export function buildSchema(route: RouteMeta) {
       '@id': `${url}#article`,
       headline: route.article.headline,
       description: route.description,
-      inLanguage: 'fr-MA',
+      inLanguage: route.lang === 'ar' ? 'ar-MA' : 'fr-MA',
       datePublished: route.article.published,
       dateModified: route.article.updated,
       image: absUrl(route.image ?? SITE.ogImage),

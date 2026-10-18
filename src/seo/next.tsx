@@ -45,7 +45,7 @@ export function JsonLd({ route }: { route: RouteMeta }) {
 /** Common wrapper for every page: schema + breadcrumb + the page itself. */
 export function Page({ path, children }: { path: string; children: React.ReactNode }) {
   const route = getRoute(path);
-  const showCrumbs = route.path !== '/' && route.path !== '/ar' && route.path !== '/404';
+  const showCrumbs = route.path !== '/' && !route.path.startsWith('/ar') && route.path !== '/404';
   return (
     <>
       <JsonLd route={route} />

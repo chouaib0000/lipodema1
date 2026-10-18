@@ -6,6 +6,7 @@ import { Check, ChevronDown, MapPin, Phone, Clock } from 'lucide-react';
 import { SITE, mapsLink, whatsappLink } from '../config/site';
 import { arFaq } from '../seo/faq';
 import { WhatsAppIcon } from '../components/MobileActionBar';
+import { AR_GUIDE } from '../content/guide-ar';
 
 const WA_AR = 'السلام عليكم، أود الحصول على معلومات حول علاج الوذمة الشحمية (الليبوديما).';
 
@@ -140,6 +141,15 @@ export default function Arabic() {
             );
           })}
         </div>
+      </section>
+
+      <section className="container mx-auto pb-16 lg:pb-24">
+        <h2 className="text-3xl lg:text-4xl">دليل الوذمة الشحمية</h2>
+        <ul className="mt-8 grid gap-3 sm:grid-cols-3">
+          {AR_GUIDE.map((g) => (
+            <li key={g.slug}><Link href={`/ar/${g.slug}/`} className="block h-full rounded-2xl bg-white p-5 text-lg font-bold leading-relaxed ring-1 ring-rose-100 hover:ring-rose-300">{g.title}</Link></li>
+          ))}
+        </ul>
       </section>
 
       <section className="bg-mist">

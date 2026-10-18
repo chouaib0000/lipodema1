@@ -3,6 +3,7 @@
 
 import { homeFaq, arFaq, enFaq, maladieFaq, type FaqItem } from './faq';
 import { GUIDE } from '../content/guide';
+import { AR_GUIDE, arForFr } from '../content/guide-ar';
 
 export type PageKind = 'home' | 'condition' | 'procedure' | 'physician' | 'contact' | 'gallery' | 'about' | 'generic' | 'article' | 'hub';
 
@@ -216,6 +217,22 @@ ROUTES.push(
     image: a.image,
     faq: a.faq,
     parent: { name: 'Guide', path: '/guide' },
+    article: { published: a.published, updated: a.updated, headline: a.title },
+    ...(arForFr(a.slug) ? { alternates: [{ hreflang: 'fr', path: `/guide/${a.slug}` }, { hreflang: 'ar', path: `/ar/${arForFr(a.slug)!.slug}` }] } : {}),
+  })),
+  ...AR_GUIDE.map((a): RouteMeta => ({
+    path: `/ar/${a.slug}`,
+    title: a.metaTitle,
+    description: a.description,
+    breadcrumb: a.title.split('؟')[0].split(':')[0],
+    kind: 'article',
+    priority: 0.7,
+    changefreq: 'monthly',
+    lang: 'ar',
+    image: a.image,
+    faq: a.faq,
+    parent: { name: 'العربية', path: '/ar' },
+    alternates: [{ hreflang: 'fr', path: `/guide/${a.fr}` }, { hreflang: 'ar', path: `/ar/${a.slug}` }],
     article: { published: a.published, updated: a.updated, headline: a.title },
   }))
 );
