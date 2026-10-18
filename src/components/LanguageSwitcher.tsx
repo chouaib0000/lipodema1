@@ -1,42 +1,60 @@
-import { Globe } from 'lucide-react';
+'use client';
+
+import { usePath } from './usePath';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useLanguage } from '../contexts/LanguageContext';
 
-export default function LanguageSwitcher() {
+const LANGS = [
+  { code: 'fr', label: 'FR', name: 'Français' },
+  { code: 'en', label: 'EN', name: 'English' },
+  { code: 'es', label: 'ES', name: 'Español' },
+] as const;
+
+export default function LanguageSwitcher({ variant = 'light' }: { variant?: 'light' | 'dark' }) {
   const { language, setLanguage } = useLanguage();
+  const dark = variant === 'dark';
+  const pathname = usePath();
+  const onArabic = pathname === '/ar';
+  const router = useRouter();
 
   return (
-    <div className="flex items-center gap-2 bg-gray-100 rounded-full p-1">
-      <Globe size={18} className="text-gray-600 ml-2" />
-      <button
-        onClick={() => setLanguage('fr')}
-        className={`px-3 py-1 rounded-full text-sm font-medium transition ${
-          language === 'fr'
-            ? 'bg-sky-600 text-white'
-            : 'text-gray-600 hover:text-sky-600'
-        }`}
+    <div className={`inline-flex items-center rounded-full p-0.5 ${dark ? 'bg-white/10' : 'bg-rose-50'}`} role="group" aria-label="Langue">
+      {LANGS.map((l) => {
+        const active = !onArabic && language === l.code;
+        return (
+          <button
+            key={l.code}
+            type="button"
+            lang={l.code}
+            title={l.name}
+            aria-pressed={active}
+            onClick={() => { setLanguage(l.code); if (onArabic) router.push('/'); }}
+            className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+              active
+                ? dark ? 'bg-white text-plum-900' : 'bg-rose-600 text-white'
+                : dark ? 'text-plum-100 hover:text-white' : 'text-ink/70 hover:text-rose-700'
+            } ${dark ? '' : 'min-h-[36px] px-4'}`}
+          >
+            {l.label}
+          </button>
+        );
+      })}
+      {/* Arabic is a separate, indexable page rather than a client-side translation */}
+      <Link
+        href="/ar"
+        lang="ar"
+        hrefLang="ar"
+        title="العربية"
+        aria-current={onArabic ? 'page' : undefined}
+        className={`rounded-full px-3 py-1 text-xs font-semibold font-arabic transition-colors ${
+          onArabic
+            ? dark ? 'bg-white text-plum-900' : 'bg-rose-600 text-white'
+            : dark ? 'text-plum-100 hover:text-white' : 'text-ink/70 hover:text-rose-700'
+        } ${dark ? '' : 'min-h-[36px] px-4 inline-flex items-center'}`}
       >
-        FR
-      </button>
-      <button
-        onClick={() => setLanguage('en')}
-        className={`px-3 py-1 rounded-full text-sm font-medium transition ${
-          language === 'en'
-            ? 'bg-sky-600 text-white'
-            : 'text-gray-600 hover:text-sky-600'
-        }`}
-      >
-        EN
-      </button>
-      <button
-        onClick={() => setLanguage('es')}
-        className={`px-3 py-1 rounded-full text-sm font-medium transition ${
-          language === 'es'
-            ? 'bg-sky-600 text-white'
-            : 'text-gray-600 hover:text-sky-600'
-        }`}
-      >
-        ES
-      </button>
+        عربي
+      </Link>
     </div>
   );
 }
