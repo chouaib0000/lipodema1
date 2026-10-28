@@ -1,233 +1,257 @@
-import { Menu, X, ChevronDown, Youtube, Instagram, Facebook } from 'lucide-react';
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+'use client';
+
+import { usePath } from './usePath';
+import { Menu, X, ChevronDown, Phone, MapPin } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import NavLink from './NavLink';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
+import { SITE, mapsLink, whatsappLink } from '../config/site';
+import { CHROME, LANG_HOME, langFromPath } from '../i18n/chrome';
+
+type Item = { to: string; key: string };
+type Group = { key: string; items: Item[] };
+
+const GROUPS: Group[] = [
+  { key: 'lipoedema', items: [
+    { to: '/maladie', key: 'lipoedemaDiseases' },
+    { to: '/diagnostic', key: 'diagnostic' },
+    { to: '/traitement', key: 'treatment' },
+    { to: '/wal', key: 'walLiposuction' },
+  ] },
+  { key: 'drTawfik', items: [
+    { to: '/parcours', key: 'journey' },
+    { to: '/publications', key: 'publications' },
+    { to: '/resultats', key: 'results' },
+  ] },
+  { key: 'center', items: [
+    { to: '/clinique', key: 'clinic' },
+    { to: '/services', key: 'services' },
+    { to: '/temoignages', key: 'testimonials' },
+  ] },
+];
+
+const SINGLE: Item[] = [
+  { to: '/parcours-patient', key: 'patientJourney' },
+  { to: '/guide', key: 'guide' },
+  { to: '/actualites', key: 'news' },
+];
+
+function Brand({ home = '/' }: { home?: string }) {
+  return (
+    <Link href={home} className="flex items-center gap-3 shrink-0" aria-label="Centre Lipœdème Maroc – accueil">
+      <img src={SITE.logo} alt="" width="56" height="56" className="h-11 w-11 xl:h-14 xl:w-14 object-contain" />
+      <span className="leading-tight">
+        <span className="block font-serif text-[19px] xl:text-[22px] font-semibold text-ink">Lipœdème Maroc</span>
+        <span className="block text-[11px] xl:text-xs text-rose-700 font-medium">Dr Tawfik Sefrioui · Casablanca</span>
+      </span>
+    </Link>
+  );
+}
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const location = useLocation();
+  const [open, setOpen] = useState(false);
+  const [section, setSection] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const pathname = usePath();
   const { t } = useLanguage();
+  const lang = langFromPath(pathname);
+  const local = lang === 'fr' ? null : CHROME[lang];
 
-  const isActive = (path: string) => location.pathname === path;
+  // Close the mobile menu when the page changes (state adjusted during render, no effect needed)
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpen(false);
+    setSection(null);
+  }
+
+  useEffect(() => {
+    // App-like behaviour on phones: the bar slides away while reading down, comes back on scroll up.
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 8);
+      if (Math.abs(y - lastY) > 6) {
+        setHidden(y > lastY && y > 140);
+        lastY = y;
+      }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  const groupActive = (g: Group) => g.items.some((i) => i.to === pathname);
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-      <div className="bg-[#c97a63] py-2">
-        <div className="container mx-auto px-6 md:px-12 flex justify-end items-center gap-4">
-          <a
-            href="https://youtube.com/@scarless.cosmeticsurgery?si=Sf5-mz9iCx0w3LdP"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-gray-200 transition-colors"
-            aria-label="YouTube"
-          >
-            <Youtube size={18} />
+    <>
+    <header className={`fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/75 pt-[env(safe-area-inset-top)] transition-[transform,box-shadow] duration-300 ${hidden && !open ? '-translate-y-full xl:translate-y-0' : 'translate-y-0'} ${scrolled ? 'shadow-[0_1px_0_rgba(46,16,24,0.08),0_8px_24px_-16px_rgba(46,16,24,0.3)]' : 'border-b border-rose-100'}`}>
+      {/* Desktop info bar: local signals (address + phone) visible on every page */}
+      <div className="hidden xl:block bg-plum-900 text-plum-100 text-[13px]">
+        <div className="container mx-auto flex h-9 items-center justify-between gap-6">
+          <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white">
+            <MapPin size={14} aria-hidden="true" />
+            {SITE.address.street}, {SITE.address.district} – {SITE.address.city}
           </a>
-          <a
-            href="https://www.instagram.com/lipedemacentrecasablanca?igsh=bHE0dThjNHAydjRk"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-gray-200 transition-colors"
-            aria-label="Instagram"
-          >
-            <Instagram size={18} />
-          </a>
-          <a
-            href="https://www.facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-gray-200 transition-colors"
-            aria-label="Facebook"
-          >
-            <Facebook size={18} />
-          </a>
-          <LanguageSwitcher />
+          <div className="flex items-center gap-6">
+            <span dir={local?.dir}>{local ? local.hours.join(' · ') : 'Lun–Ven 9h–18h · Sam 9h–13h'}</span>
+            <a href={`tel:${SITE.phone.e164}`} className="flex items-center gap-2 font-semibold text-white">
+              <Phone size={14} aria-hidden="true" /> {SITE.phone.display}
+            </a>
+            <LanguageSwitcher variant="dark" />
+          </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 md:px-12 py-3 sm:py-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center">
-            <img src="/2027/logo.png" alt="Logo" className="h-12 sm:h-14 md:h-16 w-auto object-contain" />
+      <div className="container mx-auto flex h-16 xl:h-[76px] items-center justify-between gap-4">
+        <Brand home={LANG_HOME[lang]} />
+
+        <nav className="hidden xl:flex items-center gap-0.5 text-[14px] font-medium" aria-label="Navigation principale">
+          {local ? (
+            <div dir={local.dir} className={`flex items-center gap-0.5 ${lang === 'ar' ? 'font-arabic text-[15px]' : ''}`}>
+              {local.nav.map((i) => (
+                <NavLink key={i.href} href={i.href} end className={({ isActive }) => `px-3 py-2 rounded-full ${isActive ? 'text-rose-700' : 'text-ink hover:text-rose-700'}`}>
+                  {i.label}
+                </NavLink>
+              ))}
+              <a href={whatsappLink(local.waMessage)} target="_blank" rel="noopener noreferrer" className="btn-primary ms-3 !py-2.5 !min-h-0 text-sm">{local.bookCta}</a>
+            </div>
+          ) : (<>
+          <NavLink href="/" end className={({ isActive }) => `px-3 py-2 rounded-full ${isActive ? 'text-rose-700' : 'text-ink hover:text-rose-700'}`}>
+            {t('home')}
+          </NavLink>
+          {GROUPS.map((g) => (
+            <div key={g.key} className="relative group">
+              <button
+                type="button"
+                className={`flex items-center gap-1 px-3 py-2 rounded-full ${groupActive(g) ? 'text-rose-700' : 'text-ink hover:text-rose-700'}`}
+                aria-haspopup="true"
+              >
+                {t(g.key)}
+                <ChevronDown size={14} className="transition-transform group-hover:rotate-180 group-focus-within:rotate-180" aria-hidden="true" />
+              </button>
+              <div className="invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition absolute left-0 top-full pt-2">
+                <ul className="w-64 rounded-2xl bg-white p-2 shadow-[0_20px_50px_-20px_rgba(46,16,24,0.35)] ring-1 ring-rose-100">
+                  {g.items.map((i) => (
+                    <li key={i.to}>
+                      <NavLink href={i.to} className={({ isActive }) => `block rounded-xl px-4 py-2.5 ${isActive ? 'bg-rose-50 text-rose-700' : 'text-ink hover:bg-rose-50'}`}>
+                        {t(i.key)}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+          {SINGLE.map((i) => (
+            <NavLink key={i.to} href={i.to} className={({ isActive }) => `px-3 py-2 rounded-full ${isActive ? 'text-rose-700' : 'text-ink hover:text-rose-700'}`}>
+              {t(i.key)}
+            </NavLink>
+          ))}
+          <Link href="/contact" className="btn-primary ml-3 !py-2.5 !min-h-0 text-sm">
+            Prendre rendez-vous
           </Link>
+          </>)}
+        </nav>
 
-          <nav className="hidden lg:flex items-center gap-1">
-            <Link to="/" className={`px-4 py-2 text-sm font-sans font-medium tracking-wide transition ${isActive('/') ? 'text-terracotta-600' : 'text-gray-700 hover:text-terracotta-600'}`}>
-              {t('home')}
-            </Link>
-
-            <div className="relative group">
-              <button className="px-4 py-2 text-sm font-sans font-medium text-gray-700 hover:text-terracotta-600 transition flex items-center gap-1 tracking-wide">
-                {t('lipoedema')}
-                <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
-              </button>
-              <div className="absolute top-full left-0 mt-0 w-60 bg-white shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link to="/maladie" className="block px-5 py-3 text-sm font-sans text-gray-700 hover:bg-beige-50 hover:text-terracotta-600 transition border-b border-gray-100">
-                  {t('lipoedemaDiseases')}
-                </Link>
-                <Link to="/diagnostic" className="block px-5 py-3 text-sm font-sans text-gray-700 hover:bg-beige-50 hover:text-terracotta-600 transition border-b border-gray-100">
-                  {t('diagnostic')}
-                </Link>
-                <Link to="/traitement" className="block px-5 py-3 text-sm font-sans text-gray-700 hover:bg-beige-50 hover:text-terracotta-600 transition border-b border-gray-100">
-                  {t('treatment')}
-                </Link>
-                <Link to="/wal" className="block px-5 py-3 text-sm font-sans text-gray-700 hover:bg-beige-50 hover:text-terracotta-600 transition">
-                  {t('walLiposuction')}
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <button className="px-4 py-2 text-sm font-sans font-medium text-gray-700 hover:text-terracotta-600 transition flex items-center gap-1 tracking-wide">
-                {t('drTawfik')}
-                <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
-              </button>
-              <div className="absolute top-full left-0 mt-0 w-64 bg-white shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link to="/parcours" className="block px-5 py-3 text-sm font-sans text-gray-700 hover:bg-beige-50 hover:text-terracotta-600 transition border-b border-gray-100">
-                  {t('journey')}
-                </Link>
-                <Link to="/publications" className="block px-5 py-3 text-sm font-sans text-gray-700 hover:bg-beige-50 hover:text-terracotta-600 transition border-b border-gray-100">
-                  {t('publications')}
-                </Link>
-                <Link to="/resultats" className="block px-5 py-3 text-sm font-sans text-gray-700 hover:bg-beige-50 hover:text-terracotta-600 transition">
-                  {t('results')}
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <button className="px-4 py-2 text-sm font-sans font-medium text-gray-700 hover:text-terracotta-600 transition flex items-center gap-1 tracking-wide">
-                {t('center')}
-                <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
-              </button>
-              <div className="absolute top-full left-0 mt-0 w-60 bg-white shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link to="/clinique" className="block px-5 py-3 text-sm font-sans text-gray-700 hover:bg-beige-50 hover:text-terracotta-600 transition border-b border-gray-100">
-                  {t('clinic')}
-                </Link>
-                <Link to="/services" className="block px-5 py-3 text-sm font-sans text-gray-700 hover:bg-beige-50 hover:text-terracotta-600 transition border-b border-gray-100">
-                  {t('services')}
-                </Link>
-                <Link to="/temoignages" className="block px-5 py-3 text-sm font-sans text-gray-700 hover:bg-beige-50 hover:text-terracotta-600 transition">
-                  {t('testimonials')}
-                </Link>
-              </div>
-            </div>
-
-            <Link to="/parcours-patient" className={`px-4 py-2 text-sm font-sans font-medium tracking-wide transition ${isActive('/parcours-patient') ? 'text-terracotta-600' : 'text-gray-700 hover:text-terracotta-600'}`}>
-              {t('patientJourney')}
-            </Link>
-
-            <Link to="/actualites" className={`px-4 py-2 text-sm font-sans font-medium tracking-wide transition ${isActive('/actualites') ? 'text-terracotta-600' : 'text-gray-700 hover:text-terracotta-600'}`}>
-              {t('news')}
-            </Link>
-
-            <Link to="/contact" className="ml-3 bg-terracotta-500 text-white px-8 py-2.5 text-sm font-sans font-medium tracking-wider uppercase hover:bg-terracotta-600 transition-all duration-300 shadow-md hover:shadow-lg">
-              {t('contact')}
-            </Link>
-          </nav>
-
+        <div className="flex items-center gap-1 xl:hidden">
+          <a href={`tel:${SITE.phone.e164}`} className="grid h-11 w-11 place-items-center rounded-full text-rose-700" aria-label={`Appeler le ${SITE.phone.display}`}>
+            <Phone size={21} />
+          </a>
           <button
-            className="lg:hidden text-gray-700"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            type="button"
+            className="grid h-11 w-11 place-items-center rounded-full text-ink"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls="menu-mobile"
+            aria-label={open ? (local?.menuClose ?? 'Fermer le menu') : (local?.menuOpen ?? 'Ouvrir le menu')}
           >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {open ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
+      </div>
 
-        {mobileMenuOpen && (
-          <nav className="lg:hidden mt-4 pb-4 flex flex-col gap-3">
-            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 hover:text-terracotta-600 transition font-medium py-2 text-base">
-              {t('home')}
-            </Link>
+    </header>
 
-            <div>
-              <button
-                onClick={() => setOpenDropdown(openDropdown === 'lipoedeme' ? null : 'lipoedeme')}
-                className="w-full text-left text-gray-700 hover:text-terracotta-600 transition font-medium flex items-center justify-between py-2 text-base"
-              >
-                {t('lipoedema')}
-                <ChevronDown size={18} className={`transition-transform ${openDropdown === 'lipoedeme' ? 'rotate-180' : ''}`} />
-              </button>
-              {openDropdown === 'lipoedeme' && (
-                <div className="ml-4 mt-2 flex flex-col gap-3 bg-beige-50 p-3 rounded">
-                  <Link to="/maladie" onClick={() => setMobileMenuOpen(false)} className="text-sm text-gray-600 hover:text-terracotta-600 transition py-1">
-                    {t('lipoedemaDiseases')}
-                  </Link>
-                  <Link to="/diagnostic" onClick={() => setMobileMenuOpen(false)} className="text-sm text-gray-600 hover:text-terracotta-600 transition py-1">
-                    {t('diagnostic')}
-                  </Link>
-                  <Link to="/traitement" onClick={() => setMobileMenuOpen(false)} className="text-sm text-gray-600 hover:text-terracotta-600 transition py-1">
-                    {t('treatment')}
-                  </Link>
-                  <Link to="/wal" onClick={() => setMobileMenuOpen(false)} className="text-sm text-gray-600 hover:text-terracotta-600 transition py-1">
-                    {t('walLiposuction')}
-                  </Link>
-                </div>
-              )}
+      {/* Mobile drawer */}
+      <div
+        id="menu-mobile"
+        className={`xl:hidden fixed inset-x-0 top-[calc(4rem+env(safe-area-inset-top))] bottom-0 z-[45] bg-white overflow-y-auto overscroll-contain transition-[opacity,visibility] duration-200 ${open ? 'visible opacity-100' : 'invisible opacity-0'}`}
+        style={{ paddingBottom: 'calc(96px + env(safe-area-inset-bottom))' }}
+      >
+        {local ? (
+          <nav dir={local.dir} className={`container mx-auto pt-2 ${lang === 'ar' ? 'font-arabic' : ''}`} aria-label="Menu">
+            {local.nav.map((i) => (
+              <NavLink key={i.href} href={i.href} end className={`flex items-center min-h-[56px] border-b border-rose-100 text-2xl text-ink ${lang === 'ar' ? 'font-bold text-xl' : 'font-serif'}`}>
+                {i.label}
+              </NavLink>
+            ))}
+            <div className="mt-8 grid gap-3">
+              <a href={`tel:${SITE.phone.e164}`} className="btn-primary w-full"><Phone size={18} /> {local.call} <span dir="ltr">{SITE.phone.display}</span></a>
+              <a href={whatsappLink(local.waMessage)} target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full">{local.whatsapp}</a>
             </div>
-
-            <div>
-              <button
-                onClick={() => setOpenDropdown(openDropdown === 'doctor' ? null : 'doctor')}
-                className="w-full text-left text-gray-700 hover:text-terracotta-600 transition font-medium flex items-center justify-between py-2 text-base"
-              >
-                {t('drTawfik')}
-                <ChevronDown size={18} className={`transition-transform ${openDropdown === 'doctor' ? 'rotate-180' : ''}`} />
-              </button>
-              {openDropdown === 'doctor' && (
-                <div className="ml-4 mt-2 flex flex-col gap-3 bg-beige-50 p-3 rounded">
-                  <Link to="/parcours" onClick={() => setMobileMenuOpen(false)} className="text-sm text-gray-600 hover:text-terracotta-600 transition py-1">
-                    {t('journey')}
-                  </Link>
-                  <Link to="/publications" onClick={() => setMobileMenuOpen(false)} className="text-sm text-gray-600 hover:text-terracotta-600 transition py-1">
-                    {t('publications')}
-                  </Link>
-                  <Link to="/resultats" onClick={() => setMobileMenuOpen(false)} className="text-sm text-gray-600 hover:text-terracotta-600 transition py-1">
-                    {t('results')}
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <div>
-              <button
-                onClick={() => setOpenDropdown(openDropdown === 'centre' ? null : 'centre')}
-                className="w-full text-left text-gray-700 hover:text-terracotta-600 transition font-medium flex items-center justify-between py-2 text-base"
-              >
-                {t('center')}
-                <ChevronDown size={18} className={`transition-transform ${openDropdown === 'centre' ? 'rotate-180' : ''}`} />
-              </button>
-              {openDropdown === 'centre' && (
-                <div className="ml-4 mt-2 flex flex-col gap-3 bg-beige-50 p-3 rounded">
-                  <Link to="/clinique" onClick={() => setMobileMenuOpen(false)} className="text-sm text-gray-600 hover:text-terracotta-600 transition py-1">
-                    {t('clinic')}
-                  </Link>
-                  <Link to="/services" onClick={() => setMobileMenuOpen(false)} className="text-sm text-gray-600 hover:text-terracotta-600 transition py-1">
-                    {t('services')}
-                  </Link>
-                  <Link to="/temoignages" onClick={() => setMobileMenuOpen(false)} className="text-sm text-gray-600 hover:text-terracotta-600 transition py-1">
-                    {t('testimonials')}
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <Link to="/parcours-patient" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 hover:text-terracotta-600 transition font-medium py-2 text-base">
-              {t('patientJourney')}
-            </Link>
-
-            <Link to="/actualites" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 hover:text-terracotta-600 transition font-medium py-2 text-base">
-              {t('news')}
-            </Link>
-
-            <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="bg-terracotta-500 text-white px-6 py-3 hover:bg-terracotta-600 transition text-center font-medium mt-4 rounded-sm text-base">
-              {t('contact')}
-            </Link>
+            <div className="mt-6" dir="ltr"><LanguageSwitcher /></div>
           </nav>
+        ) : (
+        <nav className="container mx-auto pt-2" aria-label="Menu mobile">
+          <NavLink href="/" end className="flex items-center min-h-[56px] border-b border-rose-100 font-serif text-2xl text-ink">
+            {t('home')}
+          </NavLink>
+          {GROUPS.map((g) => {
+            const expanded = section === g.key;
+            return (
+              <div key={g.key} className="border-b border-rose-100">
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between min-h-[56px] font-serif text-2xl text-ink"
+                  onClick={() => setSection(expanded ? null : g.key)}
+                  aria-expanded={expanded}
+                >
+                  {t(g.key)}
+                  <ChevronDown size={20} className={`text-rose-600 transition-transform ${expanded ? 'rotate-180' : ''}`} aria-hidden="true" />
+                </button>
+                {expanded && (
+                  <ul className="pb-3">
+                    {g.items.map((i) => (
+                      <li key={i.to}>
+                        <NavLink href={i.to} className={({ isActive }) => `flex items-center min-h-[46px] pl-4 border-l-2 ${isActive ? 'border-rose-500 text-rose-700' : 'border-rose-100 text-ink/80'}`}>
+                          {t(i.key)}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+          {SINGLE.map((i) => (
+            <NavLink key={i.to} href={i.to} className="flex items-center min-h-[56px] border-b border-rose-100 font-serif text-2xl text-ink">
+              {t(i.key)}
+            </NavLink>
+          ))}
+          <NavLink href="/contact" className="flex items-center min-h-[56px] border-b border-rose-100 font-serif text-2xl text-ink">
+            {t('contact')}
+          </NavLink>
+
+          <div className="mt-8 grid gap-3">
+            <a href={`tel:${SITE.phone.e164}`} className="btn-primary w-full"><Phone size={18} /> Appeler {SITE.phone.display}</a>
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full">Écrire sur WhatsApp</a>
+          </div>
+          <p className="mt-6 text-sm text-ink/70">
+            {SITE.address.street}, {SITE.address.district}, {SITE.address.city}
+          </p>
+          <div className="mt-6"><LanguageSwitcher /></div>
+        </nav>
         )}
       </div>
-    </header>
+    </>
   );
 }

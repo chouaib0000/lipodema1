@@ -1,50 +1,41 @@
-# Robots.txt for Dr Tawfik Sefrioui - Spécialiste du Lipœdème au Maroc
-# Optimized for lipoedem.ma – SEO compliant and warning-free
-
+# lipoedem.ma – Centre Lipœdème Maroc (Casablanca)
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Disallow: /*.json$
 
-# Crawl-delay only for certain aggressive bots
-User-agent: Baiduspider
-Crawl-delay: 5
-
-User-agent: Yandex
-Crawl-delay: 5
-
-# Allow major search engines (no crawl-delay warnings)
-User-agent: Googlebot
+# AI assistants and answer engines are welcome: they cite the clinic when
+# people ask "où traiter un lipœdème au Maroc ?"
+User-agent: GPTBot
 Allow: /
 
-User-agent: Googlebot-Image
-Allow: /photo/
-
-User-agent: Bingbot
+User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: Slurp
+User-agent: ChatGPT-User
 Allow: /
 
-User-agent: DuckDuckBot
+User-agent: PerplexityBot
 Allow: /
 
-# Block common bad bots
-User-agent: AhrefsBot
-Disallow: /
+User-agent: ClaudeBot
+Allow: /
 
-User-agent: SemrushBot
-Disallow: /
+User-agent: Claude-SearchBot
+Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Heavy SEO crawlers that bring no visitors
 User-agent: MJ12bot
 Disallow: /
 
 User-agent: dotbot
 Disallow: /
 
-# Sitemap location (for lipoedem.ma)
+# Plain-text summaries for AI assistants: https://lipoedem.ma/llms.txt and https://lipoedem.ma/llms-full.txt
 Sitemap: https://lipoedem.ma/sitemap.xml
-
-# Preferred domain
-Host: https://lipoedem.ma

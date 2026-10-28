@@ -1,0 +1,838 @@
+// Guide articles: in-depth answers to what people search about lipœdème in Morocco.
+// Each article is rendered at /guide/<slug>/ with Article + FAQ structured data.
+// Medical content written for patients; reviewed-by attribution points to the doctor.
+
+import type { FaqItem } from '../seo/faq';
+
+export interface GuideSection {
+  h2: string;
+  paragraphs?: string[];
+  list?: string[];
+  table?: { head: string[]; rows: string[][] };
+}
+
+export interface GuideArticle {
+  slug: string;
+  title: string;          // H1
+  metaTitle: string;      // < 60 chars
+  description: string;    // 120–155 chars
+  intro: string;
+  keyPoints: string[];    // "L'essentiel" box – short, quotable facts
+  sections: GuideSection[];
+  faq: FaqItem[];
+  image?: string;
+  imageAlt?: string;
+  published: string;      // ISO date
+  updated: string;
+  related: string[];      // other guide slugs
+}
+
+export const GUIDE: GuideArticle[] = [
+  {
+    slug: 'lipoedeme-ou-cellulite',
+    title: 'Lipœdème ou cellulite : comment faire la différence ?',
+    metaTitle: 'Lipœdème ou cellulite : comment faire la différence ?',
+    description: 'Douleur, bleus, symétrie, pieds épargnés : les signes qui distinguent le lipœdème de la cellulite et de l’obésité, et quand consulter.',
+    intro:
+      'La cellulite est un aspect de la peau que présentent la plupart des femmes. Le lipœdème est une maladie du tissu graisseux, douloureuse et évolutive. Les deux sont souvent confondus, ce qui retarde le diagnostic de nombreuses patientes.',
+    keyPoints: [
+      'La cellulite est un aspect de surface, en général indolore ; le lipœdème est une maladie, souvent douloureuse.',
+      'Le lipœdème touche les deux jambes de façon symétrique et épargne les pieds.',
+      'Les bleus fréquents et la douleur au toucher orientent vers le lipœdème.',
+      'La graisse du lipœdème ne diminue pas avec le régime ou le sport.',
+      'Seul un examen clinique par un médecin qui connaît la maladie permet de conclure.',
+    ],
+    sections: [
+      {
+        h2: 'La cellulite : un aspect de la peau, pas une maladie',
+        paragraphs: [
+          'La cellulite correspond à l’aspect « peau d’orange » ou capitonné de la peau, surtout sur les cuisses et les fesses. Elle concerne la grande majorité des femmes, quel que soit leur poids, et s’explique par la structure du tissu sous la peau.',
+          'Elle n’est pas douloureuse, n’entraîne pas de bleus particuliers et ne s’aggrave pas en une maladie. Elle peut varier avec le poids, l’activité physique et les hormones.',
+        ],
+      },
+      {
+        h2: 'Le lipœdème : une maladie chronique du tissu graisseux',
+        paragraphs: [
+          'Le lipœdème est une accumulation anormale et symétrique de graisse, le plus souvent sur les hanches, les cuisses, les genoux et les mollets, parfois sur les bras. Il touche presque exclusivement les femmes et apparaît souvent à la puberté, après une grossesse ou à la ménopause.',
+          'Cette graisse est douloureuse au toucher, les bleus apparaissent facilement et les jambes sont lourdes. Elle résiste aux régimes et au sport, et la maladie a tendance à évoluer avec le temps.',
+        ],
+      },
+      {
+        h2: 'Les différences en un coup d’œil',
+        table: {
+          head: ['', 'Cellulite', 'Lipœdème', 'Obésité'],
+          rows: [
+            ['Douleur au toucher', 'Non', 'Oui, fréquente', 'Non'],
+            ['Bleus faciles', 'Non', 'Oui', 'Non'],
+            ['Répartition', 'Variable', 'Symétrique, jambes (± bras)', 'Globale, tronc compris'],
+            ['Pieds et mains', '—', 'Épargnés', 'Peuvent être touchés'],
+            ['Effet du régime', 'Variable', 'Peu ou pas d’effet sur les zones atteintes', 'Perte de poids globale'],
+            ['Évolution', 'Stable', 'Progressive', 'Variable'],
+          ],
+        },
+      },
+      {
+        h2: 'Les signes qui doivent faire consulter',
+        list: [
+          'Des jambes nettement plus fortes que le haut du corps, depuis des années',
+          'Une sensibilité ou une douleur quand on appuie sur la peau',
+          'Des bleus qui apparaissent sans choc important',
+          'Une sensation de jambes lourdes, surtout en fin de journée',
+          'Une graisse qui ne bouge pas malgré les efforts',
+          'Une mère, une sœur ou une tante avec la même silhouette',
+        ],
+      },
+      {
+        h2: 'Comment le diagnostic est posé',
+        paragraphs: [
+          'Il n’existe pas d’examen sanguin du lipœdème. Le diagnostic repose sur l’interrogatoire et l’examen clinique : répartition de la graisse, symétrie, douleur à la palpation, présence de nodules, état des pieds et de la circulation. Des examens complémentaires (écho-Doppler veineux, bilan sanguin) servent surtout à écarter d’autres causes.',
+          'Au Centre Lipœdème Maroc, à Casablanca, cette consultation est réalisée par le Dr Tawfik Sefrioui. Elle permet de confirmer ou non le lipœdème, d’en préciser le stade et de proposer un traitement adapté.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'La cellulite peut-elle devenir un lipœdème ?', a: 'Non. Ce sont deux choses différentes : la cellulite est un aspect de la peau, le lipœdème une maladie du tissu graisseux. Mais une femme atteinte de lipœdème peut aussi avoir de la cellulite, ce qui entretient la confusion.' },
+      { q: 'Le lipœdème est-il lié au surpoids ?', a: 'Le lipœdème peut toucher des femmes minces comme des femmes en surpoids. Sa graisse ne répond pas au régime, contrairement à la graisse liée au surpoids. Les deux peuvent coexister.' },
+      { q: 'Quel médecin consulter pour un lipœdème au Maroc ?', a: 'Un médecin qui connaît la maladie. À Casablanca, le Centre Lipœdème Maroc du Dr Tawfik Sefrioui est dédié au diagnostic et au traitement du lipœdème depuis 2015.' },
+    ],
+    image: '/2027/1.webp',
+    imageAlt: 'Évolution du lipœdème des jambes',
+    published: '2026-10-10',
+    updated: '2026-10-10',
+    related: ['stades-du-lipoedeme', 'lipoedeme-ou-lymphoedeme', 'prix-operation-lipoedeme-maroc'],
+  },
+  {
+    slug: 'stades-du-lipoedeme',
+    title: 'Les stades du lipœdème (1 à 4) et les types selon la localisation',
+    metaTitle: 'Stades du lipœdème 1, 2, 3, 4 : comment les reconnaître',
+    description: 'Stade 1, 2, 3 et lipo-lymphœdème : comment évolue le lipœdème, à quoi ressemble chaque stade, et les types selon les zones touchées.',
+    intro:
+      'Le lipœdème évolue avec le temps. Les médecins le décrivent en stades, selon l’aspect de la peau et du tissu graisseux, et en types, selon les zones du corps atteintes. Connaître son stade aide à choisir le bon traitement.',
+    keyPoints: [
+      'Stade 1 : peau lisse, tissu graisseux épaissi et sensible.',
+      'Stade 2 : peau irrégulière, nodules palpables sous la peau.',
+      'Stade 3 : masses graisseuses importantes, plis et déformations, surtout aux cuisses et aux genoux.',
+      'Stade 4 : lipo-lymphœdème, quand un lymphœdème s’ajoute au lipœdème.',
+      'Le stade ne dit pas tout : la douleur et la gêne au quotidien comptent aussi.',
+    ],
+    sections: [
+      {
+        h2: 'Stade 1',
+        paragraphs: [
+          'La surface de la peau reste lisse, mais le tissu sous la peau est épaissi. À la palpation, on peut sentir de petits nodules. Les jambes sont déjà plus volumineuses que le haut du corps et souvent sensibles au toucher.',
+        ],
+      },
+      {
+        h2: 'Stade 2',
+        paragraphs: [
+          'La peau devient irrégulière, avec des capitons et des nodules plus gros. Des amas de graisse peuvent apparaître, notamment à l’intérieur des genoux. Les douleurs et la sensation de lourdeur sont souvent plus marquées.',
+        ],
+      },
+      {
+        h2: 'Stade 3',
+        paragraphs: [
+          'Le tissu graisseux forme des masses importantes et des plis, en particulier sur les cuisses et autour des genoux. Ces volumes gênent la marche, provoquent des frottements et limitent la mobilité.',
+        ],
+      },
+      {
+        h2: 'Stade 4 : le lipo-lymphœdème',
+        paragraphs: [
+          'À un stade avancé, le volume de graisse peut gêner la circulation lymphatique et entraîner un lymphœdème secondaire : un gonflement qui peut alors atteindre les pieds. On parle de lipo-lymphœdème. La prise en charge devient plus complexe, d’où l’intérêt d’un diagnostic précoce.',
+        ],
+      },
+      {
+        h2: 'Les types de lipœdème selon les zones',
+        list: [
+          'Type I : bassin, fesses et hanches',
+          'Type II : des hanches aux genoux',
+          'Type III : des hanches aux chevilles',
+          'Type IV : les bras',
+          'Type V : les mollets uniquement',
+        ],
+        paragraphs: ['Ces types peuvent se combiner : un lipœdème des jambes s’accompagne souvent d’une atteinte des bras.'],
+      },
+      {
+        h2: 'Quel traitement selon le stade ?',
+        paragraphs: [
+          'Aux premiers stades, la compression, l’activité physique adaptée et une alimentation anti-inflammatoire soulagent les symptômes. Lorsque la graisse malade entraîne douleur, gêne ou déformation, la liposuccion adaptée au lipœdème est le seul traitement qui la retire durablement.',
+          'Au Centre Lipœdème Maroc, le Dr Tawfik Sefrioui pratique la liposuccion WAL Bodyjet 3D avec micro-canules, sous anesthésie locale. Le nombre de zones et de séances est défini lors de la consultation, selon le stade et le type.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Le lipœdème passe-t-il forcément au stade suivant ?', a: 'Pas toujours, mais la maladie a tendance à progresser, souvent lors des changements hormonaux (grossesse, ménopause). Un suivi et une prise en charge adaptée aident à limiter cette évolution.' },
+      { q: 'Peut-on opérer un lipœdème de stade 1 ?', a: 'Oui, si la gêne et les douleurs le justifient. Intervenir tôt donne souvent de meilleurs résultats, car la peau et le système lymphatique sont mieux préservés. La décision se prend en consultation.' },
+      { q: 'Les pieds sont-ils touchés par le lipœdème ?', a: 'Non, les pieds sont typiquement épargnés, ce qui crée un effet de « bracelet » à la cheville. Si les pieds gonflent, il faut rechercher un lymphœdème associé (stade 4).' },
+    ],
+    image: '/img/lipoedeme-stade-4-jambes.webp',
+    imageAlt: 'Lipœdème de stade avancé des jambes',
+    published: '2026-10-10',
+    updated: '2026-10-10',
+    related: ['lipoedeme-ou-cellulite', 'lipoedeme-ou-lymphoedeme', 'recuperation-apres-liposuccion-lipoedeme'],
+  },
+  {
+    slug: 'prix-operation-lipoedeme-maroc',
+    title: 'Prix d’une opération du lipœdème au Maroc : ce qui fait varier le devis',
+    metaTitle: 'Prix opération lipœdème au Maroc : de quoi dépend le devis',
+    description: 'Combien coûte une liposuccion du lipœdème au Maroc ? Zones, stade, nombre de séances, anesthésie : ce qui fait varier le prix, et comment obtenir un devis.',
+    intro:
+      'C’est l’une des premières questions des patientes. Il n’existe pas de prix unique : chaque lipœdème est différent, et le devis dépend du stade, des zones à traiter et du nombre de séances. Voici ce qui entre en compte, et comment obtenir un devis clair.',
+    keyPoints: [
+      'Le prix dépend surtout du nombre de zones à traiter et du nombre de séances.',
+      'Le stade du lipœdème et le volume de graisse à retirer influencent la durée de l’intervention.',
+      'L’anesthésie locale évite les frais et les risques d’une anesthésie générale.',
+      'Un devis détaillé et sans engagement est remis après la consultation au centre.',
+      'Un premier avis est possible par WhatsApp avec quelques photos.',
+    ],
+    sections: [
+      {
+        h2: 'Ce qui fait varier le prix',
+        list: [
+          'Les zones traitées : cuisses, genoux, mollets, bras…',
+          'Le stade du lipœdème et le volume de graisse malade',
+          'Le nombre de séances : un lipœdème étendu se traite souvent en plusieurs temps',
+          'La durée de l’intervention et le matériel utilisé (système Body-Jet, micro-canules)',
+          'Le suivi : vêtements de compression, drainage post-opératoire, contrôles',
+        ],
+      },
+      {
+        h2: 'Ce que comprend en général la prise en charge',
+        list: [
+          'La consultation et l’examen clinique',
+          'L’intervention par liposuccion WAL sous anesthésie locale',
+          'Les consignes et le matériel post-opératoire',
+          'Les consultations de contrôle',
+        ],
+        paragraphs: ['Le détail exact figure sur le devis remis après la consultation, pour qu’il n’y ait aucune surprise.'],
+      },
+      {
+        h2: 'Pourquoi un devis personnalisé',
+        paragraphs: [
+          'Deux patientes au même stade n’ont pas forcément les mêmes zones atteintes ni les mêmes objectifs. Un prix « au forfait » annoncé sans examen ne reflète pas la réalité de votre traitement. L’examen clinique permet de définir précisément ce qui sera fait, en combien de séances, et donc le coût réel.',
+        ],
+      },
+      {
+        h2: 'Comment obtenir votre devis',
+        paragraphs: [
+          'Prenez rendez-vous au Centre Lipœdème Maroc, 5 boulevard Abdellatif Benqaddour, quartier Racine, à Casablanca (05 22 39 86 89). Si vous habitez loin, envoyez d’abord vos questions et quelques photos par WhatsApp : l’équipe vous donnera un premier avis et organisera la consultation.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'La liposuccion du lipœdème est-elle remboursée au Maroc ?', a: 'La prise en charge dépend de votre assurance ou mutuelle et de votre contrat. Le centre peut vous remettre les documents médicaux nécessaires pour faire la demande.' },
+      { q: 'Peut-on traiter toutes les zones en une seule fois ?', a: 'Cela dépend du volume à retirer et de votre état de santé. Pour la sécurité et la qualité du résultat, un lipœdème étendu est souvent traité en plusieurs séances, planifiées dès la consultation.' },
+      { q: 'Le devis est-il gratuit ?', a: 'Le devis est remis après la consultation, sans engagement. Un premier avis peut aussi être donné à distance par WhatsApp.' },
+    ],
+    image: '/img/appareil-bodyjet-liposuccion-wal-anesthesie-locale.webp',
+    imageAlt: 'Appareil Body-Jet utilisé pour la liposuccion WAL',
+    published: '2026-10-10',
+    updated: '2026-10-10',
+    related: ['recuperation-apres-liposuccion-lipoedeme', 'stades-du-lipoedeme', 'lipoedeme-des-bras'],
+  },
+  {
+    slug: 'recuperation-apres-liposuccion-lipoedeme',
+    title: 'Après une liposuccion du lipœdème : la récupération étape par étape',
+    metaTitle: 'Récupération après liposuccion du lipœdème : étape par étape',
+    description: 'Marche, compression, drainage, reprise du travail et du sport : à quoi s’attendre après une liposuccion WAL du lipœdème sous anesthésie locale.',
+    intro:
+      'La liposuccion WAL sous anesthésie locale permet une récupération plus rapide qu’une liposuccion classique sous anesthésie générale. Voici le déroulé habituel des suites, selon le protocole du Centre Lipœdème Maroc. Votre programme exact vous est remis après l’intervention.',
+    keyPoints: [
+      'Retour à domicile ou à l’hôtel le jour même dans la plupart des cas.',
+      'Marche encouragée dès le lendemain pour favoriser la circulation.',
+      'Vêtement de compression, surtout pendant le premier mois.',
+      'Drainage post-opératoire à partir du 3e jour environ, selon le protocole du centre.',
+      'Résultat final visible en général après 3 à 6 mois.',
+    ],
+    sections: [
+      {
+        h2: 'Le jour de l’intervention',
+        paragraphs: [
+          'Sous anesthésie locale, vous restez éveillée et confortable. Après une période de surveillance, vous pouvez rentrer avec les consignes écrites et votre vêtement de compression. Un écoulement du liquide d’infiltration par les petites incisions est normal les premières heures.',
+        ],
+      },
+      {
+        h2: 'La première semaine',
+        list: [
+          'Marcher dès le lendemain, plusieurs fois par jour',
+          'Porter le vêtement de compression jour et nuit',
+          'Commencer le drainage post-opératoire vers le 3e jour, selon le protocole du centre',
+          'Bien s’hydrater et éviter les efforts intenses',
+        ],
+        paragraphs: ['Gonflement, bleus et sensibilité sont habituels et diminuent progressivement.'],
+      },
+      {
+        h2: 'Les semaines suivantes',
+        paragraphs: [
+          'La plupart des patientes reprennent une activité légère en quelques jours, et le travail de bureau rapidement. La compression est recommandée en particulier pendant le premier mois. Le sport reprend progressivement, selon l’avis du chirurgien.',
+          'Après un mois, le centre peut proposer un programme de remodelage (activité à faible impact associée à une technologie de vide et de compression, et à une alimentation saine) pour accompagner la récupération.',
+        ],
+      },
+      {
+        h2: 'Quand voit-on le résultat ?',
+        paragraphs: [
+          'Une partie de l’amélioration est visible rapidement, mais le gonflement met plusieurs semaines à disparaître. Le résultat final s’apprécie en général entre 3 et 6 mois. Les douleurs liées au lipœdème diminuent souvent nettement dans les zones traitées.',
+        ],
+      },
+      {
+        h2: 'Quand contacter le centre',
+        list: [
+          'Fièvre, rougeur ou chaleur inhabituelle d’une zone',
+          'Douleur qui augmente au lieu de diminuer',
+          'Gonflement important d’une seule jambe',
+          'Toute question ou inquiétude : l’équipe reste joignable par téléphone et WhatsApp',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Combien de temps faut-il rester à Casablanca après l’intervention ?', a: 'Cela dépend du nombre de zones traitées et de votre situation. Le centre planifie votre séjour avec vous pour que les premiers contrôles se fassent sur place, puis le suivi peut continuer à distance.' },
+      { q: 'Est-ce douloureux après l’opération ?', a: 'Une gêne et des courbatures sont habituelles les premiers jours et se gèrent avec les antalgiques prescrits. La marche précoce aide à récupérer.' },
+      { q: 'Le lipœdème peut-il revenir après la liposuccion ?', a: 'La graisse retirée ne revient pas. Le lipœdème restant une maladie chronique, des zones non traitées peuvent évoluer ; un mode de vie sain et un suivi aident à maintenir le résultat.' },
+    ],
+    image: '/img/jambes-apres-liposuccion-lipoedeme.webp',
+    imageAlt: 'Jambes après une liposuccion du lipœdème',
+    published: '2026-10-10',
+    updated: '2026-10-10',
+    related: ['prix-operation-lipoedeme-maroc', 'stades-du-lipoedeme', 'lipoedeme-des-bras'],
+  },
+  {
+    slug: 'lipoedeme-ou-lymphoedeme',
+    title: 'Lipœdème ou lymphœdème : quelles différences ?',
+    metaTitle: 'Lipœdème ou lymphœdème : les différences à connaître',
+    description: 'Symétrie, pieds, douleur, signe de Stemmer : comment distinguer le lipœdème du lymphœdème, et pourquoi cela change le traitement.',
+    intro:
+      'Les deux noms se ressemblent et les deux font gonfler les jambes, mais ce ne sont pas les mêmes maladies. Le lipœdème est une maladie du tissu graisseux ; le lymphœdème est un gonflement dû à une mauvaise circulation de la lymphe. Les deux peuvent parfois s’associer.',
+    keyPoints: [
+      'Le lipœdème est symétrique et épargne les pieds ; le lymphœdème touche souvent un seul membre et les pieds.',
+      'Le lipœdème est douloureux au toucher ; le lymphœdème l’est peu au début.',
+      'Le signe de Stemmer (peau du 2e orteil difficile à pincer) oriente vers le lymphœdème.',
+      'Un lipœdème avancé peut se compliquer d’un lymphœdème : c’est le lipo-lymphœdème.',
+    ],
+    sections: [
+      {
+        h2: 'Les différences principales',
+        table: {
+          head: ['', 'Lipœdème', 'Lymphœdème'],
+          rows: [
+            ['Nature', 'Graisse anormale', 'Accumulation de lymphe'],
+            ['Répartition', 'Symétrique (deux jambes)', 'Souvent un seul membre'],
+            ['Pieds', 'Épargnés', 'Souvent gonflés'],
+            ['Douleur au toucher', 'Fréquente', 'Rare au début'],
+            ['Bleus faciles', 'Oui', 'Non'],
+            ['Signe de Stemmer', 'Négatif', 'Souvent positif'],
+          ],
+        },
+      },
+      {
+        h2: 'Pourquoi la différence est importante',
+        paragraphs: [
+          'Le traitement n’est pas le même. Le lymphœdème se traite surtout par drainage, bandages et compression. Le lipœdème peut aussi bénéficier de compression, mais seule une liposuccion adaptée retire la graisse malade.',
+          'Une liposuccion pour lipœdème doit respecter le système lymphatique : c’est l’intérêt des techniques douces comme la liposuccion WAL assistée par jet d’eau, pratiquée au Centre Lipœdème Maroc par le Dr Tawfik Sefrioui.',
+        ],
+      },
+      {
+        h2: 'Comment le médecin fait la différence',
+        paragraphs: [
+          'L’examen clinique suffit le plus souvent : observation des jambes et des pieds, recherche du signe de Stemmer, palpation des tissus. En cas de doute, une lymphoscintigraphie peut être demandée pour évaluer la circulation lymphatique.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Le lipœdème peut-il provoquer un lymphœdème ?', a: 'Oui, à un stade avancé, le volume de graisse peut gêner la circulation lymphatique. On parle alors de lipo-lymphœdème, ou stade 4.' },
+      { q: 'Le drainage lymphatique guérit-il le lipœdème ?', a: 'Non. Il peut soulager la sensation de lourdeur et l’œdème, mais il ne retire pas la graisse du lipœdème.' },
+    ],
+    published: '2026-10-10',
+    updated: '2026-10-10',
+    related: ['lipoedeme-ou-cellulite', 'stades-du-lipoedeme', 'recuperation-apres-liposuccion-lipoedeme'],
+  },
+  {
+    slug: 'lipoedeme-des-bras',
+    title: 'Lipœdème des bras : symptômes et traitement',
+    metaTitle: 'Lipœdème des bras : symptômes, diagnostic et traitement',
+    description: 'Bras lourds et douloureux, graisse qui s’arrête au poignet : reconnaître le lipœdème des bras et le traiter par liposuccion WAL à Casablanca.',
+    intro:
+      'Le lipœdème ne touche pas que les jambes. Chez de nombreuses patientes, les bras sont aussi atteints, en particulier le haut du bras. La graisse s’arrête net au niveau du poignet, laissant la main fine.',
+    keyPoints: [
+      'Graisse symétrique sur le haut des bras, parfois l’avant-bras, mains épargnées.',
+      'Sensibilité, douleur au toucher et bleus faciles, comme sur les jambes.',
+      'Souvent associé à un lipœdème des jambes.',
+      'Traitement : liposuccion WAL sous anesthésie locale, qui préserve les lymphatiques.',
+    ],
+    sections: [
+      {
+        h2: 'Les signes du lipœdème des bras',
+        list: [
+          'Bras volumineux par rapport au reste du haut du corps',
+          'Graisse qui « pend » sous le bras et s’arrête au poignet',
+          'Douleur ou sensibilité quand on appuie',
+          'Bleus qui apparaissent facilement',
+          'Volume qui ne diminue pas avec le sport ciblé ou le régime',
+        ],
+      },
+      {
+        h2: 'Le traitement',
+        paragraphs: [
+          'La compression et l’activité physique peuvent soulager, sans réduire la graisse malade. La liposuccion adaptée au lipœdème est le traitement qui la retire durablement.',
+          'Au Centre Lipœdème Maroc, le Dr Tawfik Sefrioui traite les bras, les avant-bras et la région des aisselles par liposuccion WAL Bodyjet 3D avec micro-canules, sous anesthésie locale. La patiente reste éveillée et confortable, et le geste préserve les vaisseaux lymphatiques.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on traiter les bras et les jambes en même temps ?', a: 'Cela dépend du volume total à retirer. Souvent, les zones sont traitées en plusieurs séances pour plus de sécurité ; le plan est défini lors de la consultation.' },
+      { q: 'Reste-t-il des cicatrices sur les bras ?', a: 'Les micro-canules passent par de très petites incisions, généralement discrètes une fois cicatrisées.' },
+    ],
+    image: '/img/lipoedeme-bras-avant-apres.webp',
+    imageAlt: 'Lipœdème des bras avant et après liposuccion WAL',
+    published: '2026-10-10',
+    updated: '2026-10-10',
+    related: ['stades-du-lipoedeme', 'prix-operation-lipoedeme-maroc', 'recuperation-apres-liposuccion-lipoedeme'],
+  },
+  {
+    slug: 'quel-medecin-consulter-lipoedeme-maroc',
+    title: 'Quel médecin consulter pour un lipœdème au Maroc ?',
+    metaTitle: 'Quel médecin consulter pour un lipœdème au Maroc ?',
+    description: 'Angiologue, chirurgien, centre spécialisé : qui consulter pour un lipœdème au Maroc, les questions à poser et les critères pour bien choisir son spécialiste.',
+    intro:
+      'Beaucoup de patientes marocaines consultent plusieurs médecins avant d’entendre le mot « lipœdème ». La maladie est encore peu connue, et le premier enjeu est de trouver un médecin qui la reconnaît. Voici comment s’orienter, et les critères pour choisir un spécialiste.',
+    keyPoints: [
+      'Le diagnostic du lipœdème est clinique : il faut un médecin qui connaît la maladie.',
+      'Un angiologue peut écarter un problème veineux ou un lymphœdème.',
+      'Pour un traitement chirurgical, il faut un chirurgien formé à la liposuccion du lipœdème, pas seulement à la liposuccion esthétique.',
+      'À Casablanca, le Centre Lipœdème Maroc du Dr Tawfik Sefrioui est dédié au lipœdème depuis 2015.',
+      'Un bon spécialiste propose aussi les options non chirurgicales et un suivi.',
+    ],
+    sections: [
+      {
+        h2: 'Les médecins qui peuvent vous aider',
+        list: [
+          'Le médecin généraliste : il peut évoquer la maladie et vous orienter.',
+          'L’angiologue ou médecin vasculaire : il vérifie les veines et la circulation lymphatique, souvent avec un écho-Doppler.',
+          'L’endocrinologue : utile pour rechercher un trouble hormonal ou métabolique associé.',
+          'Le kinésithérapeute formé au drainage : pour soulager la lourdeur et l’œdème associé.',
+          'Le chirurgien spécialisé dans le lipœdème : pour évaluer et réaliser une liposuccion adaptée lorsque c’est indiqué.',
+        ],
+      },
+      {
+        h2: 'Les critères pour choisir un spécialiste du lipœdème',
+        list: [
+          'Une activité centrée sur le lipœdème, et pas seulement sur la chirurgie esthétique',
+          'Une consultation avec examen clinique complet, jamais un diagnostic sur simple photo',
+          'Une technique qui respecte les vaisseaux lymphatiques, comme la liposuccion WAL (assistée par jet d’eau)',
+          'Des explications claires sur l’anesthésie, les risques, la récupération et le suivi',
+          'Un devis détaillé et transparent',
+          'Des résultats avant / après et des témoignages de patientes réelles',
+        ],
+      },
+      {
+        h2: 'Les questions à poser lors de la première consultation',
+        list: [
+          'Est-ce bien un lipœdème, et à quel stade ?',
+          'Quelles options existent sans chirurgie dans mon cas ?',
+          'Si une liposuccion est proposée : quelle technique, sous quelle anesthésie, en combien de séances ?',
+          'Comment se passent les jours et les semaines qui suivent ?',
+          'Quel est le coût total, compression et suivi compris ?',
+        ],
+      },
+      {
+        h2: 'Le Centre Lipœdème Maroc à Casablanca',
+        paragraphs: [
+          'Le Centre Lipœdème Maroc, situé 5 boulevard Abdellatif Benqaddour à Casablanca (quartier Racine), est dédié au diagnostic et au traitement du lipœdème depuis 2015. Il est dirigé par le Dr Tawfik Sefrioui, chirurgien formé à la George Washington University et pionnier au Maroc de la liposuccion WAL Bodyjet 3D sous anesthésie locale.',
+          'La consultation permet de confirmer ou non le diagnostic, de préciser le stade et de discuter de toutes les options, avec ou sans chirurgie. Le centre reçoit des patientes de tout le Maroc (Rabat, Marrakech, Tanger, Fès, Agadir…) et de l’étranger.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Quel spécialiste diagnostique le lipœdème au Maroc ?', a: 'Un médecin qui connaît la maladie : angiologue, médecin vasculaire ou chirurgien spécialisé dans le lipœdème. À Casablanca, le Centre Lipœdème Maroc du Dr Tawfik Sefrioui est dédié à cette maladie depuis 2015.' },
+      { q: 'Faut-il une lettre de son médecin pour consulter ?', a: 'Non, vous pouvez prendre rendez-vous directement au centre, par téléphone ou par WhatsApp.' },
+      { q: 'Je n’habite pas à Casablanca, comment faire ?', a: 'Le centre accueille des patientes de tout le Maroc et de l’étranger. Le premier échange peut se faire par WhatsApp, avec photos, avant la consultation sur place.' },
+    ],
+    image: '/img/dr-tawfik-sefrioui.webp',
+    imageAlt: 'Dr Tawfik Sefrioui, spécialiste du lipœdème à Casablanca',
+    published: '2026-10-10',
+    updated: '2026-10-10',
+    related: ['lipoedeme-ou-cellulite', 'stades-du-lipoedeme', 'prix-operation-lipoedeme-maroc'],
+  },
+  {
+    slug: 'liposuccion-wal-ou-classique',
+    title: 'Liposuccion WAL ou liposuccion classique : quelle différence pour le lipœdème ?',
+    metaTitle: 'Liposuccion WAL ou classique : quelle différence ?',
+    description: 'Jet d’eau, micro-canules, anesthésie locale, lymphatiques préservés : ce qui distingue la liposuccion WAL de la liposuccion classique pour le lipœdème.',
+    intro:
+      'Toutes les liposuccions ne se valent pas face au lipœdème. La graisse malade entoure des vaisseaux lymphatiques fragiles, et la technique choisie compte autant que la quantité retirée. La liposuccion WAL (Water-Assisted Liposuction) a été conçue pour être plus douce.',
+    keyPoints: [
+      'La WAL utilise un jet d’eau pulsé qui détache la graisse en douceur avant de l’aspirer.',
+      'Elle se pratique avec des micro-canules, souvent sous anesthésie locale tumescente.',
+      'Elle limite le traumatisme des tissus et des vaisseaux lymphatiques.',
+      'La patiente reste éveillée et marche dès le lendemain.',
+      'La liposuccion classique est surtout pensée pour la silhouette, pas pour le lipœdème.',
+    ],
+    sections: [
+      {
+        h2: 'La liposuccion classique',
+        paragraphs: [
+          'La liposuccion classique retire la graisse par des mouvements mécaniques de la canule, souvent sous anesthésie générale. Elle est conçue pour remodeler la silhouette sur des amas graisseux localisés.',
+          'Sur un lipœdème, où la graisse est étendue, douloureuse et proche des vaisseaux lymphatiques, une technique trop agressive peut augmenter les bleus, l’œdème et le temps de récupération.',
+        ],
+      },
+      {
+        h2: 'La liposuccion WAL Bodyjet 3D',
+        paragraphs: [
+          'Avec la WAL, une solution est infiltrée puis un jet d’eau fin et pulsé décolle doucement les cellules graisseuses, qui sont aspirées en même temps par des micro-canules. Le geste est plus respectueux des tissus.',
+          'Au Centre Lipœdème Maroc, le Dr Tawfik Sefrioui pratique la liposuccion WAL Bodyjet 3D sous anesthésie locale depuis de nombreuses années. La patiente est éveillée, et le travail se fait zone par zone (cuisses, genoux, mollets, hanches, bras).',
+        ],
+      },
+      {
+        h2: 'Comparaison',
+        table: {
+          head: ['', 'Liposuccion classique', 'Liposuccion WAL'],
+          rows: [
+            ['Principe', 'Aspiration mécanique', 'Jet d’eau pulsé + aspiration douce'],
+            ['Canules', 'Souvent plus larges', 'Micro-canules'],
+            ['Anesthésie', 'Souvent générale', 'Locale tumescente possible'],
+            ['Vaisseaux lymphatiques', 'Plus exposés', 'Mieux préservés'],
+            ['Reprise de la marche', 'Variable', 'Dès le lendemain'],
+            ['Indication principale', 'Silhouette', 'Lipœdème et silhouette'],
+          ],
+        },
+      },
+    ],
+    faq: [
+      { q: 'La liposuccion WAL est-elle réalisée sous anesthésie locale ?', a: 'Oui, c’est possible et c’est le choix du Centre Lipœdème Maroc : une anesthésie locale tumescente, la patiente restant éveillée et confortable.' },
+      { q: 'La liposuccion WAL préserve-t-elle les vaisseaux lymphatiques ?', a: 'Le jet d’eau et les micro-canules limitent le traumatisme des tissus, ce qui permet de mieux préserver les vaisseaux lymphatiques qu’une technique purement mécanique.' },
+      { q: 'La WAL guérit-elle le lipœdème ?', a: 'Elle retire durablement la graisse malade et soulage souvent la douleur et la lourdeur. Le lipœdème reste une maladie chronique : compression, activité physique et suivi restent utiles.' },
+    ],
+    image: '/2028/1.webp',
+    imageAlt: 'Liposuccion WAL Bodyjet 3D au Centre Lipœdème Maroc',
+    published: '2026-10-10',
+    updated: '2026-10-10',
+    related: ['recuperation-apres-liposuccion-lipoedeme', 'prix-operation-lipoedeme-maroc', 'quel-medecin-consulter-lipoedeme-maroc'],
+  },
+  {
+    slug: 'traitement-lipoedeme-sans-chirurgie',
+    title: 'Peut-on traiter le lipœdème sans chirurgie ?',
+    metaTitle: 'Traiter le lipœdème sans chirurgie : ce qui soulage vraiment',
+    description: 'Compression, drainage, sport, alimentation : ce que les traitements sans chirurgie apportent au lipœdème, leurs limites, et quand envisager une opération.',
+    intro:
+      'Toutes les patientes atteintes de lipœdème n’ont pas besoin d’être opérées. Les traitements dits conservateurs soulagent la douleur et la lourdeur, et ralentissent parfois l’évolution. Ils ont cependant une limite : ils ne retirent pas la graisse du lipœdème.',
+    keyPoints: [
+      'Compression, activité physique adaptée et drainage soulagent les symptômes.',
+      'Ils ne font pas disparaître la graisse propre au lipœdème.',
+      'Le régime seul ne réduit pas les zones atteintes, mais aide à éviter un surpoids associé.',
+      'L’opération se discute quand la douleur, le volume ou la gêne à la marche persistent.',
+    ],
+    sections: [
+      {
+        h2: 'Les traitements qui soulagent',
+        list: [
+          'Vêtements de compression adaptés : moins de lourdeur et d’œdème',
+          'Drainage lymphatique manuel : utile surtout s’il existe un œdème associé',
+          'Activité physique douce : marche, natation, aquagym, vélo',
+          'Alimentation équilibrée, pour préserver la santé et éviter la prise de poids',
+          'Prise en charge de la douleur et soutien psychologique si besoin',
+        ],
+      },
+      {
+        h2: 'Leurs limites',
+        paragraphs: [
+          'Ces mesures améliorent le confort au quotidien, mais la graisse du lipœdème résiste aux régimes et au sport. Lorsque la maladie évolue, beaucoup de patientes continuent à souffrir malgré des années d’efforts.',
+        ],
+      },
+      {
+        h2: 'Quand envisager une opération ?',
+        paragraphs: [
+          'Une liposuccion adaptée au lipœdème se discute lorsque les douleurs, la lourdeur ou le volume persistent malgré le traitement conservateur, ou gênent la marche et la vie quotidienne. C’est aujourd’hui le traitement qui réduit le plus durablement le tissu graisseux malade.',
+          'Au Centre Lipœdème Maroc, à Casablanca, le Dr Tawfik Sefrioui évalue chaque patiente et propose, selon les cas, un traitement sans chirurgie ou une liposuccion WAL Bodyjet 3D sous anesthésie locale.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Le lipœdème peut-il disparaître avec un régime ?', a: 'Non. Un régime peut faire perdre la graisse « normale », mais la graisse du lipœdème diminue peu ou pas. Il reste utile pour éviter un surpoids qui aggraverait les symptômes.' },
+      { q: 'Quels traitements soulagent les douleurs et la lourdeur ?', a: 'La compression adaptée, l’activité physique douce et le drainage lymphatique soulagent souvent. Lorsque la douleur persiste, une liposuccion adaptée au lipœdème peut être discutée.' },
+      { q: 'Quand faut-il envisager une opération pour un lipœdème ?', a: 'Quand les symptômes persistent malgré un traitement bien suivi, ou que le volume gêne la marche et la vie quotidienne. La décision se prend lors d’une consultation spécialisée.' },
+    ],
+    published: '2026-10-10',
+    updated: '2026-10-10',
+    related: ['quel-medecin-consulter-lipoedeme-maroc', 'liposuccion-wal-ou-classique', 'stades-du-lipoedeme'],
+  },
+  {
+    slug: 'diagnostic-lipoedeme-test',
+    title: 'Existe-t-il un test pour reconnaître un lipœdème ?',
+    metaTitle: 'Test du lipœdème : comment le diagnostic est posé',
+    description: 'Aucune prise de sang ne prouve le lipœdème : comment le médecin pose le diagnostic, les examens utiles et un questionnaire pour savoir s’il faut consulter.',
+    intro:
+      'Beaucoup de patientes cherchent un « test du lipœdème ». Il n’existe pas d’analyse ni d’imagerie qui le confirme à elle seule : le diagnostic est clinique. Quelques questions simples permettent toutefois de savoir s’il faut consulter.',
+    keyPoints: [
+      'Aucune prise de sang ni imagerie ne confirme seule le lipœdème.',
+      'Le diagnostic repose sur l’interrogatoire et l’examen des jambes et des bras.',
+      'L’écho-Doppler sert à écarter un problème veineux, pas à prouver le lipœdème.',
+      'Plusieurs « oui » au questionnaire ci-dessous justifient une consultation.',
+    ],
+    sections: [
+      {
+        h2: 'Petit questionnaire avant de consulter',
+        list: [
+          'Vos jambes (ou vos bras) sont-elles nettement plus fortes que le reste du corps ?',
+          'La graisse s’arrête-t-elle aux chevilles ou aux poignets, pieds et mains restant fins ?',
+          'Avez-vous mal quand on appuie sur la peau ?',
+          'Avez-vous facilement des bleus ?',
+          'Vos jambes sont-elles lourdes en fin de journée ?',
+          'La graisse résiste-t-elle aux régimes et au sport ?',
+          'Une femme de votre famille a-t-elle la même silhouette ?',
+        ],
+      },
+      {
+        h2: 'Comment le médecin pose le diagnostic',
+        paragraphs: [
+          'Le médecin vous interroge sur l’apparition des symptômes (puberté, grossesse, ménopause), les antécédents familiaux et les traitements déjà essayés. Il examine la répartition de la graisse, la symétrie, la texture de la peau, les nodules et la douleur à la palpation, puis précise le stade.',
+          'Selon les cas, il peut demander un écho-Doppler veineux ou un bilan sanguin, pour écarter une autre cause de gonflement. Au Centre Lipœdème Maroc, à Casablanca, cette consultation est réalisée par le Dr Tawfik Sefrioui.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Existe-t-il un test fiable pour reconnaître un lipœdème ?', a: 'Non, aucun examen ne le prouve à lui seul. Le diagnostic est clinique, posé par un médecin qui connaît la maladie, avec si besoin des examens pour écarter d’autres causes.' },
+      { q: 'Comment les médecins déterminent-ils le stade d’un lipœdème ?', a: 'Par l’examen de la peau et du tissu graisseux : peau lisse avec petits nodules (stade 1), peau irrégulière (stade 2), amas et replis (stade 3), puis lymphœdème associé (stade 4).' },
+    ],
+    published: '2026-10-10',
+    updated: '2026-10-10',
+    related: ['stades-du-lipoedeme', 'lipoedeme-ou-cellulite', 'quel-medecin-consulter-lipoedeme-maroc'],
+  },
+  {
+    slug: 'lipoedeme-et-grossesse',
+    title: 'Lipœdème et grossesse : ce qu’il faut savoir',
+    metaTitle: 'Lipœdème et grossesse : risques, conseils et traitement',
+    description: 'La grossesse peut déclencher ou aggraver un lipœdème. Ce qui se passe, comment se protéger, et quand envisager une liposuccion WAL après l’accouchement.',
+    intro:
+      'Beaucoup de patientes racontent que leurs jambes ont changé pendant ou après une grossesse. Les variations hormonales sont l’un des moments clés du lipœdème. Voici ce qu’il faut savoir avant, pendant et après une grossesse.',
+    keyPoints: [
+      'La grossesse est, avec la puberté et la ménopause, un moment où le lipœdème apparaît ou s’aggrave.',
+      'Le lipœdème n’empêche pas d’avoir des enfants.',
+      'Pendant la grossesse, on privilégie la marche, une compression adaptée si le médecin la conseille et une prise de poids encadrée.',
+      'Aucune liposuccion n’est réalisée pendant la grossesse ni l’allaitement.',
+      'Après l’accouchement, une liposuccion WAL peut être discutée une fois le corps stabilisé.',
+    ],
+    sections: [
+      {
+        h2: 'Pourquoi la grossesse influence le lipœdème',
+        paragraphs: [
+          'Le lipœdème est très lié aux hormones féminines. Pendant la grossesse, les changements hormonaux, la rétention d’eau et la prise de poids peuvent augmenter le volume des jambes, la douleur et la sensation de lourdeur.',
+          'Chez certaines femmes, c’est après une grossesse que la disproportion entre le haut et le bas du corps devient évidente. Chez d’autres, un lipœdème déjà présent progresse d’un stade.',
+        ],
+      },
+      {
+        h2: 'Pendant la grossesse : les bons réflexes',
+        list: [
+          'Marcher chaque jour, nager ou faire de l’aquagym si votre médecin l’autorise',
+          'Porter une compression adaptée si elle est prescrite, surtout en fin de journée',
+          'Surélever les jambes au repos',
+          'Suivre une alimentation équilibrée et une prise de poids encadrée par votre médecin',
+          'Signaler toute douleur ou gonflement inhabituel à votre gynécologue',
+        ],
+      },
+      {
+        h2: 'Après l’accouchement : quand envisager un traitement ?',
+        paragraphs: [
+          'On attend en général que le corps se soit stabilisé après l’accouchement et, le cas échéant, la fin de l’allaitement avant d’envisager une liposuccion. Le délai exact est fixé lors de la consultation.',
+          'Au Centre Lipœdème Maroc, à Casablanca, le Dr Tawfik Sefrioui évalue le stade et propose, selon les cas, un traitement sans chirurgie ou une liposuccion WAL Bodyjet 3D sous anesthésie locale.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Peut-on être enceinte avec un lipœdème ?', a: 'Oui. Le lipœdème n’empêche pas une grossesse. Il peut en revanche s’aggraver pendant cette période, d’où l’intérêt d’un suivi et de bonnes habitudes.' },
+      { q: 'Peut-on faire une liposuccion pendant la grossesse ?', a: 'Non. Aucune liposuccion n’est réalisée pendant la grossesse ni pendant l’allaitement.' },
+      { q: 'Faut-il attendre d’avoir fini ses grossesses pour se faire opérer ?', a: 'Pas forcément. Une grossesse ultérieure reste possible après une liposuccion du lipœdème ; la décision se prend avec le médecin selon votre projet et le stade de la maladie.' },
+    ],
+    published: '2026-10-12',
+    updated: '2026-10-12',
+    related: ['stades-du-lipoedeme', 'traitement-lipoedeme-sans-chirurgie', 'recuperation-apres-liposuccion-lipoedeme'],
+  },
+  {
+    slug: 'vetements-de-compression-lipoedeme',
+    title: 'Vêtements de compression et lipœdème : à quoi ça sert ?',
+    metaTitle: 'Compression et lipœdème : bas, collants, panty',
+    description: 'Bas, collants ou panty de compression : ce que la compression apporte au lipœdème, comment la choisir, et son rôle essentiel après une liposuccion WAL.',
+    intro:
+      'La compression est un pilier du traitement du lipœdème, avant comme après une opération. Elle ne fait pas disparaître la graisse, mais elle soulage la lourdeur, limite l’œdème et accompagne la récupération.',
+    keyPoints: [
+      'La compression soulage la lourdeur et l’œdème, elle ne retire pas la graisse du lipœdème.',
+      'Elle doit être adaptée et prise aux bonnes mesures, idéalement sur conseil médical.',
+      'Les modèles à tricot plat sont souvent mieux tolérés sur des jambes de forme irrégulière.',
+      'Après une liposuccion WAL, un panty de compression se porte surtout pendant le premier mois.',
+    ],
+    sections: [
+      {
+        h2: 'Ce que la compression apporte',
+        list: [
+          'Moins de sensation de jambes lourdes, surtout en fin de journée',
+          'Diminution de l’œdème associé',
+          'Meilleur confort à la marche et pendant le sport',
+          'Après une liposuccion : moins de gonflement et une peau qui se rétracte mieux',
+        ],
+      },
+      {
+        h2: 'Bien choisir sa compression',
+        paragraphs: [
+          'Bas, collants, panty ou manchons pour les bras : le modèle dépend des zones touchées. La classe de compression et la taille se choisissent sur mesures, idéalement le matin, quand les jambes sont le moins gonflées.',
+          'Sur des jambes de forme irrégulière, les vêtements à tricot plat, plus épais, glissent moins et serrent de façon plus homogène. Une compression mal adaptée peut faire mal ou créer un garrot : demandez conseil.',
+        ],
+      },
+      {
+        h2: 'La compression après une liposuccion WAL',
+        paragraphs: [
+          'Au Centre Lipœdème Maroc, la patiente repart avec un vêtement de compression après sa liposuccion WAL sous anesthésie locale. Il se porte jour et nuit les premières semaines, puis le protocole s’allège selon les consignes du Dr Tawfik Sefrioui, avec un drainage post-opératoire.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Les bas de contention font-ils maigrir les jambes ?', a: 'Non. Ils soulagent la lourdeur et l’œdème, mais ne retirent pas la graisse du lipœdème.' },
+      { q: 'Combien de temps porter la compression après une liposuccion ?', a: 'Surtout pendant le premier mois, jour et nuit au début, puis selon le protocole donné par le médecin.' },
+      { q: 'Faut-il porter une compression toute sa vie ?', a: 'Cela dépend des symptômes. Beaucoup de patientes la portent dans les moments de lourdeur (chaleur, voyages, station debout). Le médecin adapte les conseils à chaque cas.' },
+    ],
+    published: '2026-10-12',
+    updated: '2026-10-12',
+    related: ['recuperation-apres-liposuccion-lipoedeme', 'traitement-lipoedeme-sans-chirurgie', 'liposuccion-wal-ou-classique'],
+  },
+  {
+    slug: 'lipoedeme-des-genoux',
+    title: 'Lipœdème des genoux : symptômes et traitement',
+    metaTitle: 'Lipœdème des genoux : symptômes et traitement',
+    description: 'Graisse à l’intérieur des genoux, frottements, douleur à la marche : reconnaître le lipœdème des genoux et le traiter par liposuccion WAL à Casablanca.',
+    intro:
+      'Les genoux font partie des zones les plus touchées par le lipœdème. La graisse s’accumule à l’intérieur et autour de l’articulation, ce qui gêne la marche et finit par fatiguer les genoux eux-mêmes.',
+    keyPoints: [
+      'Le lipœdème des genoux s’observe surtout dans les types II (hanches-genoux) et III (hanches-chevilles).',
+      'Signes typiques : bourrelet graisseux à l’intérieur du genou, frottements, douleur à la pression.',
+      'La marche peut devenir moins fluide et fatiguer l’articulation.',
+      'La liposuccion WAL sous anesthésie locale permet de traiter précisément cette zone.',
+    ],
+    sections: [
+      {
+        h2: 'Comment reconnaître un lipœdème des genoux ?',
+        list: [
+          'Un amas graisseux à l’intérieur des genoux, des deux côtés',
+          'Des genoux qui se frottent en marchant, avec irritation de la peau',
+          'Une douleur ou une sensibilité quand on appuie sur la zone',
+          'Des bleus faciles autour du genou',
+          'Une graisse qui ne bouge pas malgré le régime et le sport',
+        ],
+      },
+      {
+        h2: 'Pourquoi traiter les genoux ?',
+        paragraphs: [
+          'Au-delà de l’aspect, la graisse du lipœdème autour des genoux modifie la façon de marcher. Avec le temps, la gêne augmente et l’activité physique devient plus difficile, ce qui entretient un cercle vicieux.',
+          'Compression et activité physique adaptée soulagent les symptômes. Lorsque la gêne persiste, une liposuccion adaptée au lipœdème peut être proposée.',
+        ],
+      },
+      {
+        h2: 'Le traitement au Centre Lipœdème Maroc',
+        paragraphs: [
+          'À Casablanca, le Dr Tawfik Sefrioui traite les genoux, souvent avec les cuisses et les mollets, par liposuccion WAL Bodyjet 3D avec micro-canules sous anesthésie locale. Le jet d’eau permet un travail précis et respectueux des tissus autour de l’articulation. La patiente marche dès le lendemain.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Le lipœdème peut-il toucher uniquement les genoux ?', a: 'Les genoux sont rarement la seule zone atteinte : ils s’inscrivent le plus souvent dans un lipœdème des cuisses ou des jambes. L’examen clinique précise l’étendue.' },
+      { q: 'La liposuccion des genoux est-elle douloureuse ?', a: 'Elle est réalisée sous anesthésie locale tumescente ; les suites comportent surtout une sensibilité et des bleus, soulagés par la compression.' },
+    ],
+    published: '2026-10-28',
+    updated: '2026-10-28',
+    related: ['stades-du-lipoedeme', 'liposuccion-wal-ou-classique', 'recuperation-apres-liposuccion-lipoedeme'],
+  },
+  {
+    slug: 'liposuccion-lipoedeme-maroc',
+    title: 'Liposuccion du lipœdème au Maroc : ce qu’il faut savoir avant de se faire opérer',
+    metaTitle: 'Liposuccion du lipœdème au Maroc : le guide complet',
+    description: 'Indications, technique WAL, anesthésie locale, déroulement, suites et prix : tout savoir sur la liposuccion du lipœdème au Maroc avant de prendre rendez-vous.',
+    intro:
+      'Une liposuccion pour lipœdème n’est pas une liposuccion esthétique classique. Elle demande une technique adaptée, un chirurgien qui connaît la maladie et un vrai suivi. Voici les points à connaître avant de vous décider.',
+    keyPoints: [
+      'La liposuccion est aujourd’hui le traitement qui retire le plus durablement la graisse du lipœdème.',
+      'Elle doit respecter les vaisseaux lymphatiques : la technique WAL (jet d’eau) est conçue pour cela.',
+      'Au Centre Lipœdème Maroc, elle se fait sous anesthésie locale, souvent en plusieurs séances.',
+      'Le prix dépend du stade, des zones et du nombre de séances ; un devis est remis après consultation.',
+    ],
+    sections: [
+      {
+        h2: 'Liposuccion esthétique ou liposuccion du lipœdème ?',
+        paragraphs: [
+          'La liposuccion esthétique vise à affiner une silhouette. La liposuccion du lipœdème retire une graisse malade, douloureuse, souvent étendue sur toute la jambe ou le bras. Elle doit être plus douce pour les tissus et les vaisseaux lymphatiques, et s’inscrit dans une prise en charge globale.',
+        ],
+      },
+      {
+        h2: 'Comment se déroule l’intervention ?',
+        list: [
+          'Consultation : diagnostic, stade, zones à traiter et plan de traitement',
+          'Infiltration d’une solution d’anesthésie locale tumescente',
+          'Liposuccion WAL Bodyjet 3D avec micro-canules, la patiente restant éveillée',
+          'Pose du vêtement de compression',
+          'Marche dès le lendemain, drainage post-opératoire selon le protocole du centre',
+        ],
+      },
+      {
+        h2: 'Les questions à poser avant de se faire opérer',
+        list: [
+          'Le chirurgien traite-t-il régulièrement le lipœdème ?',
+          'Quelle technique, et respecte-t-elle les vaisseaux lymphatiques ?',
+          'Anesthésie locale ou générale ?',
+          'Combien de séances, et quel coût total, compression et suivi compris ?',
+          'Quel suivi après l’intervention ?',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Où faire une liposuccion du lipœdème au Maroc ?', a: 'Au Centre Lipœdème Maroc, à Casablanca, dédié au lipœdème depuis 2015. Le Dr Tawfik Sefrioui y pratique la liposuccion WAL Bodyjet 3D sous anesthésie locale.' },
+      { q: 'La liposuccion du lipœdème est-elle définitive ?', a: 'La graisse retirée ne revient pas à cet endroit, et les symptômes s’améliorent souvent nettement. Le lipœdème restant une maladie chronique, une hygiène de vie adaptée et un suivi sont conseillés.' },
+      { q: 'Faut-il plusieurs séances ?', a: 'Souvent oui, quand plusieurs zones sont atteintes : on ne retire pas une trop grande quantité de graisse en une fois, pour plus de sécurité.' },
+    ],
+    image: '/2028/1.webp',
+    imageAlt: 'Liposuccion WAL Bodyjet 3D pour lipœdème au Maroc',
+    published: '2026-10-28',
+    updated: '2026-10-28',
+    related: ['liposuccion-wal-ou-classique', 'prix-operation-lipoedeme-maroc', 'recuperation-apres-liposuccion-lipoedeme'],
+  },
+  {
+    slug: 'lipoedeme-alimentation-et-sport',
+    title: 'Lipœdème : alimentation et sport, ce qui aide vraiment',
+    metaTitle: 'Lipœdème : alimentation et sport, ce qui aide vraiment',
+    description: 'Quel sport et quelle alimentation quand on a un lipœdème ? Ce qui soulage, ce qui ne marche pas, et pourquoi le régime seul ne fait pas disparaître la graisse.',
+    intro:
+      'Beaucoup de patientes ont tout essayé : régimes, salle de sport, marche quotidienne… sans voir leurs jambes changer. C’est normal : la graisse du lipœdème résiste. L’alimentation et le sport restent pourtant utiles, à condition de savoir ce qu’on peut en attendre.',
+    keyPoints: [
+      'Le régime et le sport ne font pas disparaître la graisse du lipœdème.',
+      'Ils aident à éviter un surpoids associé, qui aggrave les symptômes.',
+      'Les activités douces et portées (natation, aquagym, vélo, marche) sont les mieux tolérées.',
+      'Le sport se pratique de préférence avec une compression adaptée.',
+    ],
+    sections: [
+      {
+        h2: 'Les activités physiques conseillées',
+        list: [
+          'Natation et aquagym : l’eau masse les jambes et soulage la lourdeur',
+          'Vélo et vélo elliptique : peu d’impact sur les articulations',
+          'Marche régulière, à son rythme',
+          'Renforcement musculaire doux et exercices de respiration',
+        ],
+      },
+      {
+        h2: 'Alimentation : des objectifs réalistes',
+        paragraphs: [
+          'Aucun régime ne fait fondre la graisse du lipœdème. Une alimentation équilibrée, riche en légumes, fruits, protéines de qualité et pauvre en produits ultra-transformés aide surtout à préserver la santé et à limiter la prise de poids, qui alourdirait les jambes. Les régimes très restrictifs sont à éviter : ils fatiguent sans agir sur les zones atteintes.',
+          'Pour un accompagnement personnalisé, un médecin ou un diététicien peut adapter les conseils à votre situation.',
+        ],
+      },
+      {
+        h2: 'Et si les symptômes persistent ?',
+        paragraphs: [
+          'Lorsque la douleur, la lourdeur ou le volume persistent malgré une bonne hygiène de vie, une liposuccion adaptée au lipœdème peut être discutée. Au Centre Lipœdème Maroc, à Casablanca, le Dr Tawfik Sefrioui évalue chaque situation lors de la consultation.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Quel sport faire avec un lipœdème ?', a: 'Les activités douces et portées sont les mieux tolérées : natation, aquagym, vélo, marche. Elles améliorent la mobilité et soulagent la lourdeur.' },
+      { q: 'Existe-t-il un régime contre le lipœdème ?', a: 'Aucun régime ne fait disparaître la graisse du lipœdème. Une alimentation équilibrée aide surtout à éviter un surpoids associé.' },
+    ],
+    published: '2026-10-28',
+    updated: '2026-10-28',
+    related: ['traitement-lipoedeme-sans-chirurgie', 'vetements-de-compression-lipoedeme', 'lipoedeme-ou-cellulite'],
+  },
+];
+
+export const getArticle = (slug: string) => GUIDE.find((a) => a.slug === slug);
