@@ -1,6 +1,6 @@
 // Sends a Google Analytics event when a visitor taps "call", "WhatsApp" or "e-mail",
 // so you can see in GA4 which pages bring appointment requests.
-// In GA4, mark `contact_whatsapp` and `contact_phone` as key events (Admin → Events).
+// Calls and WhatsApp taps are also sent as `qualify_lead`, a key event in GA4.
 
 import { SITE } from './config/site';
 
@@ -20,6 +20,9 @@ export function trackContactClicks() {
         // Same lead signal for the ad platforms, when their tags are switched on
         const { googleAds, googleAdsLeadLabel } = SITE.tracking;
         if (googleAds && googleAdsLeadLabel) gtag('event', 'conversion', { send_to: `${googleAds}/${googleAdsLeadLabel}` });
+        // `qualify_lead` is already a key event in this GA4 property → calls and WhatsApp
+        // messages show up as conversions per page and per source (Google, ChatGPT…).
+        gtag('event', 'qualify_lead', { method: href.startsWith('tel:') ? 'phone' : 'whatsapp', page_path: window.location.pathname });
         w.fbq?.('track', 'Contact');
         w.ttq?.track('Contact');
       }

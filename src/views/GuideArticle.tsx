@@ -48,6 +48,11 @@ export default function GuideArticle({ article: a }: { article: Article }) {
               </ul>
             </aside>
 
+            <p className="mt-5 text-[15px] text-ink/70">
+              À lire aussi : <Link href="/maladie/" className="font-semibold text-rose-700 underline underline-offset-4">le lipœdème, définition, symptômes et stades</Link>
+              {' · '}<Link href="/questions-frequentes/" className="font-semibold text-rose-700 underline underline-offset-4">toutes les questions fréquentes</Link>
+            </p>
+
             {a.image && (
               <img src={a.image} alt={a.imageAlt ?? ''} loading="lazy" decoding="async" className="mt-10 w-full rounded-3xl object-cover max-h-[520px] bg-rose-50" />
             )}

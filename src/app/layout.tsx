@@ -17,6 +17,7 @@ import Chatbot from '../components/LazyChatbot';
 import WhatsAppButton from '../components/WhatsAppButton';
 import MobileActionBar from '../components/MobileActionBar';
 import ClientEffects from '../components/ClientEffects';
+import GsapReveal from '../components/GsapReveal';
 import MarketingTags from '../components/MarketingTags';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <LanguageProvider>
           <ClientEffects />
+          <GsapReveal />
           <a href="#contenu" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded">
             Aller au contenu
           </a>

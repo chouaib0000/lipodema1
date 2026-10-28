@@ -4,6 +4,7 @@
 import { homeFaq, arFaq, enFaq, maladieFaq, type FaqItem } from './faq';
 import { GUIDE } from '../content/guide';
 import { AR_GUIDE, arForFr } from '../content/guide-ar';
+import { FAQ_HUB_ALL } from '../content/faq-hub';
 
 export type PageKind = 'home' | 'condition' | 'procedure' | 'physician' | 'contact' | 'gallery' | 'about' | 'generic' | 'article' | 'hub';
 
@@ -192,6 +193,16 @@ export const ROUTES: RouteMeta[] = [
     kind: 'contact',
     priority: 0.9,
     changefreq: 'yearly',
+  },
+  {
+    path: '/questions-frequentes',
+    title: 'Lipœdème : questions et réponses | Lipœdème Maroc',
+    description: 'Symptômes, diagnostic, liposuccion WAL, prix au Maroc, récupération : toutes les réponses du Centre Lipœdème Maroc et du Dr Tawfik Sefrioui à Casablanca.',
+    breadcrumb: 'Questions fréquentes',
+    kind: 'generic',
+    priority: 0.8,
+    changefreq: 'monthly',
+    faq: FAQ_HUB_ALL,
   },
 ];
 

@@ -1,7 +1,7 @@
 // Plain-text summaries for AI assistants and answer engines (ChatGPT, Perplexity,
 // Claude, Gemini…). Served at /llms.txt (short) and /llms-full.txt (complete).
 import { SITE, pageUrl } from '../config/site';
-import { homeFaq } from './faq';
+import { FAQ_HUB } from '../content/faq-hub';
 import { GUIDE } from '../content/guide';
 import { ROUTES } from './routes';
 
@@ -52,7 +52,7 @@ ${guide}
 }
 
 export function llmsFull() {
-  const faq = homeFaq.map((f) => `### ${f.q}\n\n${f.a}`).join('\n\n');
+  const faq = FAQ_HUB.map((c) => `### ${c.title}\n\n` + c.items.map((f) => `**${f.q}**\n${f.a}`).join('\n\n')).join('\n\n');
   const articles = GUIDE.map((a) => {
     const body = a.sections
       .map((s) => {
