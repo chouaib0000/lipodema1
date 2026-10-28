@@ -8,6 +8,7 @@ import NavLink from './NavLink';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import { SITE, mapsLink, whatsappLink } from '../config/site';
+import { CHROME, LANG_HOME, langFromPath } from '../i18n/chrome';
 
 type Item = { to: string; key: string };
 type Group = { key: string; items: Item[] };
@@ -37,9 +38,9 @@ const SINGLE: Item[] = [
   { to: '/actualites', key: 'news' },
 ];
 
-function Brand() {
+function Brand({ home = '/' }: { home?: string }) {
   return (
-    <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="Centre Lipœdème Maroc – accueil">
+    <Link href={home} className="flex items-center gap-3 shrink-0" aria-label="Centre Lipœdème Maroc – accueil">
       <img src={SITE.logo} alt="" width="56" height="56" className="h-11 w-11 xl:h-14 xl:w-14 object-contain" />
       <span className="leading-tight">
         <span className="block font-serif text-[19px] xl:text-[22px] font-semibold text-ink">Lipœdème Maroc</span>
@@ -56,6 +57,8 @@ export default function Header() {
   const [hidden, setHidden] = useState(false);
   const pathname = usePath();
   const { t } = useLanguage();
+  const lang = langFromPath(pathname);
+  const local = lang === 'fr' ? null : CHROME[lang];
 
   // Close the mobile menu when the page changes (state adjusted during render, no effect needed)
   const [lastPath, setLastPath] = useState(pathname);
@@ -99,7 +102,7 @@ export default function Header() {
             {SITE.address.street}, {SITE.address.district} – {SITE.address.city}
           </a>
           <div className="flex items-center gap-6">
-            <span>Lun–Ven 9h–18h · Sam 9h–13h</span>
+            <span dir={local?.dir}>{local ? local.hours.join(' · ') : 'Lun–Ven 9h–18h · Sam 9h–13h'}</span>
             <a href={`tel:${SITE.phone.e164}`} className="flex items-center gap-2 font-semibold text-white">
               <Phone size={14} aria-hidden="true" /> {SITE.phone.display}
             </a>
@@ -109,9 +112,19 @@ export default function Header() {
       </div>
 
       <div className="container mx-auto flex h-16 xl:h-[76px] items-center justify-between gap-4">
-        <Brand />
+        <Brand home={LANG_HOME[lang]} />
 
         <nav className="hidden xl:flex items-center gap-0.5 text-[14px] font-medium" aria-label="Navigation principale">
+          {local ? (
+            <div dir={local.dir} className={`flex items-center gap-0.5 ${lang === 'ar' ? 'font-arabic text-[15px]' : ''}`}>
+              {local.nav.map((i) => (
+                <NavLink key={i.href} href={i.href} end className={({ isActive }) => `px-3 py-2 rounded-full ${isActive ? 'text-rose-700' : 'text-ink hover:text-rose-700'}`}>
+                  {i.label}
+                </NavLink>
+              ))}
+              <a href={whatsappLink(local.waMessage)} target="_blank" rel="noopener noreferrer" className="btn-primary ms-3 !py-2.5 !min-h-0 text-sm">{local.bookCta}</a>
+            </div>
+          ) : (<>
           <NavLink href="/" end className={({ isActive }) => `px-3 py-2 rounded-full ${isActive ? 'text-rose-700' : 'text-ink hover:text-rose-700'}`}>
             {t('home')}
           </NavLink>
@@ -146,6 +159,7 @@ export default function Header() {
           <Link href="/contact" className="btn-primary ml-3 !py-2.5 !min-h-0 text-sm">
             Prendre rendez-vous
           </Link>
+          </>)}
         </nav>
 
         <div className="flex items-center gap-1 xl:hidden">
@@ -158,7 +172,7 @@ export default function Header() {
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-controls="menu-mobile"
-            aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-label={open ? (local?.menuClose ?? 'Fermer le menu') : (local?.menuOpen ?? 'Ouvrir le menu')}
           >
             {open ? <X size={26} /> : <Menu size={26} />}
           </button>
@@ -173,6 +187,20 @@ export default function Header() {
         className={`xl:hidden fixed inset-x-0 top-[calc(4rem+env(safe-area-inset-top))] bottom-0 z-[45] bg-white overflow-y-auto overscroll-contain transition-[opacity,visibility] duration-200 ${open ? 'visible opacity-100' : 'invisible opacity-0'}`}
         style={{ paddingBottom: 'calc(96px + env(safe-area-inset-bottom))' }}
       >
+        {local ? (
+          <nav dir={local.dir} className={`container mx-auto pt-2 ${lang === 'ar' ? 'font-arabic' : ''}`} aria-label="Menu">
+            {local.nav.map((i) => (
+              <NavLink key={i.href} href={i.href} end className={`flex items-center min-h-[56px] border-b border-rose-100 text-2xl text-ink ${lang === 'ar' ? 'font-bold text-xl' : 'font-serif'}`}>
+                {i.label}
+              </NavLink>
+            ))}
+            <div className="mt-8 grid gap-3">
+              <a href={`tel:${SITE.phone.e164}`} className="btn-primary w-full"><Phone size={18} /> {local.call} <span dir="ltr">{SITE.phone.display}</span></a>
+              <a href={whatsappLink(local.waMessage)} target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full">{local.whatsapp}</a>
+            </div>
+            <div className="mt-6" dir="ltr"><LanguageSwitcher /></div>
+          </nav>
+        ) : (
         <nav className="container mx-auto pt-2" aria-label="Menu mobile">
           <NavLink href="/" end className="flex items-center min-h-[56px] border-b border-rose-100 font-serif text-2xl text-ink">
             {t('home')}
@@ -222,6 +250,7 @@ export default function Header() {
           </p>
           <div className="mt-6"><LanguageSwitcher /></div>
         </nav>
+        )}
       </div>
     </>
   );

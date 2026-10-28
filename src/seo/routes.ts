@@ -1,7 +1,7 @@
 // Per-page SEO. Used both at build time (prerendered HTML <head>) and in the
 // browser (when navigating between pages without a reload).
 
-import { homeFaq, arFaq, enFaq, maladieFaq, type FaqItem } from './faq';
+import { homeFaq, arFaq, enFaq, esFaq, maladieFaq, type FaqItem } from './faq';
 import { GUIDE } from '../content/guide';
 import { AR_GUIDE, arForFr } from '../content/guide-ar';
 import { FAQ_HUB_ALL } from '../content/faq-hub';
@@ -17,7 +17,7 @@ export interface RouteMeta {
   priority: number;     // sitemap
   changefreq: 'weekly' | 'monthly' | 'yearly';
   image?: string;
-  lang?: 'fr' | 'ar' | 'en';                      // default 'fr'
+  lang?: 'fr' | 'ar' | 'en' | 'es';                      // default 'fr'
   alternates?: { hreflang: string; path: string }[]; // language versions of the same page
   faq?: FaqItem[];                          // emitted as FAQPage schema
   parent?: { name: string; path: string };  // breadcrumb level between home and the page
@@ -28,6 +28,7 @@ const HOME_ALTERNATES = [
   { hreflang: 'fr', path: '/' },
   { hreflang: 'ar', path: '/ar' },
   { hreflang: 'en', path: '/en' },
+  { hreflang: 'es', path: '/es' },
 ];
 
 export const ROUTES: RouteMeta[] = [
@@ -66,6 +67,18 @@ export const ROUTES: RouteMeta[] = [
     lang: 'en',
     alternates: HOME_ALTERNATES,
     faq: enFaq,
+  },
+  {
+    path: '/es',
+    title: 'Cirugía del lipedema en Marruecos – Casablanca | Dr Sefrioui',
+    description: 'Tratamiento del lipedema en Casablanca desde 2015: liposucción WAL Bodyjet 3D asistida por agua con anestesia local, por el Dr. Tawfik Sefrioui.',
+    breadcrumb: 'Español',
+    kind: 'home',
+    priority: 0.7,
+    changefreq: 'monthly',
+    lang: 'es',
+    alternates: HOME_ALTERNATES,
+    faq: esFaq,
   },
   {
     path: '/maladie',

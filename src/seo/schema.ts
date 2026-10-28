@@ -128,7 +128,7 @@ export function buildSchema(route: RouteMeta) {
     '@type': 'BreadcrumbList',
     '@id': `${url}#breadcrumb`,
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: route.lang === 'ar' ? 'الرئيسية' : route.lang === 'en' ? 'Home' : 'Accueil', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 1, name: route.lang === 'ar' ? 'الرئيسية' : route.lang === 'en' ? 'Home' : route.lang === 'es' ? 'Inicio' : 'Accueil', item: `${SITE.url}/` },
       ...(route.parent ? [{ '@type': 'ListItem', position: 2, name: route.parent.name, item: pageUrl(route.parent.path) }] : []),
       ...(route.path === '/' ? [] : [{ '@type': 'ListItem', position: route.parent ? 3 : 2, name: route.breadcrumb, item: url }]),
     ],
@@ -143,7 +143,7 @@ export function buildSchema(route: RouteMeta) {
     url,
     name: route.title,
     description: route.description,
-    inLanguage: route.lang === 'ar' ? 'ar-MA' : route.lang === 'en' ? 'en' : 'fr-MA',
+    inLanguage: route.lang === 'ar' ? 'ar-MA' : route.lang === 'en' ? 'en' : route.lang === 'es' ? 'es' : 'fr-MA',
     isPartOf: { '@id': ID.website },
     breadcrumb: { '@id': `${url}#breadcrumb` },
     primaryImageOfPage: absUrl(route.image ?? SITE.ogImage),
@@ -190,7 +190,7 @@ export function buildSchema(route: RouteMeta) {
     graph.push({
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
-      inLanguage: route.lang === 'ar' ? 'ar-MA' : route.lang === 'en' ? 'en' : 'fr-MA',
+      inLanguage: route.lang === 'ar' ? 'ar-MA' : route.lang === 'en' ? 'en' : route.lang === 'es' ? 'es' : 'fr-MA',
       mainEntity: route.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
     });
   }

@@ -690,6 +690,149 @@ export const GUIDE: GuideArticle[] = [
     updated: '2026-10-12',
     related: ['recuperation-apres-liposuccion-lipoedeme', 'traitement-lipoedeme-sans-chirurgie', 'liposuccion-wal-ou-classique'],
   },
+  {
+    slug: 'lipoedeme-des-genoux',
+    title: 'Lipœdème des genoux : symptômes et traitement',
+    metaTitle: 'Lipœdème des genoux : symptômes et traitement',
+    description: 'Graisse à l’intérieur des genoux, frottements, douleur à la marche : reconnaître le lipœdème des genoux et le traiter par liposuccion WAL à Casablanca.',
+    intro:
+      'Les genoux font partie des zones les plus touchées par le lipœdème. La graisse s’accumule à l’intérieur et autour de l’articulation, ce qui gêne la marche et finit par fatiguer les genoux eux-mêmes.',
+    keyPoints: [
+      'Le lipœdème des genoux s’observe surtout dans les types II (hanches-genoux) et III (hanches-chevilles).',
+      'Signes typiques : bourrelet graisseux à l’intérieur du genou, frottements, douleur à la pression.',
+      'La marche peut devenir moins fluide et fatiguer l’articulation.',
+      'La liposuccion WAL sous anesthésie locale permet de traiter précisément cette zone.',
+    ],
+    sections: [
+      {
+        h2: 'Comment reconnaître un lipœdème des genoux ?',
+        list: [
+          'Un amas graisseux à l’intérieur des genoux, des deux côtés',
+          'Des genoux qui se frottent en marchant, avec irritation de la peau',
+          'Une douleur ou une sensibilité quand on appuie sur la zone',
+          'Des bleus faciles autour du genou',
+          'Une graisse qui ne bouge pas malgré le régime et le sport',
+        ],
+      },
+      {
+        h2: 'Pourquoi traiter les genoux ?',
+        paragraphs: [
+          'Au-delà de l’aspect, la graisse du lipœdème autour des genoux modifie la façon de marcher. Avec le temps, la gêne augmente et l’activité physique devient plus difficile, ce qui entretient un cercle vicieux.',
+          'Compression et activité physique adaptée soulagent les symptômes. Lorsque la gêne persiste, une liposuccion adaptée au lipœdème peut être proposée.',
+        ],
+      },
+      {
+        h2: 'Le traitement au Centre Lipœdème Maroc',
+        paragraphs: [
+          'À Casablanca, le Dr Tawfik Sefrioui traite les genoux, souvent avec les cuisses et les mollets, par liposuccion WAL Bodyjet 3D avec micro-canules sous anesthésie locale. Le jet d’eau permet un travail précis et respectueux des tissus autour de l’articulation. La patiente marche dès le lendemain.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Le lipœdème peut-il toucher uniquement les genoux ?', a: 'Les genoux sont rarement la seule zone atteinte : ils s’inscrivent le plus souvent dans un lipœdème des cuisses ou des jambes. L’examen clinique précise l’étendue.' },
+      { q: 'La liposuccion des genoux est-elle douloureuse ?', a: 'Elle est réalisée sous anesthésie locale tumescente ; les suites comportent surtout une sensibilité et des bleus, soulagés par la compression.' },
+    ],
+    published: '2026-10-28',
+    updated: '2026-10-28',
+    related: ['stades-du-lipoedeme', 'liposuccion-wal-ou-classique', 'recuperation-apres-liposuccion-lipoedeme'],
+  },
+  {
+    slug: 'liposuccion-lipoedeme-maroc',
+    title: 'Liposuccion du lipœdème au Maroc : ce qu’il faut savoir avant de se faire opérer',
+    metaTitle: 'Liposuccion du lipœdème au Maroc : le guide complet',
+    description: 'Indications, technique WAL, anesthésie locale, déroulement, suites et prix : tout savoir sur la liposuccion du lipœdème au Maroc avant de prendre rendez-vous.',
+    intro:
+      'Une liposuccion pour lipœdème n’est pas une liposuccion esthétique classique. Elle demande une technique adaptée, un chirurgien qui connaît la maladie et un vrai suivi. Voici les points à connaître avant de vous décider.',
+    keyPoints: [
+      'La liposuccion est aujourd’hui le traitement qui retire le plus durablement la graisse du lipœdème.',
+      'Elle doit respecter les vaisseaux lymphatiques : la technique WAL (jet d’eau) est conçue pour cela.',
+      'Au Centre Lipœdème Maroc, elle se fait sous anesthésie locale, souvent en plusieurs séances.',
+      'Le prix dépend du stade, des zones et du nombre de séances ; un devis est remis après consultation.',
+    ],
+    sections: [
+      {
+        h2: 'Liposuccion esthétique ou liposuccion du lipœdème ?',
+        paragraphs: [
+          'La liposuccion esthétique vise à affiner une silhouette. La liposuccion du lipœdème retire une graisse malade, douloureuse, souvent étendue sur toute la jambe ou le bras. Elle doit être plus douce pour les tissus et les vaisseaux lymphatiques, et s’inscrit dans une prise en charge globale.',
+        ],
+      },
+      {
+        h2: 'Comment se déroule l’intervention ?',
+        list: [
+          'Consultation : diagnostic, stade, zones à traiter et plan de traitement',
+          'Infiltration d’une solution d’anesthésie locale tumescente',
+          'Liposuccion WAL Bodyjet 3D avec micro-canules, la patiente restant éveillée',
+          'Pose du vêtement de compression',
+          'Marche dès le lendemain, drainage post-opératoire selon le protocole du centre',
+        ],
+      },
+      {
+        h2: 'Les questions à poser avant de se faire opérer',
+        list: [
+          'Le chirurgien traite-t-il régulièrement le lipœdème ?',
+          'Quelle technique, et respecte-t-elle les vaisseaux lymphatiques ?',
+          'Anesthésie locale ou générale ?',
+          'Combien de séances, et quel coût total, compression et suivi compris ?',
+          'Quel suivi après l’intervention ?',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Où faire une liposuccion du lipœdème au Maroc ?', a: 'Au Centre Lipœdème Maroc, à Casablanca, dédié au lipœdème depuis 2015. Le Dr Tawfik Sefrioui y pratique la liposuccion WAL Bodyjet 3D sous anesthésie locale.' },
+      { q: 'La liposuccion du lipœdème est-elle définitive ?', a: 'La graisse retirée ne revient pas à cet endroit, et les symptômes s’améliorent souvent nettement. Le lipœdème restant une maladie chronique, une hygiène de vie adaptée et un suivi sont conseillés.' },
+      { q: 'Faut-il plusieurs séances ?', a: 'Souvent oui, quand plusieurs zones sont atteintes : on ne retire pas une trop grande quantité de graisse en une fois, pour plus de sécurité.' },
+    ],
+    image: '/2028/1.webp',
+    imageAlt: 'Liposuccion WAL Bodyjet 3D pour lipœdème au Maroc',
+    published: '2026-10-28',
+    updated: '2026-10-28',
+    related: ['liposuccion-wal-ou-classique', 'prix-operation-lipoedeme-maroc', 'recuperation-apres-liposuccion-lipoedeme'],
+  },
+  {
+    slug: 'lipoedeme-alimentation-et-sport',
+    title: 'Lipœdème : alimentation et sport, ce qui aide vraiment',
+    metaTitle: 'Lipœdème : alimentation et sport, ce qui aide vraiment',
+    description: 'Quel sport et quelle alimentation quand on a un lipœdème ? Ce qui soulage, ce qui ne marche pas, et pourquoi le régime seul ne fait pas disparaître la graisse.',
+    intro:
+      'Beaucoup de patientes ont tout essayé : régimes, salle de sport, marche quotidienne… sans voir leurs jambes changer. C’est normal : la graisse du lipœdème résiste. L’alimentation et le sport restent pourtant utiles, à condition de savoir ce qu’on peut en attendre.',
+    keyPoints: [
+      'Le régime et le sport ne font pas disparaître la graisse du lipœdème.',
+      'Ils aident à éviter un surpoids associé, qui aggrave les symptômes.',
+      'Les activités douces et portées (natation, aquagym, vélo, marche) sont les mieux tolérées.',
+      'Le sport se pratique de préférence avec une compression adaptée.',
+    ],
+    sections: [
+      {
+        h2: 'Les activités physiques conseillées',
+        list: [
+          'Natation et aquagym : l’eau masse les jambes et soulage la lourdeur',
+          'Vélo et vélo elliptique : peu d’impact sur les articulations',
+          'Marche régulière, à son rythme',
+          'Renforcement musculaire doux et exercices de respiration',
+        ],
+      },
+      {
+        h2: 'Alimentation : des objectifs réalistes',
+        paragraphs: [
+          'Aucun régime ne fait fondre la graisse du lipœdème. Une alimentation équilibrée, riche en légumes, fruits, protéines de qualité et pauvre en produits ultra-transformés aide surtout à préserver la santé et à limiter la prise de poids, qui alourdirait les jambes. Les régimes très restrictifs sont à éviter : ils fatiguent sans agir sur les zones atteintes.',
+          'Pour un accompagnement personnalisé, un médecin ou un diététicien peut adapter les conseils à votre situation.',
+        ],
+      },
+      {
+        h2: 'Et si les symptômes persistent ?',
+        paragraphs: [
+          'Lorsque la douleur, la lourdeur ou le volume persistent malgré une bonne hygiène de vie, une liposuccion adaptée au lipœdème peut être discutée. Au Centre Lipœdème Maroc, à Casablanca, le Dr Tawfik Sefrioui évalue chaque situation lors de la consultation.',
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Quel sport faire avec un lipœdème ?', a: 'Les activités douces et portées sont les mieux tolérées : natation, aquagym, vélo, marche. Elles améliorent la mobilité et soulagent la lourdeur.' },
+      { q: 'Existe-t-il un régime contre le lipœdème ?', a: 'Aucun régime ne fait disparaître la graisse du lipœdème. Une alimentation équilibrée aide surtout à éviter un surpoids associé.' },
+    ],
+    published: '2026-10-28',
+    updated: '2026-10-28',
+    related: ['traitement-lipoedeme-sans-chirurgie', 'vetements-de-compression-lipoedeme', 'lipoedeme-ou-cellulite'],
+  },
 ];
 
 export const getArticle = (slug: string) => GUIDE.find((a) => a.slug === slug);

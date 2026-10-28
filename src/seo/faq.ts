@@ -126,3 +126,30 @@ export const maladieFaq: FaqItem[] = [
     a: 'Au Centre Lipœdème Maroc, à Casablanca (5 boulevard Abdellatif Benqaddour, Racine), dédié au diagnostic et au traitement du lipœdème depuis 2015 par le Dr Tawfik Sefrioui. Rendez-vous au 05 22 39 86 89 ou par WhatsApp.',
   },
 ];
+
+export const esFaq: FaqItem[] = [
+  {
+    q: '¿Qué es el lipedema?',
+    a: 'El lipedema es una enfermedad crónica del tejido graso que afecta casi exclusivamente a mujeres. La grasa se acumula de forma simétrica en piernas, caderas y a veces brazos, con dolor, sensibilidad al tacto y moratones frecuentes. Esta grasa no responde a la dieta ni al ejercicio.',
+  },
+  {
+    q: '¿Dónde tratar el lipedema en Marruecos?',
+    a: 'En el Centre Lipœdème Maroc del Dr. Tawfik Sefrioui, en Casablanca (5 boulevard Abdellatif Benqaddour, Racine), dedicado al lipedema desde 2015. Trata piernas y brazos con liposucción WAL Bodyjet 3D asistida por agua y anestesia local.',
+  },
+  {
+    q: '¿La intervención se realiza con anestesia general?',
+    a: 'No. El Dr. Sefrioui realiza la liposucción WAL con anestesia local tumescente: la paciente permanece despierta y cómoda, sin los riesgos de la anestesia general.',
+  },
+  {
+    q: '¿Por qué la liposucción WAL para el lipedema?',
+    a: 'Un chorro de agua pulsado despega suavemente las células grasas, que se aspiran con microcánulas. La técnica está pensada para limitar el traumatismo de los vasos linfáticos, frágiles en el lipedema.',
+  },
+  {
+    q: '¿Cuánto tiempo debo quedarme en Casablanca?',
+    a: 'Las pacientes suelen caminar al día siguiente. La duración de la estancia depende de las zonas tratadas y del número de sesiones; el equipo le propone un plan tras la consulta y puede ayudarle con el alojamiento.',
+  },
+  {
+    q: '¿Cuánto cuesta la cirugía del lipedema en Marruecos?',
+    a: 'El precio depende del estadio, de las zonas tratadas y del número de sesiones. Recibirá un presupuesto detallado tras la consulta. Puede enviar fotos por WhatsApp para una primera opinión.',
+  },
+];

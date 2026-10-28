@@ -1,7 +1,12 @@
+'use client';
+
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { Youtube, Instagram, Facebook } from './SocialIcons';
 import Link from 'next/link';
 import { SITE, mapsLink, whatsappLink } from '../config/site';
+import { usePath } from './usePath';
+import { CHROME, langFromPath } from '../i18n/chrome';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const LINKS = [
   { to: '/maladie', label: 'Qu’est-ce que le lipœdème ?' },
@@ -30,7 +35,51 @@ const ABOUT = [
   { to: '/en', label: 'English – Lipedema surgery Morocco' },
 ];
 
+function LocalFooter({ lang }: { lang: 'ar' | 'en' | 'es' }) {
+  const c = CHROME[lang];
+  return (
+    <footer className={`bg-plum-950 text-plum-100 ${lang === 'ar' ? 'font-arabic' : ''}`} dir={c.dir} lang={lang}>
+      <div className="container mx-auto py-14 lg:py-20">
+        <div className="grid gap-12 lg:grid-cols-3">
+          <div>
+            <p className={`text-2xl text-white ${lang === 'ar' ? 'font-bold' : 'font-serif'}`}>{lang === 'ar' ? 'مركز الوذمة الشحمية بالمغرب' : 'Centre Lipœdème Maroc'}</p>
+            <p className="text-sm text-rose-300">{lang === 'ar' ? 'الدكتور توفيق الصفريوي' : 'Dr Tawfik Sefrioui'}</p>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-plum-200">{c.tagline}</p>
+          </div>
+          <nav aria-label={c.pages}>
+            <p className={`text-xl text-white mb-5 ${lang === 'ar' ? 'font-bold' : 'font-serif'}`}>{c.pages}</p>
+            <ul className="space-y-3 text-sm">
+              {c.nav.map((l) => <li key={l.href}><Link href={l.href} className="hover:text-white">{l.label}</Link></li>)}
+            </ul>
+            <div className="mt-6" dir="ltr"><LanguageSwitcher variant="dark" /></div>
+          </nav>
+          <address className="not-italic text-sm space-y-4">
+            <p className={`text-xl text-white ${lang === 'ar' ? 'font-bold' : 'font-serif'}`}>{c.find}</p>
+            <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="flex gap-3 hover:text-white">
+              <MapPin size={18} className="mt-0.5 shrink-0 text-rose-300" />
+              {lang === 'ar'
+                ? <span>5 شارع عبد اللطيف بنقدور، حي راسين<br />20250 الدار البيضاء، {c.country}</span>
+                : <span>{SITE.address.street}<br />{SITE.address.district}, {SITE.address.postalCode} Casablanca<br />{c.country}</span>}
+            </a>
+            <a href={`tel:${SITE.phone.e164}`} className="flex gap-3 hover:text-white"><Phone size={18} className="shrink-0 text-rose-300" /> <span dir="ltr">{SITE.phone.display}</span></a>
+            <a href={whatsappLink(c.waMessage)} target="_blank" rel="noopener noreferrer" className="flex gap-3 hover:text-white"><Phone size={18} className="shrink-0 text-rose-300" /> WhatsApp <span dir="ltr">{SITE.whatsapp.display}</span></a>
+            <div className="flex gap-3">
+              <Clock size={18} className="mt-0.5 shrink-0 text-rose-300" />
+              <span>{c.hours.map((h) => <span key={h} className="block">{h}</span>)}<span className="block">{c.closed}</span></span>
+            </div>
+          </address>
+        </div>
+        <div className="mt-12 border-t border-white/10 pt-8 text-xs text-plum-300">
+          <p>© {new Date().getFullYear()} Centre Lipœdème Maroc · {c.disclaimer}</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 export default function Footer() {
+  const lang = langFromPath(usePath());
+  if (lang !== 'fr') return <LocalFooter lang={lang} />;
   return (
     <footer className="bg-plum-950 text-plum-100">
       <div className="container mx-auto py-16 lg:py-20">

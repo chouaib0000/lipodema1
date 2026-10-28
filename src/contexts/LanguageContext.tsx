@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 import { translations } from '../translations';
 
 type Language = 'fr' | 'en' | 'es';
@@ -18,14 +18,8 @@ export function LanguageProvider({ children }: { children: ReactNode}) {
   // first client render match; a saved preference is applied right after mount.
   const [language, setLanguage] = useState<Language>('fr');
 
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('language') as Language | null;
-      // Applied after hydration on purpose so the prerendered (French) HTML matches the first render.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      if (saved && saved !== 'fr' && saved in translations) setLanguage(saved);
-    } catch { /* storage unavailable */ }
-  }, []);
+  // The site no longer translates French pages on the fly: each language has its own pages.
+
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);

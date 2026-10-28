@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Home, HeartPulse, Images, CalendarDays } from 'lucide-react';
 import { usePath } from './usePath';
 import { whatsappLink } from '../config/site';
+import { CHROME, LANG_HOME, langFromPath } from '../i18n/chrome';
 
 const WhatsAppIcon = ({ className = 'h-5 w-5' }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -17,14 +18,19 @@ const WhatsAppIcon = ({ className = 'h-5 w-5' }: { className?: string }) => (
  */
 export default function MobileActionBar() {
   const path = usePath();
-  const ar = path === '/ar';
+  const lang = langFromPath(path);
+  const ar = lang === 'ar';
+  const local = lang === 'fr' ? null : CHROME[lang];
+  const home = LANG_HOME[lang];
 
   const tabs = [
-    { href: ar ? '/ar' : '/', label: ar ? 'الرئيسية' : 'Accueil', Icon: Home, match: (p: string) => p === '/' || p === '/ar' },
-    { href: '/maladie', label: ar ? 'المرض' : 'Lipœdème', Icon: HeartPulse, match: (p: string) => ['/maladie', '/diagnostic', '/traitement', '/wal'].includes(p) },
+    { href: home, label: local?.home ?? 'Accueil', Icon: Home, match: (p: string) => p === home },
+    local
+      ? { href: local.disease.href, label: local.disease.label, Icon: HeartPulse, match: (p: string) => p === local.disease.href && p !== home }
+      : { href: '/maladie', label: 'Lipœdème', Icon: HeartPulse, match: (p: string) => ['/maladie', '/diagnostic', '/traitement', '/wal'].includes(p) },
     null,
-    { href: '/resultats', label: ar ? 'النتائج' : 'Résultats', Icon: Images, match: (p: string) => ['/resultats', '/wal-results', '/temoignages'].includes(p) },
-    { href: '/contact', label: ar ? 'موعد' : 'Rendez-vous', Icon: CalendarDays, match: (p: string) => p === '/contact' },
+    { href: '/resultats', label: local?.results ?? 'Résultats', Icon: Images, match: (p: string) => ['/resultats', '/wal-results', '/temoignages'].includes(p) },
+    { href: '/contact', label: local?.appointment ?? 'Rendez-vous', Icon: CalendarDays, match: (p: string) => p === '/contact' },
   ];
 
   return (
@@ -38,7 +44,7 @@ export default function MobileActionBar() {
           t === null ? (
             <li key="wa" className="flex justify-center">
               <a
-                href={whatsappLink(ar ? 'السلام عليكم، أود الحصول على معلومات حول علاج الوذمة الشحمية.' : undefined)}
+                href={whatsappLink(local?.waMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"

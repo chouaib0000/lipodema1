@@ -70,20 +70,20 @@ export default function Home() {
       <section className="relative overflow-hidden bg-mist">
         <div className="container mx-auto grid gap-10 pt-10 pb-14 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16 lg:py-20">
           <div className="fade-in">
-            <p className="text-sm font-semibold text-rose-700">Centre dédié au lipœdème depuis 2015 · Casablanca</p>
+            <p data-hero className="text-sm font-semibold text-rose-700">Centre dédié au lipœdème depuis 2015 · Casablanca</p>
             <h1 className="mt-4 text-[42px] leading-[1.02] sm:text-6xl lg:text-[76px]">
               Traitement du lipœdème au Maroc
             </h1>
-            <p className="mt-6 max-w-[34rem] text-lg leading-relaxed text-ink/80">
+            <p data-hero className="mt-6 max-w-[34rem] text-lg leading-relaxed text-ink/80">
               Le Dr Tawfik Sefrioui traite le lipœdème des jambes et des bras par liposuccion WAL Bodyjet 3D avec micro-canules, sous anesthésie locale, dans son centre de Casablanca.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div data-hero className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/contact" className="btn-primary">Prendre rendez-vous</Link>
               <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn-ghost">
                 <span className="text-[#1FA855]"><WhatsAppIcon /></span> Poser une question sur WhatsApp
               </a>
             </div>
-            <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-rose-200/70 pt-6 max-w-[34rem]">
+            <dl data-hero className="mt-10 grid grid-cols-3 gap-4 border-t border-rose-200/70 pt-6 max-w-[34rem]">
               <div>
                 <dt className="text-xs text-ink/60">Centre ouvert en</dt>
                 <dd className="mt-1 font-serif text-2xl sm:text-3xl text-ink">2015</dd>
@@ -101,7 +101,7 @@ export default function Home() {
 
           {/* The arch echoes Casablanca's Moorish doorways and frames the surgeon */}
           <figure className="relative mx-auto w-full max-w-[420px] lg:max-w-[460px] lg:mr-0">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-[28px] bg-rose-100 ring-1 ring-rose-200">
+            <div data-hero-photo className="relative isolate [transform:translateZ(0)] aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-[28px] bg-rose-100 ring-1 ring-rose-200">
               <img
                 src={SITE.heroImage}
                 alt="Dr Tawfik Sefrioui, chirurgien spécialiste du lipœdème à Casablanca"
@@ -111,7 +111,7 @@ export default function Home() {
                 className="h-full w-full object-cover object-[50%_30%]"
               />
             </div>
-            <figcaption className="absolute -bottom-5 left-4 right-4 sm:left-auto sm:right-[-12px] sm:max-w-[280px] rounded-2xl bg-white px-5 py-4 shadow-[0_18px_40px_-18px_rgba(46,16,24,0.35)]">
+            <figcaption data-hero-card className="absolute -bottom-5 left-4 right-4 sm:left-auto sm:right-[-12px] sm:max-w-[280px] rounded-2xl bg-white px-5 py-4 shadow-[0_18px_40px_-18px_rgba(46,16,24,0.35)]">
               <span className="block font-serif text-xl text-ink">Dr Tawfik Sefrioui</span>
               <span className="block text-[13px] text-ink/70">George Washington University (USA) · pionnier de la liposuccion WAL au Maroc</span>
             </figcaption>

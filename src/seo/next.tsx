@@ -26,7 +26,7 @@ export function pageMetadata(path: string): Metadata {
     openGraph: {
       type: 'website',
       siteName: SITE.name,
-      locale: route.lang === 'ar' ? 'ar_MA' : route.lang === 'en' ? 'en_GB' : 'fr_FR',
+      locale: route.lang === 'ar' ? 'ar_MA' : route.lang === 'en' ? 'en_GB' : route.lang === 'es' ? 'es_ES' : 'fr_FR',
       url: abs(route.path),
       title: route.title,
       description: route.description,
@@ -45,7 +45,7 @@ export function JsonLd({ route }: { route: RouteMeta }) {
 /** Common wrapper for every page: schema + breadcrumb + the page itself. */
 export function Page({ path, children }: { path: string; children: React.ReactNode }) {
   const route = getRoute(path);
-  const showCrumbs = route.path !== '/' && !route.path.startsWith('/ar') && route.path !== '/404';
+  const showCrumbs = route.path !== '/' && route.path !== '/404' && (route.lang ?? 'fr') === 'fr';
   return (
     <>
       <JsonLd route={route} />

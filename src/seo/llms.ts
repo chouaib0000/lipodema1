@@ -24,7 +24,7 @@ const facts = () => `> ${SITE.name} (${SITE.doctor}) est un centre médical de C
 - YouTube : ${SITE.social.youtube}`;
 
 export function llmsShort() {
-  const pages = ROUTES.filter((r) => r.kind !== 'article' && r.path !== '/ar' && r.path !== '/en')
+  const pages = ROUTES.filter((r) => r.kind !== 'article' && r.path !== '/ar' && r.path !== '/en' && r.path !== '/es')
     .map((r) => `- [${r.title}](${pageUrl(r.path)}): ${r.description}`)
     .join('\n');
   const guide = GUIDE.map((a) => `- [${a.title}](${pageUrl(`/guide/${a.slug}`)}): ${a.description}`).join('\n');
@@ -44,6 +44,7 @@ ${guide}
 
 - [النسخة العربية – علاج الوذمة الشحمية في المغرب](${pageUrl('/ar')})
 - [English – Lipedema surgery in Morocco (Casablanca)](${pageUrl('/en')})
+- [Español – Cirugía del lipedema en Marruecos (Casablanca)](${pageUrl('/es')})
 
 ## Version complète
 

@@ -1,60 +1,50 @@
 'use client';
 
-import { usePath } from './usePath';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useLanguage } from '../contexts/LanguageContext';
+import { usePath } from './usePath';
+import { getRoute } from '../seo/routes';
+import { langFromPath, LANG_HOME, type SiteLang } from '../i18n/chrome';
 
-const LANGS = [
+const LANGS: { code: SiteLang; label: string; name: string }[] = [
   { code: 'fr', label: 'FR', name: 'Français' },
+  { code: 'ar', label: 'عربي', name: 'العربية' },
   { code: 'en', label: 'EN', name: 'English' },
   { code: 'es', label: 'ES', name: 'Español' },
-] as const;
+];
 
+/**
+ * Each language is a real, indexable page (no half-translated pages): the button opens
+ * the same page in that language when it exists, otherwise that language's home page.
+ */
 export default function LanguageSwitcher({ variant = 'light' }: { variant?: 'light' | 'dark' }) {
-  const { language, setLanguage } = useLanguage();
+  const path = usePath();
+  const current = langFromPath(path);
+  const alternates = getRoute(path).alternates ?? [];
   const dark = variant === 'dark';
-  const pathname = usePath();
-  const onArabic = pathname === '/ar';
-  const router = useRouter();
 
   return (
-    <div className={`inline-flex items-center rounded-full p-0.5 ${dark ? 'bg-white/10' : 'bg-rose-50'}`} role="group" aria-label="Langue">
+    <div className={`inline-flex items-center rounded-full p-0.5 ${dark ? 'bg-white/10' : 'bg-rose-50'}`} role="group" aria-label="Langue / اللغة / Language">
       {LANGS.map((l) => {
-        const active = !onArabic && language === l.code;
+        const active = current === l.code;
+        const href = alternates.find((a) => a.hreflang === l.code)?.path ?? LANG_HOME[l.code];
         return (
-          <button
+          <Link
             key={l.code}
-            type="button"
+            href={href === '/' ? '/' : `${href}/`}
             lang={l.code}
+            hrefLang={l.code}
             title={l.name}
-            aria-pressed={active}
-            onClick={() => { setLanguage(l.code); if (onArabic) router.push('/'); }}
-            className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+            aria-current={active ? 'page' : undefined}
+            className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors ${l.code === 'ar' ? 'font-arabic text-[13px]' : ''} ${
               active
                 ? dark ? 'bg-white text-plum-900' : 'bg-rose-600 text-white'
                 : dark ? 'text-plum-100 hover:text-white' : 'text-ink/70 hover:text-rose-700'
             } ${dark ? '' : 'min-h-[36px] px-4'}`}
           >
             {l.label}
-          </button>
+          </Link>
         );
       })}
-      {/* Arabic is a separate, indexable page rather than a client-side translation */}
-      <Link
-        href="/ar"
-        lang="ar"
-        hrefLang="ar"
-        title="العربية"
-        aria-current={onArabic ? 'page' : undefined}
-        className={`rounded-full px-3 py-1 text-xs font-semibold font-arabic transition-colors ${
-          onArabic
-            ? dark ? 'bg-white text-plum-900' : 'bg-rose-600 text-white'
-            : dark ? 'text-plum-100 hover:text-white' : 'text-ink/70 hover:text-rose-700'
-        } ${dark ? '' : 'min-h-[36px] px-4 inline-flex items-center'}`}
-      >
-        عربي
-      </Link>
     </div>
   );
 }
