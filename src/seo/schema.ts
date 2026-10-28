@@ -1,6 +1,7 @@
 import { SITE, absUrl, mapsLink, pageUrl } from '../config/site';
 import type { RouteMeta } from './routes';
 import { MEDICAL_REFERENCES } from '../content/references';
+import { VIDEOS, PAGE_VIDEOS, MEDICAL_REVIEW_DATE } from '../content/videos';
 
 const citation = MEDICAL_REFERENCES.map((r) => ({ '@type': 'CreativeWork', name: r.label, url: r.url, publisher: { '@type': 'Organization', name: r.publisher } }));
 
@@ -151,6 +152,7 @@ export function buildSchema(route: RouteMeta) {
   if (pageType === 'MedicalWebPage') {
     webpage.about = { '@id': ID.condition };
     if (route.kind === 'condition') webpage.citation = citation;
+    if (!route.article && (route.kind === 'condition' || route.kind === 'procedure')) webpage.lastReviewed = MEDICAL_REVIEW_DATE;
     webpage.audience = { '@type': 'PeopleAudience', audienceType: 'Patient' };
     webpage.reviewedBy = { '@id': ID.doctor };
   }
@@ -186,6 +188,21 @@ export function buildSchema(route: RouteMeta) {
   }
   if (route.kind === 'condition' || route.kind === 'home') graph.push(condition);
   if (route.kind === 'procedure' || route.kind === 'home' || route.kind === 'condition') graph.push(procedure);
+  for (const id of PAGE_VIDEOS[route.path] ?? []) {
+    const v = VIDEOS[id];
+    graph.push({
+      '@type': 'VideoObject',
+      '@id': `${SITE.url}/#video-${v.id}`,
+      name: v.name,
+      description: v.description,
+      thumbnailUrl: absUrl(v.thumbnailUrl),
+      contentUrl: absUrl(v.contentUrl),
+      uploadDate: v.uploadDate,
+      duration: v.duration,
+      inLanguage: 'fr-MA',
+      publisher: { '@id': ID.clinic },
+    });
+  }
   if (route.glossary?.length) {
     graph.push({
       '@type': 'DefinedTermSet',

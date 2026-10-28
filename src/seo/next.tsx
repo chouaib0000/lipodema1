@@ -3,6 +3,8 @@ import { SITE, pageUrl } from '../config/site';
 import { getRoute, type RouteMeta } from './routes';
 import { buildSchema } from './schema';
 import Breadcrumbs from '../components/Breadcrumbs';
+import Link from 'next/link';
+import { MEDICAL_REVIEW_DATE } from '../content/videos';
 
 const abs = pageUrl;
 
@@ -51,6 +53,12 @@ export function Page({ path, children }: { path: string; children: React.ReactNo
       <JsonLd route={route} />
       {showCrumbs && <Breadcrumbs route={route} />}
       {children}
+      {!route.article && (route.kind === 'condition' || route.kind === 'procedure') && (
+        <p className="container mx-auto pb-10 text-sm text-ink/55">
+          Contenu médical relu par le <Link href="/parcours/" className="underline underline-offset-4">Dr Tawfik Sefrioui</Link> · mis à jour le{' '}
+          <time dateTime={MEDICAL_REVIEW_DATE}>{new Date(MEDICAL_REVIEW_DATE).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+        </p>
+      )}
     </>
   );
 }
