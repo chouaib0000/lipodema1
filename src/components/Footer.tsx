@@ -17,6 +17,7 @@ const LINKS = [
   { to: '/temoignages', label: 'Témoignages de patientes' },
   { to: '/guide', label: 'Guide du lipœdème' },
   { to: '/questions-frequentes', label: 'Questions fréquentes' },
+  { to: '/lexique-lipoedeme', label: 'Lexique du lipœdème' },
   { to: '/guide/lipoedeme-ou-cellulite', label: 'Lipœdème ou cellulite ?' },
   { to: '/guide/prix-operation-lipoedeme-maroc', label: 'Prix d’une opération au Maroc' },
   { to: '/guide/quel-medecin-consulter-lipoedeme-maroc', label: 'Quel médecin consulter au Maroc ?' },

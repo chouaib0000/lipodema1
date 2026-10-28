@@ -2,6 +2,7 @@
 // Claude, Gemini…). Served at /llms.txt (short) and /llms-full.txt (complete).
 import { SITE, pageUrl } from '../config/site';
 import { FAQ_HUB } from '../content/faq-hub';
+import { GLOSSARY } from '../content/glossary';
 import { GUIDE } from '../content/guide';
 import { ROUTES } from './routes';
 
@@ -79,6 +80,10 @@ La liposuccion WAL (Water-Assisted Liposuction) utilise un jet d'eau stérile pu
 ## Questions fréquentes
 
 ${faq}
+
+## Lexique du lipœdème
+
+${GLOSSARY.map((g) => `- **${g.term}** : ${g.definition}`).join('\n')}
 
 ---
 

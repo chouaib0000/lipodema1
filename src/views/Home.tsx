@@ -57,6 +57,24 @@ const STEPS = [
   { title: 'Suivi', text: 'Compression, drainage post-opératoire et contrôles réguliers. L’équipe reste joignable pour toute question.' },
 ];
 
+const ZONES = [
+  { title: 'Cuisses et hanches', text: 'La zone la plus fréquente : graisse symétrique, douloureuse, qui résiste au régime.', href: '/maladie/' },
+  { title: 'Genoux', text: 'Amas à l’intérieur des genoux, frottements et gêne à la marche.', href: '/guide/lipoedeme-des-genoux/' },
+  { title: 'Mollets et chevilles', text: 'Jambes « en colonne » qui s’arrêtent net aux chevilles, pieds épargnés.', href: '/guide/stades-du-lipoedeme/' },
+  { title: 'Bras', text: 'Haut des bras lourd et sensible, graisse qui s’arrête au poignet.', href: '/guide/lipoedeme-des-bras/' },
+];
+
+const FACTS: [string, string][] = [
+  ['Spécialité', 'Diagnostic et traitement du lipœdème'],
+  ['Depuis', '2015, à Casablanca'],
+  ['Médecin', 'Dr Tawfik Sefrioui, formé à la George Washington University (USA)'],
+  ['Technique', 'Liposuccion WAL Bodyjet 3D assistée par jet d’eau, micro-canules'],
+  ['Anesthésie', 'Locale tumescente : la patiente reste éveillée'],
+  ['Après l’intervention', 'Marche dès le lendemain, compression et drainage'],
+  ['Langues', 'Français, arabe, anglais, espagnol'],
+  ['Patientes', 'De tout le Maroc et de l’étranger'],
+];
+
 export default function Home() {
   const { t } = useLanguage();
   const [gallery, setGallery] = useState<null | { images: string[]; label: string; index: number }>(null);
@@ -291,6 +309,45 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ───────── Treated areas (internal links by body zone) ───────── */}
+      <section className="bg-mist">
+        <div className="container mx-auto py-16 lg:py-24">
+          <div className="max-w-2xl">
+            <span className="eyebrow-rule" />
+            <h2 className="text-4xl lg:text-5xl">Les zones traitées</h2>
+            <p className="mt-4 text-lg text-ink/75">Le lipœdème touche surtout les jambes, parfois les bras. Chaque zone est traitée par liposuccion WAL sous anesthésie locale, souvent en plusieurs séances.</p>
+          </div>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {ZONES.map((z) => (
+              <li key={z.title}>
+                <Link href={z.href} className="flex h-full flex-col rounded-3xl bg-white p-6 ring-1 ring-rose-100 transition hover:ring-rose-300 active:scale-[0.99]">
+                  <span className="font-serif text-2xl text-ink">{z.title}</span>
+                  <span className="mt-2 text-[15px] leading-relaxed text-ink/70">{z.text}</span>
+                  <span className="mt-auto pt-4 text-sm font-semibold text-rose-700">En savoir plus</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ───────── Key facts (short, quotable statements for Google and AI assistants) ───────── */}
+      <section className="container mx-auto py-16 lg:py-24 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <div>
+          <span className="eyebrow-rule" />
+          <h2 className="text-4xl lg:text-5xl">Le centre en bref</h2>
+          <p className="mt-4 text-lg text-ink/75">L’essentiel à savoir sur le Centre Lipœdème Maroc et le Dr Tawfik Sefrioui.</p>
+        </div>
+        <dl className="grid gap-x-8 sm:grid-cols-2">
+          {FACTS.map(([k, v]) => (
+            <div key={k} className="border-t border-rose-200 py-4">
+              <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-rose-700">{k}</dt>
+              <dd className="mt-1 text-[17px] text-ink">{v}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
       {/* ───────── Guide teaser (internal links to in-depth articles) ───────── */}
       <section className="container mx-auto py-16 lg:py-24">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
@@ -302,7 +359,7 @@ export default function Home() {
           <Link href="/guide" className="btn-ghost self-start lg:self-auto">Tout le guide</Link>
         </div>
         <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 no-scrollbar lg:mx-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0">
-          {GUIDE.slice(0, 3).map((g) => (
+          {GUIDE.slice(0, 6).map((g) => (
             <li key={g.slug} className="snap-start shrink-0 w-[80%] sm:w-[46%] lg:w-auto">
               <Link href={`/guide/${g.slug}`} className="flex h-full flex-col rounded-3xl bg-mist p-6 ring-1 ring-rose-100 active:scale-[0.99] transition">
                 <span className="font-serif text-2xl leading-snug text-ink">{g.title}</span>
@@ -321,6 +378,7 @@ export default function Home() {
             <span className="eyebrow-rule" />
             <h2 className="text-4xl lg:text-5xl">Questions fréquentes sur le lipœdème</h2>
             <p className="mt-4 text-ink/75">Une autre question ? Écrivez-nous sur WhatsApp, l’équipe vous répond.</p>
+            <Link href="/questions-frequentes/" className="mt-4 inline-block font-semibold text-rose-700 underline underline-offset-4">Voir toutes les questions et réponses</Link>
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp mt-6"><WhatsAppIcon /> Poser ma question</a>
           </div>
           <div className="divide-y divide-rose-200 border-y border-rose-200">

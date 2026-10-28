@@ -186,6 +186,16 @@ export function buildSchema(route: RouteMeta) {
   }
   if (route.kind === 'condition' || route.kind === 'home') graph.push(condition);
   if (route.kind === 'procedure' || route.kind === 'home' || route.kind === 'condition') graph.push(procedure);
+  if (route.glossary?.length) {
+    graph.push({
+      '@type': 'DefinedTermSet',
+      '@id': `${url}#lexique`,
+      name: 'Lexique du lipœdème',
+      inLanguage: 'fr-MA',
+      publisher: { '@id': ID.clinic },
+      hasDefinedTerm: route.glossary.map((g) => ({ '@type': 'DefinedTerm', name: g.term, description: g.definition, inDefinedTermSet: `${url}#lexique` })),
+    });
+  }
   if (route.faq?.length) {
     graph.push({
       '@type': 'FAQPage',

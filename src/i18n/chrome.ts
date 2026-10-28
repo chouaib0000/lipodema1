@@ -48,6 +48,8 @@ export const CHROME: Record<Exclude<SiteLang, 'fr'>, Chrome> = {
       { href: '/ar/aarad-wa-marahil-alwadhma-alshahmiya', label: 'الأعراض والمراحل' },
       { href: '/ar/alwadhma-alshahmiya-am-alsilulit', label: 'الوذمة الشحمية أم السيلوليت؟' },
       { href: '/ar/thaman-amaliyat-alwadhma-alshahmiya', label: 'ثمن العملية' },
+      { href: '/ar/shaft-alduhun-bitiqniyat-wal', label: 'شفط الدهون بتقنية WAL' },
+      { href: '/ar/ilaj-alwadhma-alshahmiya-bidun-jiraha', label: 'العلاج بدون جراحة' },
       { href: '/resultats', label: 'صور قبل وبعد' },
       { href: '/contact', label: 'العنوان والتواصل' },
     ],
